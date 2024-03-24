@@ -25,16 +25,18 @@ export default function NavigationHeader() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
-          <LogoIcon className="m-1"/>
-          <p className="font-bold text-inherit">贴吧工具箱</p>
-        </NavbarBrand>
+        <a href='/'>
+          <NavbarBrand>
+            <LogoIcon className="m-1"/>
+            <p className="font-bold text-inherit">贴吧工具箱</p>
+          </NavbarBrand>
+        </a>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            功能
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
@@ -43,7 +45,7 @@ export default function NavigationHeader() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="./about">
+          <Link color="foreground" href="/about">
             关于
           </Link>
         </NavbarItem>

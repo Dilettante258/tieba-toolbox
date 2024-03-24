@@ -17,10 +17,13 @@
     "@tauri-apps/plugin-shell": ">=2.0.0-beta.0",
     "@types/node": "^20.11.30",
     "axios": "^1.6.8",
+    "buffer": "^6.0.3",
     "framer-motion": "^11.0.20",
+    "http-proxy-middleware": "^2.0.6",
     "protobufjs": "^7.2.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6"
   },
   "devDependencies": {
     "@tauri-apps/cli": ">=2.0.0-beta.0",

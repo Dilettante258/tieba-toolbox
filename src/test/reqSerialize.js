@@ -1,9 +1,10 @@
 import pkg from 'protobufjs';
 const { load } = pkg;
 
-export function reqSerialize() {
+export function reqSerialize(userId, pn) {
   return new Promise((resolve, reject) => {
     load("./protobuf/UserPost/UserPostReqIdl.proto", function (err, root) {
+
       if (err)
         reject(err);
 
@@ -12,8 +13,8 @@ export function reqSerialize() {
       const payload = {
         data: {
           needContent: 1,
-          userId: 5991323492,
-          pn: 3,
+          userId: userId,
+          pn: pn,
           common: {
             clientversion: "8.9.8.5",
           }
@@ -25,7 +26,6 @@ export function reqSerialize() {
 
       // let decoded = AwesomeMessage.decode(buffer);
       // console.log(`decoded = ${JSON.stringify(decoded)}`);
-
       resolve(Buffer);
     });
   });

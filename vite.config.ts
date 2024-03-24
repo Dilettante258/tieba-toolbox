@@ -17,5 +17,19 @@ export default defineConfig(async () => ({
       // 3. tell vite to ignore watching `src-tauri`
       ignored: ["**/src-tauri/**"],
     },
+    proxy: {
+      "/tieba": {
+        target: "https://tieba.baidu.com",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/tieba/, ""),
+      },
+      "/tiebac": {
+        target: "https://tiebac.baidu.com",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/tiebac/, ""),
+      },
+    },
   },
 }));

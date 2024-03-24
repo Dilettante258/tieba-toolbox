@@ -1,7 +1,7 @@
 {
   "productName": "tieba-toolbox",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "tieba.wang1m.cc",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,8 +12,8 @@
       {
         "center": true,
         "title": "Tieba Toolbox",
-        "width": 800,
-        "height": 600,
+        "width": 600,
+        "height": 800,
         "theme": "Light"
       }
     ],

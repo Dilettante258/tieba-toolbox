@@ -50,7 +50,7 @@ main.p {
   @apply leading-7 pb-1 [&:not(:first-child)]:mt-3
 }
 
-main a {
+main.a {
   @apply text-primary underline
 }
 
@@ -58,7 +58,7 @@ blockquote {
   @apply mt-2 border-l-2 pl-6 italic
 }
 
-ul {
+main.ul {
   @apply my-6 ml-6 list-disc [&>li]:mt-2 [&>li>ul]:my-0
 }
 
