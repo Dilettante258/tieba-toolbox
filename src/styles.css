@@ -13,6 +13,7 @@
   color: #0f0f0f;
   background-color: #f6f6f6;
 
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,96 +21,89 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.container {
-  margin: 0;
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+html, body {
+  @apply h-full;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
-}
-
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
+main {
+  @apply px-3 md:max-w-screen-xl md:mx-auto ;
+  /*h-full bg-gray-100 shadow-2xl dark:bg-gray-800*/
 }
 
 h1 {
-  text-align: center;
+  @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
 }
 
-input,
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+h2 {
+  @apply scroll-m-20 border-b pt-2 pb-2 text-3xl font-semibold tracking-tight
 }
 
-button {
-  cursor: pointer;
+h3 {
+  @apply scroll-m-20 text-2xl font-semibold tracking-tight
 }
 
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
+h4 {
+  @apply scroll-m-20 text-xl font-semibold tracking-tight
 }
 
-input,
-button {
-  outline: none;
+main.p {
+  @apply leading-7 pb-1 [&:not(:first-child)]:mt-3
 }
 
-#greet-input {
-  margin-right: 5px;
+main a {
+  @apply text-primary underline
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-
-  a:hover {
-    color: #24c8db;
-  }
-
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-  button:active {
-    background-color: #0f0f0f69;
-  }
+blockquote {
+  @apply mt-2 border-l-2 pl-6 italic
 }
+
+ul {
+  @apply my-6 ml-6 list-disc [&>li]:mt-2 [&>li>ul]:my-0
+}
+
+code {
+  @apply relative rounded bg-gray-300 px-[0.3rem] py-[0.2rem] text-sm font-semibold
+}
+
+table {
+  @apply my-6 w-full overflow-y-auto
+
+}
+
+tr {
+  @apply m-0 border-t p-0 even:bg-gray-300
+}
+
+th {
+  @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right
+}
+
+td {
+  @apply border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right
+}
+
+.bigIcon {
+  @apply flex justify-center p-1 rounded-full items-center bg-indigo-100/80 text-blue-600/80
+}
+
+.iconCard {
+  /*@apply bg-gray-100 text-2xl rounded-lg border-1 border-solid shadow-md hover:shadow-2xl hover:bg-blue-400 hover:ring-2 m-0.5 box-content;*/
+  @apply flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8];
+  @apply hover:ring-2;
+}
+
+.iconCardHeader {
+  @apply flex p-3 z-10 w-full justify-start items-center shrink-0 subpixel-antialiased rounded-t-large gap-2 pb-0
+}
+
+.iconCardHeading {
+  @apply text-base font-semibold
+}
+
+.iconCardDescription {
+  @apply relative flex w-full p-3 flex-auto flex-col h-auto break-words text-left overflow-y-auto subpixel-antialiased;
+  @apply font-normal text-base text-default-500;
+}
+
+

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
+    "@phosphor-icons/react": "^2.0.15",
     "@tauri-apps/api": ">=2.0.0-beta.0",
     "@tauri-apps/plugin-shell": ">=2.0.0-beta.0",
     "@types/node": "^20.11.30",

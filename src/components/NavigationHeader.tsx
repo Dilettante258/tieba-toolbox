@@ -1,6 +1,6 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
-import {AcmeLogo} from "./AcmeLogo";
+import {LogoIcon} from "./LogoIcon";
 
 export default function NavigationHeader() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -26,8 +26,8 @@ export default function NavigationHeader() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
+          <LogoIcon className="m-1"/>
+          <p className="font-bold text-inherit">贴吧工具箱</p>
         </NavbarBrand>
       </NavbarContent>
 
@@ -38,13 +38,13 @@ export default function NavigationHeader() {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
+          <Link href="/" aria-current="page">
+            首页
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link color="foreground" href="./about">
+            关于
           </Link>
         </NavbarItem>
       </NavbarContent>

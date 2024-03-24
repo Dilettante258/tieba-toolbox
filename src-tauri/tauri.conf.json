@@ -1,5 +1,5 @@
 {
-  "productName": "tieba-tools",
+  "productName": "tieba-toolbox",
   "version": "0.0.0",
   "identifier": "com.tauri.dev",
   "build": {
@@ -10,7 +10,8 @@
   },
   "app": {"windows": [
       {
-        "title": "tieba-tools",
+        "center": true,
+        "title": "Tieba Toolbox",
         "width": 800,
         "height": 600,
         "theme": "Light"
