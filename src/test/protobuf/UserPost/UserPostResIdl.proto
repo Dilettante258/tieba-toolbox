@@ -1,0 +1,13 @@
+// tbclient.UserPost.UserPostResIdl
+syntax = "proto3";
+
+import "../Error.proto";
+import "../PostInfoList.proto";
+
+message UserPostResIdl {
+  Error error = 1;
+  message DataRes {
+    repeated PostInfoList post_list = 1;
+  }
+  DataRes data = 2;
+}

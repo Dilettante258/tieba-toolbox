@@ -1,0 +1,15 @@
+
+UserPostReqIdl.protoCommonReq.proto"«
+UserPostReqIdl%
+data (2.UserPostReqIdl.DataReqç
+DataReq
+user_id (
+
+rn (
+	is_thread (
+need_content (
+
+pn (
+is_view_card! (
+common (2
+.CommonReqbproto3
