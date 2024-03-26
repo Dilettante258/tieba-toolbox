@@ -1,6 +1,7 @@
-const { createProxyMiddleware } = require('http-proxy-middleware')
+import {createProxyMiddleware} from "http-proxy-middleware";
 
-module.exports = (req, res) => {
+
+export default (req, res) => {
   let target = ''
 
   // 代理目标地址
