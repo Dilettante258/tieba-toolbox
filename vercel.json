@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/tieba/(.*)",
+      "destination": "/api/proxy"
+    }
+  ]
+}
+
