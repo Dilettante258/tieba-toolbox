@@ -6,6 +6,7 @@ import {NextUIProvider} from '@nextui-org/react';
 import App from "./App";
 import "./styles.css";
 import NavigationHeader from "./components/NavigationHeader.tsx";
+import FirstViewModal from "./components/FirstViewModal.tsx";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 const root = ReactDOMClient.createRoot(rootElement);
@@ -15,6 +16,7 @@ root.render(
     <BrowserRouter>
       <NextUIProvider>
         <NavigationHeader />
+        <FirstViewModal />
         <App />
       </NextUIProvider>
     </BrowserRouter>

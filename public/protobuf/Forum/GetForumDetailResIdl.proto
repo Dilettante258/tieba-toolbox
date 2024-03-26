@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "../Error.proto";
+
+message RecommendForumInfo {
+  string avatar = 1;
+  uint32 forum_id = 2;
+  string forum_name = 3;
+  uint32 member_count = 5;
+  uint32 thread_count = 6;
+  string slogan = 7;
+  string lv1_name = 18;
+  string avatar_origin = 20;
+}
+
+message ManagerElectionTab {
+  string new_strategy_text = 5;
+}
+
+message DataRes {
+  RecommendForumInfo forum_info = 1;
+  ManagerElectionTab election_tab = 8;
+}
+
+message GetForumDetailResIdl {
+  Error error = 1;
+  DataRes data = 2;
+}

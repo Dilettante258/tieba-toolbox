@@ -1,7 +1,7 @@
 import pkg from 'protobufjs';
 const { load } = pkg;
 
-export function reqSerialize(userId, pn) {
+export function postReqSerialize(userId, pn) {
   return new Promise((resolve, reject) => {
     load("./protobuf/UserPost/UserPostReqIdl.proto", function (err, root) {
 

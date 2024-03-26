@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {reqSerialize} from './reqSerialize.js';
-import {resDeserialize} from './resDeserialize.js';
+import {postReqSerialize} from './postReqSerialize.js';
+import {postResDeserialize} from './postResDeserialize.js';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 (async () => {
   try {
-    const buffer = await reqSerialize();
+    const buffer = await postReqSerialize();
     console.log(`buffer = ${buffer}`);
     let blob = new Blob([buffer]);
     // await delay(2000);
@@ -29,7 +29,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
       }
     ).then((res) => {
-       let a = resDeserialize(res.data)
+       let a = postResDeserialize(res.data)
         console.log(a)
     }).then((res) => {
       console.log(JSON.stringify(res));

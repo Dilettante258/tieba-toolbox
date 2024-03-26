@@ -1,97 +1,90 @@
-import {Button, Input} from "@nextui-org/react";
+import {Button, ButtonGroup, Input} from "@nextui-org/react";
 import React, {useState} from "react";
 
-import axios from 'axios';
-
-// @ts-ignore
-import {reqSerialize} from '../test/reqSerialize.js';
-// @ts-ignore
-import {resDeserialize} from '../test/resDeserialize.js';
+import {compactPost} from '../api/type';
 
 
+import '../reply.css'
+import getPost from "../api/post.ts";
+import {Chip} from "@nextui-org/react";
+import {CaretLeft, CaretRight} from "@phosphor-icons/react";
 
 
-async function GetReply(UserID: string, Page: number) {
-  try {
-    if (isNaN(Number(UserID))) {
-      const res = await axios.get(`/tieba/i/sys/user_json?un=${UserID}&ie=utf-8`);
-      UserID = res.data.id;
-    }
+const getThreadUrl = (threadId: number) => `https://tieba.baidu.com/p/${threadId}`;
+const getForumUrl = (forumName: string) => `https://tieba.baidu.com/f?kw=${forumName}`;
+const getPostUrl = (post:compactPost) =>
+  `https://tieba.baidu.com/p/${post.threadId}?fid=${post.forumId}&pid=${post.postId}&cid=0#${post.cid}`;
 
-    console.log(`UserID = ${UserID}`);
+const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.ReactElement> => {
+  return posts.map((post, index) => (
+    <div key={index} className="py-2">
+      <p className="text-base">
+        在
+        <a href={getForumUrl(post.forumName)}
+           target="_blank"
+           className=""
+        >
+          {post.forumName}吧
+        </a>
+        回复{" "}
+        <a
+          href={getThreadUrl(post.threadId)}
+          target="_blank"
+          rel="bookmark"
+        >{post.title}
+        </a>：</p>
+      <p className="text-lg">
+        {post.replyTo ? <>回复<a>{post.replyTo}</a>：</>:""}{post.content}
+      </p>
+      <div className="grid grid-cols-2">
 
-    const buffer = await reqSerialize(UserID, Page);
-    console.log(`buffer = ${buffer}`);
-    let blob = new Blob([buffer]);
+        <div>{post.affiliated?<Chip color="default" size="sm">楼中楼</Chip>:""}</div>
+        <div className="text-medium text-slate-500 text-right">
+          <a href={getPostUrl(post)} target="_blank" className="">
+            链接
+          </a>{" "}{" "}{post.createTime}
+        </div>
+      </div>
 
-    let data = new FormData();
-    data.append('data', blob);
-
-    const response = await axios({
-      method: 'post',
-      url: '/tieba/c/u/feed/userpost?cmd=303002',
-      headers: {
-        'x_bd_data_type': 'protobuf',
-        'Content-Type': 'multipart/form-data',
-        'Accept': '*/*',
-      },
-      data,
-      responseType: 'arraybuffer',
-    });
-
-    const responseData = await resDeserialize(response.data);
-    console.log(responseData);
-
-    const result = responseData.map((a: any) => {
-      return [
-        a.title,
-        ':',
-        a.content[0].postContent[0].text,
-        new Date(a.createTime * 1000).toLocaleDateString('zh-CN', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          second: 'numeric',
-        })
-      ].join('');
-    });
-
-    return result;
-  } catch (error) {
-    console.error(error);
-    throw error; // 抛出错误，以便外部代码可以捕获并处理
-  }
-}
-
-
+    </div>
+  ));
+};
 
 
 function Reply() {
   const [id, setId] = useState("")
   const [page, setPage] = useState<number>(1)
-  const [data, setData] = useState<string[]>()
+  const [data, setData] = useState<Array<React.ReactElement>>([])
 
   async function HandelSubmit(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (id === "") {
       return;
     }
-    // let data = await GetReply(value, 1);
-    // console.log('succ',data);
-    await GetReply(id, page).then( (res: string[]) => {
-      console.log('succ',res);
-      setData(res)
-    });
+    await getPost(id, page).then( (res:any) => {
+      return PostList({posts: res}) as Array<React.ReactElement>;
+    }).then(
+      (result) => setData(result)
+    );
   }
 
-    // @ts-ignore
+  async function HandelChangePage(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e?.preventDefault();
+    if (id === "") {
+      return;
+    }
+    await getPost(id, page).then( (res:any) => {
+      return PostList({posts: res}) as Array<React.ReactElement>;
+    }).then(
+      (result) => setData(result)
+    );
+    scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
       <>
         <div className="text-center">
-          <h1>历史发言查询</h1>
+          <h1 className="p-2">历史发言查询</h1>
           <form
             className="row"
             onSubmit={HandelSubmit}
@@ -122,10 +115,28 @@ function Reply() {
           </form>
         </div>
         <div className="rid grid-cols-1 divide-y divide-gray-400">
-          {data?.map((a) => {
-            return <div className="g p-1 text-lg">{a}</div>
-          })}
+          {data}
         </div>
+        {(data?.length > 0) &&
+          <div className="text-center p-2 pb-4">
+            <ButtonGroup>
+              <Button color="primary"
+                      onClick={(e) => {setPage(page - 1);HandelChangePage(e)}}
+                      isDisabled={page==1}
+                      startContent={<CaretLeft/>}
+              >
+                上一页
+              </Button>
+              <Button color="primary"
+                      onClick={(e) => {setPage(page + 1);HandelChangePage(e)}}
+                      endContent={<CaretRight/>}
+              >
+                下一页
+              </Button>
+            </ButtonGroup>
+          </div>
+        }
+
       </>
     )
 }

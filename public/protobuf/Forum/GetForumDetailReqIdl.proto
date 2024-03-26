@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "../CommonReq.proto";
+
+message GetForumDetailReqIdl {
+  message DataReq {
+    uint32 forum_id = 1;
+    CommonReq common = 2;
+  }
+  DataReq data = 1;
+}
