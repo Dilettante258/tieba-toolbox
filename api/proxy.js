@@ -2,7 +2,7 @@ import {createProxyMiddleware} from "http-proxy-middleware";
 
 
 export default (req, res) => {
-  let target = ''
+  let target = 'https://tiebac.baidu.com'
 
   // 代理目标地址
   // 这里使用 backend 主要用于区分 vercel serverless 的 api 路径
