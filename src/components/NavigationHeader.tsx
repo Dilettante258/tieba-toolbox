@@ -19,7 +19,7 @@ export default function NavigationHeader() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -40,7 +40,7 @@ export default function NavigationHeader() {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="/" aria-current="page">
+          <Link href="/home" aria-current="page">
             首页
           </Link>
         </NavbarItem>

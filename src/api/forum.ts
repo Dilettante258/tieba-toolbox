@@ -1,12 +1,8 @@
-// @ts-ignore
-import forumReqSerialize from "../test/forumReqSerialize";
-// @ts-ignore
-import forumResDeserialize from "../test/forumResDeserialize";
+import {forumReqSerialize, forumResDeserialize} from './ProtobufParser.ts';
 import {client} from "./client.ts";
 
 
-
-async function fetchForumName(fid:number) {
+export async function fetchForumName(fid:number) {
   try {
     const buffer = await forumReqSerialize(fid);
     console.log(`forumBuffer = ${buffer}`);
@@ -36,18 +32,5 @@ async function fetchForumName(fid:number) {
     throw error;
   }
 }
-export async function getForumName(fid:number) {
-  let forumPairs = JSON.parse(localStorage.getItem("forumPairs") || "{}");
 
-  if (forumPairs[fid]) {
-    return forumPairs[fid];
-  }
-
-  let username = await fetchForumName(fid);
-
-  forumPairs[fid] = username;
-  localStorage.setItem("forumPairs", JSON.stringify(forumPairs));
-
-  return username;
-}
 

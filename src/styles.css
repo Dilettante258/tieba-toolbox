@@ -19,14 +19,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  @apply dark:bg-gray-800 dark:text-gray-100 h-screen static
 }
 
-html, body {
-  @apply h-full;
-}
+
 
 main {
-  @apply px-3 md:max-w-screen-xl md:mx-auto ;
+  @apply h-full px-3 md:max-w-screen-xl md:mx-auto ;
   /*h-full bg-gray-100 shadow-2xl dark:bg-gray-800*/
 }
 

@@ -1,19 +1,21 @@
 import {client} from "./client.ts";
 // @ts-ignore
-import {postReqSerialize} from '../test/postReqSerialize.js';
+import {postReqSerialize,postResDeserialize} from './ProtobufParser.ts';
 // @ts-ignore
-import {postResDeserialize} from '../test/postResDeserialize.js';
+import {} from '../test/postResDeserialize.js';
 import {compactPost, Post, timeFormat} from "./type.ts";
-import {getForumName} from "./forum.ts";
+import {getForumName, getUserId} from "./cache.ts";
 
-export default async function getPost(UserID: string, Page: number) {
+export default async function getPost(User: string|number, Page: number) {
   try {
-    if (isNaN(Number(UserID))) {
-      const res = await client.get(`/tieba/i/sys/user_json?un=${UserID}&ie=utf-8`);
-      UserID = res.data.id;
+    if (isNaN(Number(User))) {
+      User = await getUserId(User as string);
+    }
+    else {
+      User = Number(User);
     }
 
-    const buffer = await postReqSerialize(UserID, Page);
+    const buffer = await postReqSerialize(User, Page);
     let blob = new Blob([buffer]);
     let data = new FormData();
     data.append('data', blob);
@@ -30,11 +32,11 @@ export default async function getPost(UserID: string, Page: number) {
     });
 
     const responseData = await postResDeserialize(response.data);
-    console.log(responseData);
+    // console.log(responseData);
     return await unpack(responseData);
   } catch (error) {
     console.error(error);
-    throw error; // 抛出错误，以便外部代码可以捕获并处理
+    throw error;
   }
 }
 
@@ -42,7 +44,6 @@ const unpack = async (posts:Array<Post>) => {
   let result:Array<compactPost> = [];
   for (let post of posts) {
     const forumName_ = await getForumName(post.forumId);
-    console.log(posts);
     for(let content of post.content){
       let affiliated = content.postType == 1
       let isReply = affiliated && content?.postContent[1]?.type == 4;

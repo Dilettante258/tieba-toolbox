@@ -18,18 +18,12 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
     proxy: {
-      // "/tieba": {
-      //   target: "https://tiebac.baidu.com",
-      //   changeOrigin: true,
-      //   secure: true,
-      //   rewrite: (path) => path.replace(/^\/tieba/, ""),
-      // },
-      // "/tiebac": {
-      //   target: "https://tiebac.baidu.com",
-      //   changeOrigin: true,
-      //   secure: true,
-      //   rewrite: (path) => path.replace(/^\/tiebac/, ""),
-      // },
+      "/tieba": {
+        target: "https://tiebac.baidu.com",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/tieba/, ""),
+      },
     },
   },
 }));

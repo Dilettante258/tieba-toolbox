@@ -1,0 +1,4 @@
+.vscode/*
+.test/*
+.protobuf/*
+.src-tauri/*

@@ -48,7 +48,7 @@ function Home() {
               通过预设的过滤器，分析用户的成分。
             </p>
           </button>
-          <NavLink className="iconCard" to="reply">
+          <NavLink className="iconCard" to="/userpost">
             <div className="iconCardHeader">
               <ChatCenteredText size={40} className="bigIcon"/>
               <p className="iconCardHeading">历史发言查询</p>
