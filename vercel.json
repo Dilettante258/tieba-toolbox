@@ -3,6 +3,9 @@
     {
       "source": "/tieba/(.*)",
       "destination": "/api/proxy"
+    },
+    { "source": "/(.*)",
+    "destination": "/" 
     }
   ]
 }
