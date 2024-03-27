@@ -1,7 +1,5 @@
 import {Button, Input} from "@nextui-org/react";
-
-import './reply.css'
-import {Form, Outlet, redirect, useLoaderData} from "react-router-dom";
+import {Form, LoaderFunctionArgs, Outlet, redirect, useLoaderData} from "react-router-dom";
 
 type LoaderParams = {
   un: string;
@@ -14,12 +12,15 @@ export async function searchPostAction({ request }:{ request: Request }) {
   console.log(formData);
   const updates = Object.fromEntries(formData);
   console.log('updates', updates);
-  // // await updateContact(params.contactId, updates);
-  return redirect(`/userpost/${updates.un}/${updates.page}`);
+  if (!updates.un || !updates.page) {
+    return redirect('/userpost');
+  }
+  let encodeun = encodeURIComponent(updates.un as string);
+  return redirect(`/userpost/${encodeun}/${updates.page}`);
 }
 
 
-export async function UPLoader({params}:{params:LoaderParams}) {
+export async function UPLoader({params}:LoaderFunctionArgs<LoaderParams>) {
   return params;
 }
 
@@ -32,7 +33,6 @@ function UserPost() {
           <h1 className="p-2">历史发言查询</h1>
           <Form
             className="row"
-            // onSubmit={handelSubmit}
             method="post"
             action="/userpost"
             id="searchUserPostForm"
@@ -57,7 +57,7 @@ function UserPost() {
               className="max-w-xs mx-auto py-3"
             />
             <Button color="primary" type="submit">
-              Button
+              查询
             </Button>
           </Form>
         </div>

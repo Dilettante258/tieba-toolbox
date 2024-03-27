@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
-
-
 import FirstViewModal from "./components/FirstViewModal.tsx";
+
+
 
 
 function App() {

@@ -1,6 +1,7 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import {LogoIcon} from "./LogoIcon";
+import {ThemeSwitcher} from "./ThemeSwitch.tsx";
 
 export default function NavigationHeader() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -25,12 +26,12 @@ export default function NavigationHeader() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <a href='/'>
+        <Link href='/home' className="text-current">
           <NavbarBrand>
             <LogoIcon className="m-1"/>
             <p className="font-bold text-inherit">贴吧工具箱</p>
           </NavbarBrand>
-        </a>
+        </Link>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -51,14 +52,16 @@ export default function NavigationHeader() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
+        {/*<NavbarItem className="hidden lg:flex">*/}
+        {/*  <Link href="#">Login</Link>*/}
+        {/*</NavbarItem>*/}
+        <ThemeSwitcher />
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>
+
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (

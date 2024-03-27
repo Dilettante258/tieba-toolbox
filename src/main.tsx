@@ -1,13 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import "./index.css";
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import {NextUIProvider} from '@nextui-org/react';
+import {ThemeProvider as NextThemesProvider} from "next-themes";
 import App from "./App";
-import "./styles.css";
-
 import Home from "./pages/Home.tsx";
 import Error from "./pages/Error.tsx";
 import UserPost, {searchPostAction, UPLoader} from "./pages/UserPost.tsx";
@@ -29,14 +30,12 @@ const router = createBrowserRouter([
       {
         path: "/userpost",
         element: <UserPost />,
-        // @ts-ignore
         loader: UPLoader,
         action: searchPostAction,
         children: [
           {
             path: "/userpost/:un/:page",
             element: <UserPostContent />,
-            // @ts-ignore
             loader: UPCLoader,
             action: searchPostAction,
           },
@@ -45,6 +44,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/config",
         element: <About />,
       },
     ],
@@ -57,8 +60,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")  as HTMLElement).render(
   <React.StrictMode>
     <NextUIProvider>
-      <NavigationHeader />
-      <RouterProvider router={router} />
+      <NextThemesProvider attribute="class" defaultTheme="light">
+        <NavigationHeader />
+        <RouterProvider router={router} />
+      </NextThemesProvider>
     </NextUIProvider>
   </React.StrictMode>
 );

@@ -5,7 +5,7 @@ import {Buffer} from "buffer";
 const root = protobuf.Root.fromJSON(jsonDescriptor);
 export function postReqSerialize(userId:number, pn:number): Promise<Buffer> {
   return new Promise((resolve) => {
-    const AwesomeMessage = root.lookupType("UserPostReqIdl");
+    const Proto = root.lookupType("UserPostReqIdl");
 
     const payload = {
       data: {
@@ -18,10 +18,9 @@ export function postReqSerialize(userId:number, pn:number): Promise<Buffer> {
       }
     };
 
-    const message = AwesomeMessage.create(payload);
-    const buffer = AwesomeMessage.encode(message).finish();
-
-    // let decoded = AwesomeMessage.decode(buffer);
+    const message = Proto.create(payload);
+    const buffer = Proto.encode(message).finish();
+    // let decoded = Proto.decode(buffer);
     // console.log(`decoded = ${JSON.stringify(decoded)}`);
 
     resolve(Buffer.from(buffer));
@@ -31,8 +30,8 @@ export function postReqSerialize(userId:number, pn:number): Promise<Buffer> {
 
 export function postResDeserialize(buffer:Uint8Array): Promise<any>{
   return new Promise((resolve) => {
-    const AwesomeMessage = root.lookupType("UserPostResIdl");
-    let decoded = AwesomeMessage.decode(Buffer.from(buffer)) as any;
+    const Proto = root.lookupType("UserPostResIdl");
+    let decoded = Proto.decode(Buffer.from(buffer)) as any;
     // console.log(`decoded = ${JSON.stringify(decoded)}`);
     let data = decoded.data.postList;
     resolve(data);
@@ -41,7 +40,7 @@ export function postResDeserialize(buffer:Uint8Array): Promise<any>{
 
 export function forumReqSerialize(forumId:number): Promise<Buffer> {
   return new Promise((resolve) => {
-    const AwesomeMessage = root.lookupType("GetForumDetailReqIdl");
+    const Proto = root.lookupType("GetForumDetailReqIdl");
 
     const payload = {
       data: {
@@ -52,13 +51,11 @@ export function forumReqSerialize(forumId:number): Promise<Buffer> {
       }
     };
 
-    const message = AwesomeMessage.create(payload);
-    const buffer = AwesomeMessage.encode(message).finish();
+    const message = Proto.create(payload);
+    const buffer = Proto.encode(message).finish();
     console.log(buffer);
     console.log(`encoded = ${buffer}`);
 
-    // let decoded = AwesomeMessage.decode(buffer);
-    // console.log(`decoded = ${JSON.stringify(decoded)}`);
 
     resolve(Buffer.from(buffer));
   });
@@ -66,14 +63,10 @@ export function forumReqSerialize(forumId:number): Promise<Buffer> {
 
 export function forumResDeserialize(buffer:Uint8Array) {
   return new Promise((resolve) => {
+    const Proto = root.lookupType("GetForumDetailResIdl");
 
-    console.log(`resBuffer = `)
-    console.log(buffer)
-
-    const AwesomeMessage = root.lookupType("GetForumDetailResIdl");
-
-    let decoded = AwesomeMessage.decode(Buffer.from(buffer)) as any;
-    // let decoded = AwesomeMessage.decode(buffer);
+    let decoded = Proto.decode(Buffer.from(buffer)) as any;
+    // let decoded = Proto.decode(buffer);
     // console.log(`decoded = ${JSON.stringify(decoded)}`);
     let data = decoded.data.forumInfo;
     let forumName = data.forumName;

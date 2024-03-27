@@ -4,7 +4,7 @@ import React from "react";
 import {compactPost} from "../../api/type.ts";
 
 
-import {redirect, useLoaderData} from "react-router-dom";
+import {LoaderFunctionArgs, useLoaderData, useNavigate} from "react-router-dom";
 import getPost from "../../api/post.ts";
 
 type LoaderParams = {
@@ -20,9 +20,9 @@ export async function getUserPostContent(un: string, page: string) {
   return content;
 }
 
-export async function UPCLoader({params}: {params:LoaderParams}): Promise<any> {
+export async function UPCLoader({params}:LoaderFunctionArgs<LoaderParams>): Promise<any> {
   console.log('params', params);
-  let content = await getUserPostContent(params.un, params.page);
+  let content = await getUserPostContent(params.un as string, params.page as string);
   return [content,params.un,params.page];
 }
 
@@ -68,26 +68,27 @@ const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.Reac
 
 export default function UserPostContent() {
   const [content,un,page ] = useLoaderData() as Array<React.ReactElement>;
-
-  console.log(content,un);
-
+  // console.log(content,un);
+  const navigate=useNavigate()
   return (
     <>
-      <div className="rid grid-cols-1 divide-y divide-gray-400">
+      <div className="rid grid-cols-1 divide-y divide-gray-400" id="postContent">
         {content}
       </div>
       {(content) &&
         <div className="text-center p-2 pb-4">
           <ButtonGroup>
             <Button color="primary"
-                    onClick={() => {redirect(`/userpost/${un}/${Number(page)-1}`)}}
+                    onClick={() => {
+                      navigate(`/userpost/${un}/${Number(page)-1}`);scrollTo({ top: 0, behavior: "smooth" })}}
                     isDisabled={Number(page)==1}
                     startContent={<CaretLeft/>}
             >
               上一页
             </Button>
             <Button color="primary"
-                    onClick={() => {redirect(`/userpost/${un}/${Number(page)+1}`)}}
+                    onClick={() => {
+                      navigate(`/userpost/${un}/${Number(page)+1}`);scrollTo({ top: 0, behavior: "smooth" })}}
                     endContent={<CaretRight/>}
             >
               下一页

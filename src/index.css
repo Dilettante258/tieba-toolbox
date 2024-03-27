@@ -4,6 +4,7 @@
 
 
 
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -20,10 +21,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  @apply dark:bg-gray-800 dark:text-gray-100 h-screen static
+  @apply h-screen static;
 }
 
-
+.dark {
+  background-color: #020617;
+  color: #f8fafc;
+}
 
 main {
   @apply h-full px-3 md:max-w-screen-xl md:mx-auto ;
@@ -106,4 +110,7 @@ td {
   @apply font-normal text-base text-default-500;
 }
 
+#postContent a {
+  @apply text-primary/85 hover:text-primary/100 hover:underline dark:text-violet-500/80 dark:hover:text-violet-500/100;
+}
 
