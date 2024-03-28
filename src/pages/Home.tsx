@@ -22,21 +22,11 @@ function Home() {
 
         </div>
         <h1 className="text-center py-3">贴吧工具箱</h1>
+        <div className="flex flex-row gap-x-2 place-content-center md:hidden text-xl">
+          <NavLink to="/about">教程</NavLink>
+          <NavLink to="/about">关于</NavLink>
+        </div>
 
-        {/*<form*/}
-        {/*  className="row"*/}
-        {/*  onSubmit={(e) => {*/}
-        {/*    e.preventDefault();*/}
-        {/*    greet();*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <input*/}
-        {/*    id="greet-input"*/}
-        {/*    onChange={(e) => setName(e.currentTarget.value)}*/}
-        {/*    placeholder="Enter a name..."*/}
-        {/*  />*/}
-        {/*  <button type="submit">Greet</button>*/}
-        {/*</form>*/}
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 py-3 px-3">
           <button className="iconCard" onClick={() => console.log(111)}>
@@ -88,7 +78,7 @@ function Home() {
           <NavLink className="iconCard" to="/friends">
             <div className="iconCardHeader">
               <UserSwitch size={40} className="bigIcon"/>
-              <p className="iconCardHeading">互关查询(开发中)</p>
+              <p className="iconCardHeading">互关查询</p>
             </div>
             <p className="iconCardDescription">
               分析账号的关注和粉丝，找出互相关注的用户。

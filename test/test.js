@@ -4,28 +4,18 @@ import { Md5 } from "ts-md5";
 // let data1 = new FormData(json);
 // console.log(data1);
 
-
-
-
-
-
-
-
 let data = new FormData();
-
-
 data.append('BDUSS', BDUSS);
 data.append('_client_version', '12.57.4.2');
 data.append('pn', '2');
 data.append('uid', '5991323492');
-// data.append('sign', 'AE65FF4F1F41FF6F5AC67D13EDE9DDF6');
-
 let string = '';
 data.forEach((value, key,iterable)=> {
     string = string +`${key}=${value}`})
 console.log(string)
-let a = string+'tiebaclient!!!'
-let sign = Md5.hashStr(a).toUpperCase();
+let middle = string+'tiebaclient!!!'
+let sign = Md5.hashStr(middle).toUpperCase();
+data.append('sign', sign);
 console.log(sign)
 
 

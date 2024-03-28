@@ -1,10 +1,38 @@
+# 贴吧数据查询工具
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/45123a96-2174-4fa0-8d72-9f025c791e6b/deploy-status)](https://app.netlify.com/sites/tiebatools/deploys)
+这是一个贴吧数据查询工具，目前处于开发阶段。它可以帮助用户查询贴吧的各种数据，包括账号的一些信息，如注册时间、关注的贴吧等，对用户的主题帖进行分析，包括发帖时间、回复数等，将用户的单条发言导出为图片留档，分析账号的关注和粉丝，找出互相关注的用户等。
 
-# Tauri + React + Typescript
+## 安装
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+1. 克隆这个仓库
+```bash
+git clone https://github.com/Dilettante258/tieba-tools.git
+```
+2. 安装依赖
+```bash
+npm install
+```
+3. 运行项目
+```bash
+npm start
+```
 
-## Recommended IDE Setup
+## 使用
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+在浏览器中打开 `http://localhost:3000`，然后按照网站的指示进行操作。
+
+## 贡献
+
+如果你想为这个项目做出贡献，你可以：
+
+- 提交 bug 报告或者提出新功能的建议
+- 提交 pull request
+
+在提交 pull request 之前，请确保你的代码符合我们的代码风格和标准。
+
+## 许可证
+
+这个项目遵循 MIT 许可证。详情请见 `LICENSE` 文件。
+
+---
+以上是AI生产的。

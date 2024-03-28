@@ -10,20 +10,14 @@ import {Gear} from "@phosphor-icons/react";
 
 export default function NavigationHeader() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
-
+    "UserPost",
+    "Friends",
+    "Home",
+    "About",
+    "Help",
+    "Config",
+  ]
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
       <NavbarContent>
@@ -76,7 +70,7 @@ export default function NavigationHeader() {
                 index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
               }
               className="w-full"
-              href="#"
+              href={`${item.toLowerCase()}`}
               size="lg"
             >
               {item}

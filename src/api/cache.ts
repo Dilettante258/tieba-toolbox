@@ -27,6 +27,5 @@ export async function getUserId(UserName:string): Promise<number> {
 
   forumPairs[UserName] = username;
   localStorage.setItem("userPairs", JSON.stringify(forumPairs));
-
   return username;
 }

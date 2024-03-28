@@ -27,7 +27,7 @@
 }
 
 main {
-  @apply h-full px-3 md:max-w-screen-lg md:mx-auto;
+  @apply h-full px-3 lg:px-10 md:max-w-screen-lg md:mx-auto ;
   /*h-full bg-gray-100 shadow-2xl dark:bg-gray-800*/
 }
 

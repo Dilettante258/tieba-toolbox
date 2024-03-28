@@ -2,10 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import "./index.css";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import {NextUIProvider} from '@nextui-org/react';
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import App from "./App";
@@ -16,8 +13,8 @@ import NavigationHeader from "./components/NavigationHeader.tsx";
 import About from "./pages/About.tsx";
 import UserPostContent, {UPCLoader} from "./pages/secondary/UserPostContent.tsx";
 import Config from "./pages/Config.tsx";
-import Friends from "./pages/Friends.tsx";
-import FriendsContent from "./pages/secondary/FriendsContent.tsx";
+import Friends, {searchFansAction} from "./pages/Friends.tsx";
+import FriendsContent, {FansLoader} from "./pages/secondary/FriendsContent.tsx";
 
 const router = createBrowserRouter([
   {
@@ -39,24 +36,23 @@ const router = createBrowserRouter([
             path: "/userpost/:un/:page",
             element: <UserPostContent />,
             loader: UPCLoader,
-            action: searchPostAction,
+            action: searchFansAction,
           },
-
-          ],
+        ],
       },
       {
         path: "/friends",
         element: <Friends />,
         loader: UPLoader,
-        // action: searchPostAction,
+        action: searchFansAction,
         children: [
           {
-            path: "/friends/:un/:page",
+            path: "/friends/:un",
             element: <FriendsContent />,
-            // loader: UPCLoader,
-            // action: searchPostAction,
+            loader: FansLoader,
+            action: searchFansAction,
           },
-        ]
+        ],
       },
       {
         path: "/about",
