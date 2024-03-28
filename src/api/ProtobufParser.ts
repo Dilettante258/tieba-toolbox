@@ -32,7 +32,7 @@ export function postResDeserialize(buffer:Uint8Array): Promise<any>{
   return new Promise((resolve) => {
     const Proto = root.lookupType("UserPostResIdl");
     let decoded = Proto.decode(Buffer.from(buffer)) as any;
-    // console.log(`decoded = ${JSON.stringify(decoded)}`);
+    console.log(`decoded = ${JSON.stringify(decoded)}`);
     let data = decoded.data.postList;
     resolve(data);
   });
@@ -53,10 +53,8 @@ export function forumReqSerialize(forumId:number): Promise<Buffer> {
 
     const message = Proto.create(payload);
     const buffer = Proto.encode(message).finish();
-    console.log(buffer);
-    console.log(`encoded = ${buffer}`);
-
-
+    // console.log(buffer);
+    // console.log(`encoded = ${buffer}`);
     resolve(Buffer.from(buffer));
   });
 }

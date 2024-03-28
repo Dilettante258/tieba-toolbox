@@ -31,6 +31,11 @@ export default async function getPost(User: string|number, Page: number) {
       responseType: 'arraybuffer',
     });
 
+    // console.log(response.data.byteLength);
+    // if (response.data.byteLength < 200) {
+    //   return [];
+    // }
+
     const responseData = await postResDeserialize(response.data);
     // console.log(responseData);
     return await unpack(responseData);

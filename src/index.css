@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -30,7 +27,7 @@
 }
 
 main {
-  @apply h-full px-3 md:max-w-screen-xl md:mx-auto ;
+  @apply h-full px-3 md:max-w-screen-lg md:mx-auto;
   /*h-full bg-gray-100 shadow-2xl dark:bg-gray-800*/
 }
 
@@ -88,7 +85,7 @@ td {
 }
 
 .bigIcon {
-  @apply flex justify-center p-1 rounded-full items-center bg-indigo-100/80 text-blue-600/80
+  @apply flex justify-center p-1 rounded-full items-center bg-indigo-100/80 text-blue-600/80 dark:bg-slate-800/90 dark:text-blue-200/80
 }
 
 .iconCard {

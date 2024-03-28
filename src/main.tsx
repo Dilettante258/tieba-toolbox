@@ -15,16 +15,18 @@ import UserPost, {searchPostAction, UPLoader} from "./pages/UserPost.tsx";
 import NavigationHeader from "./components/NavigationHeader.tsx";
 import About from "./pages/About.tsx";
 import UserPostContent, {UPCLoader} from "./pages/secondary/UserPostContent.tsx";
-
+import Config from "./pages/Config.tsx";
+import Friends from "./pages/Friends.tsx";
+import FriendsContent from "./pages/secondary/FriendsContent.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
     errorElement: <Error />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
       {
@@ -43,12 +45,26 @@ const router = createBrowserRouter([
           ],
       },
       {
+        path: "/friends",
+        element: <Friends />,
+        loader: UPLoader,
+        // action: searchPostAction,
+        children: [
+          {
+            path: "/friends/:un/:page",
+            element: <FriendsContent />,
+            // loader: UPCLoader,
+            // action: searchPostAction,
+          },
+        ]
+      },
+      {
         path: "/about",
         element: <About />,
       },
       {
         path: "/config",
-        element: <About />,
+        element: <Config />,
       },
     ],
   },

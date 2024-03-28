@@ -2,6 +2,14 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import {LogoIcon} from "./LogoIcon";
 import {ThemeSwitcher} from "./ThemeSwitch.tsx";
+import {
+  Gear
+} from "@phosphor-icons/react";
+import { NavLink } from "react-router-dom";
+
+
+
+
 
 export default function NavigationHeader() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -26,7 +34,7 @@ export default function NavigationHeader() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <Link href='/home' className="text-current">
+        <Link href='/' className="text-current">
           <NavbarBrand>
             <LogoIcon className="m-1"/>
             <p className="font-bold text-inherit">贴吧工具箱</p>
@@ -41,7 +49,7 @@ export default function NavigationHeader() {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="/home" aria-current="page">
+          <Link href="/" aria-current="page">
             首页
           </Link>
         </NavbarItem>
@@ -57,8 +65,8 @@ export default function NavigationHeader() {
         {/*</NavbarItem>*/}
         <ThemeSwitcher />
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+          <Button as={Link} color="primary" href="config" variant="faded" isIconOnly>
+          <Gear size={32} />
           </Button>
         </NavbarItem>
 
