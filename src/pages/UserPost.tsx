@@ -30,7 +30,7 @@ function UserPost() {
   return (
       <>
         <div className="text-center">
-          <h1 className="p-2">历史发言查询</h1>
+          <h1 className="p-4">历史发言查询</h1>
           <Form
             className="row"
             method="post"

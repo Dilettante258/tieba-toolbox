@@ -1,16 +1,20 @@
-import { useRouteError } from "react-router-dom";
+import { LinkBreak } from "@phosphor-icons/react";
+import { useRouteError, ErrorResponse } from "react-router-dom";
 
 export default function Error() {
-  const error = useRouteError();
+  const error = useRouteError() as ErrorResponse;
   console.error(error);
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        {/*<i>{error.statusText || error.message}</i>*/}
-      </p>
-    </div>
+    <main>
+      <div id="error-page">
+        <LinkBreak size={80} />
+        <h1>Oops!</h1>
+        <p>很抱歉，发生了意外错误。</p>
+        <p>{error.status} {error.statusText}</p>
+        <i>{error.data}</i>
+      </div>
+    </main>
+
   );
 }

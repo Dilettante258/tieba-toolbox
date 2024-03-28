@@ -30,7 +30,7 @@ function UserPost() {
   return (
       <>
         <div className="text-center">
-          <h1 className="p-2">关注与粉丝查询</h1>
+          <h1 className="p-4">关注与粉丝查询</h1>
           <Form
             className="row"
             method="post"

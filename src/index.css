@@ -111,3 +111,19 @@ td {
   @apply text-primary/85 hover:text-primary/100 hover:underline dark:text-violet-500/80 dark:hover:text-violet-500/100;
 }
 
+#error-page {
+  @apply flex flex-col justify-center text-center items-center absolute inset-0;
+}
+
+#error-page h1{
+  @apply text-5xl font-bold p-3;
+}
+
+#error-page p{
+  @apply text-2xl font-semibold p-3;
+}
+
+#error-page i{
+  @apply text-danger text-xl;
+}
+

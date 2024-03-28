@@ -38,7 +38,6 @@ const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.Reac
         在
         <a href={getForumUrl(post.forumName)}
            target="_blank"
-           className=""
         >
           {post.forumName}吧
         </a>
@@ -67,7 +66,8 @@ const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.Reac
 };
 
 export default function UserPostContent() {
-  const [content,un,page ] = useLoaderData() as Array<React.ReactElement>;
+  const [content,un,page ] = useLoaderData() as [Array<React.ReactElement>,string,string];
+  let page_ = Number(page);
   // console.log(content,un);
   const navigate=useNavigate()
   return (
@@ -80,15 +80,15 @@ export default function UserPostContent() {
           <ButtonGroup>
             <Button color="primary"
                     onClick={() => {
-                      navigate(`/userpost/${un}/${Number(page)-1}`);scrollTo({ top: 0, behavior: "smooth" })}}
-                    isDisabled={Number(page)==1}
+                      navigate(`/userpost/${un}/${page_-1}`);scrollTo({ top: 0, behavior: "smooth" })}}
+                    isDisabled={page==='1'}
                     startContent={<CaretLeft/>}
             >
               上一页
             </Button>
             <Button color="primary"
                     onClick={() => {
-                      navigate(`/userpost/${un}/${Number(page)+1}`);scrollTo({ top: 0, behavior: "smooth" })}}
+                      navigate(`/userpost/${un}/${page_+1}`);scrollTo({ top: 0, behavior: "smooth" })}}
                     endContent={<CaretRight/>}
             >
               下一页

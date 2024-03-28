@@ -1,8 +1,5 @@
 import {client} from "./client.ts";
-// @ts-ignore
 import {postReqSerialize,postResDeserialize} from './ProtobufParser.ts';
-// @ts-ignore
-import {} from '../test/postResDeserialize.js';
 import {compactPost, Post, timeFormat} from "./type.ts";
 import {getForumName, getUserId} from "./cache.ts";
 

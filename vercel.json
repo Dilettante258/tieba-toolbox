@@ -23,8 +23,9 @@
       "source": "/tieba/:match*",
       "destination": "https://tiebac.baidu.com/:match*"
     },
-    { "source": "/(.*)",
-    "destination": "/" 
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }

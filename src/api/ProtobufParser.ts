@@ -1,4 +1,4 @@
-import protobuf from 'protobufjs';
+import protobuf from 'protobufjs/light';
 import jsonDescriptor from './protobuf.json';
 import {Buffer} from "buffer";
 
@@ -32,7 +32,7 @@ export function postResDeserialize(buffer:Uint8Array): Promise<any>{
   return new Promise((resolve) => {
     const Proto = root.lookupType("UserPostResIdl");
     let decoded = Proto.decode(Buffer.from(buffer)) as any;
-    console.log(`decoded = ${JSON.stringify(decoded)}`);
+    // console.log(`decoded = ${JSON.stringify(decoded)}`);
     let data = decoded.data.postList;
     resolve(data);
   });

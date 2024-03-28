@@ -3,7 +3,7 @@ import {User, Link} from "@nextui-org/react";
 
 function Example () {
     return (
-        <User   
+        <User
       name="Junior Garcia"
       description={(
         <Link href="https://twitter.com/jrgarciadev" size="sm" isExternal>
@@ -13,29 +13,29 @@ function Example () {
       avatarProps={{
         src: "https://avatars.githubusercontent.com/u/30373425?v=4",
         isBordered: true,
-        color: "default" 
+        color: "default"
       }}
     />
     )
 }
 
-function UserItem (un: string, uid: string, avatar: string) {
-    return (
-        <User   
-      name={un}
-      description={(
-        <Link href="https://twitter.com/jrgarciadev" size="sm" isExternal>
-          {uid}
-        </Link>
-      )}
-      avatarProps={{
-        src: avatar,
-        isBordered: true,
-        color: "default" 
-      }}
-    />
-    )
-}
+// const UserItem = (un: string, uid: string, avatar: string) => {
+//     return (
+//         <User
+//       name={un}
+//       description={(
+//         <Link href="https://twitter.com/jrgarciadev" size="sm" isExternal>
+//           {uid}
+//         </Link>
+//       )}
+//       avatarProps={{
+//         src: avatar,
+//         isBordered: true,
+//         color: "default"
+//       }}
+//     />
+//     )
+// }
 
 function FriendsContent() {
   return (
@@ -59,7 +59,7 @@ function FriendsContent() {
       <Example />
       <Example />
       <Example />
-      <Example />
+      {/*<UserItem un="A" uid="xxx" avatar='https://'/>*/}
       </div>
 
 

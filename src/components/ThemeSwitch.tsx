@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 import {Switch} from "@nextui-org/react";
 import {Moon, Sun} from "@phosphor-icons/react";
-import {UseThemeProps} from "next-themes/dist/types";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
@@ -29,7 +28,7 @@ export function ThemeSwitcher() {
         isSelected ? (
           <Sun />
         ) : (
-          <Moon/>
+          <Moon fill="#020617"/>
         )
       }
     >

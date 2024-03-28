@@ -85,7 +85,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="iconCard">
+          <NavLink className="iconCard" to="/friends">
             <div className="iconCardHeader">
               <UserSwitch size={40} className="bigIcon"/>
               <p className="iconCardHeading">互关查询(开发中)</p>
@@ -93,7 +93,7 @@ function Home() {
             <p className="iconCardDescription">
               分析账号的关注和粉丝，找出互相关注的用户。
             </p>
-          </div>
+          </NavLink>
         </div>
       </div>
     </>

@@ -1,6 +1,5 @@
-import {Textarea} from "@nextui-org/react";
-import {Tooltip, Button} from "@nextui-org/react";
-import {Form, LoaderFunctionArgs, Outlet, redirect, useLoaderData} from "react-router-dom";
+import {Button, Textarea} from "@nextui-org/react";
+import {Form} from "react-router-dom";
 
 function Config () {
     return (
@@ -16,10 +15,8 @@ function Config () {
                 保存
             </Button>
             </Form>
-            
 
-            
-            
+
         </div>
     )
 }

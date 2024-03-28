@@ -2,10 +2,7 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import {LogoIcon} from "./LogoIcon";
 import {ThemeSwitcher} from "./ThemeSwitch.tsx";
-import {
-  Gear
-} from "@phosphor-icons/react";
-import { NavLink } from "react-router-dom";
+import {Gear} from "@phosphor-icons/react";
 
 
 
@@ -65,7 +62,7 @@ export default function NavigationHeader() {
         {/*</NavbarItem>*/}
         <ThemeSwitcher />
         <NavbarItem>
-          <Button as={Link} color="primary" href="config" variant="faded" isIconOnly>
+          <Button as={Link} color="primary" href="/config" variant="faded" isIconOnly>
           <Gear size={32} />
           </Button>
         </NavbarItem>
