@@ -2,8 +2,6 @@ import {Button, ButtonGroup, Chip} from "@nextui-org/react";
 import {CaretLeft, CaretRight} from "@phosphor-icons/react";
 import React from "react";
 import {compactPost} from "../../api/type.ts";
-
-
 import {LoaderFunctionArgs, useLoaderData, useNavigate} from "react-router-dom";
 import getPost from "../../api/post.ts";
 

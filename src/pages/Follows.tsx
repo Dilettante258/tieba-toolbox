@@ -1,22 +1,40 @@
 import {Button, Code, Input} from "@nextui-org/react";
-import {Form, Outlet, useLoaderData} from "react-router-dom";
+import {Form, LoaderFunctionArgs, Outlet, redirect, useLoaderData} from "react-router-dom";
 
 type LoaderParams = {
   un: string;
 };
 
-function Friends() {
+
+export async function searchFollowsAction({ request }:{ request: Request }) {
+  const formData = await request.formData();
+  console.log(formData);
+  const updates = Object.fromEntries(formData);
+  console.log('updates', updates);
+  if (!updates.un) {
+    return;
+  }
+  let encodeun = encodeURIComponent(updates.un as string);
+  return redirect(`/follows/${encodeun}`);
+}
+
+
+export async function UnLoader({params}:LoaderFunctionArgs<LoaderParams>) {
+  return params;
+}
+
+function Follows() {
   const params = useLoaderData() as LoaderParams;
 
   return (
     <>
       <div className="text-center">
-        <h1 className="p-4">互关查询</h1>
+        <h1 className="p-4">关注查询</h1>
         <Form
           className="row"
           method="post"
-          action="/friends"
-          id="searchFansForm"
+          action="/follows"
+          id="searchFollowsForm"
         >
           <Input
             name="un"
@@ -39,4 +57,4 @@ function Friends() {
   )
 }
 
-export default Friends;
+export default Follows;

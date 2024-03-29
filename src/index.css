@@ -127,3 +127,7 @@ td {
   @apply text-danger text-xl;
 }
 
+#archive {
+  @apply flex flex-col justify-center text-center items-center absolute inset-0;
+}
+

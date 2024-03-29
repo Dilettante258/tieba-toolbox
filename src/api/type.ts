@@ -119,13 +119,53 @@ export type FansPage = {
 };
 
 
+type Work_creator_info = {
+  auth_desc: string;
+};
 
+type Business_account_info = {
+  is_business_account: number;
+  is_forum_business_account: number;
+};
 
+type Ala_info = {
+  location: string;
+  lng: number;
+  lat: number;
+};
 
+type Follow_list = {
+  id: number;
+  name: string;
+  portrait: string;
+  bazhu_grade: Bazhu_grade;
+  display_auth_type: number;
+  work_creator_info: Work_creator_info;
+  name_show: string;
+  portraith: string;
+  intro: string;
+  has_concerned: number;
+  priv_sets: Priv_sets;
+  business_account_info: Business_account_info;
+  follow_from: string;
+  ala_live_info?: Bazhu_grade;
+  ala_info?: Ala_info;
+};
 
-
-
-
+export type FollowsPage = {
+  total_follow_num: number;
+  time: number;
+  error_msg: string;
+  pn: number;
+  has_more: number;
+  follow_list_switch: number;
+  logid: string;
+  ctime: string;
+  server_time: number;
+  error_code: number;
+  follow_list: Array<Follow_list>;
+  tips_text: string;
+};
 
 
 export const timeFormat = Intl.DateTimeFormat('zh-CN', {

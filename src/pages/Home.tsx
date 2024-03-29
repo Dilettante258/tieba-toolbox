@@ -4,7 +4,7 @@ import {
   ChatCenteredText,
   IdentificationCard,
   Intersect,
-  ListMagnifyingGlass,
+  ListMagnifyingGlass, UserCirclePlus, UsersFour,
   UserSwitch
 } from "@phosphor-icons/react";
 import {NavLink} from "react-router-dom";
@@ -65,7 +65,7 @@ function Home() {
               对用户的主题帖进行分析，包括发帖时间、回复数等。
             </p>
           </div>
-          <div className="iconCard">
+          <NavLink className="iconCard" to="/archive">
             <div className="iconCardHeader">
               <Archive size={40} className="bigIcon"/>
               <p className="iconCardHeading">发言留档(开发中)</p>
@@ -73,15 +73,32 @@ function Home() {
             <p className="iconCardDescription">
               将用户的单条发言导出为图片留档。
             </p>
-          </div>
-
+          </NavLink>
           <NavLink className="iconCard" to="/friends">
             <div className="iconCardHeader">
               <UserSwitch size={40} className="bigIcon"/>
               <p className="iconCardHeading">互关查询</p>
             </div>
             <p className="iconCardDescription">
-              分析账号的关注和粉丝，找出互相关注的用户。
+              分析账号的关注列表，找出互相关注的用户。
+            </p>
+          </NavLink>
+          <NavLink className="iconCard" to="/follows">
+            <div className="iconCardHeader">
+              <UserCirclePlus size={40} className="bigIcon"/>
+              <p className="iconCardHeading">关注查询</p>
+            </div>
+            <p className="iconCardDescription">
+              拉取用户关注名单。
+            </p>
+          </NavLink>
+          <NavLink className="iconCard" to="/fans">
+            <div className="iconCardHeader">
+              <UsersFour size={40} className="bigIcon"/>
+              <p className="iconCardHeading">粉丝查询</p>
+            </div>
+            <p className="iconCardDescription">
+              拉取关注该用户的粉丝名单。
             </p>
           </NavLink>
         </div>

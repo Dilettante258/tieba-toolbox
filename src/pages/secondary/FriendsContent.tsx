@@ -1,21 +1,31 @@
-import {Link, User} from "@nextui-org/react";
 import React from 'react';
 import {fetchUserFans} from "../../api/user.ts";
 import {FansPage} from "../../api/type.ts";
-import {LoaderFunctionArgs, useLoaderData} from "react-router-dom";
+import {LoaderFunctionArgs, redirect, useLoaderData} from "react-router-dom";
+import UserItem from "../../components/UserItem.tsx";
 
 type FansLoaderParams = {
   un: string;
 };
 
+export async function searchFriendsAction({ request }:{ request: Request }) {
+  const formData = await request.formData();
+  const updates = Object.fromEntries(formData);
+  if (!updates.un) {
+    return;
+  }
+  let encodeun = encodeURIComponent(updates.un as string);
+  return redirect(`/friends/${encodeun}`);
+}
+
 export async function getFansContent(un: string) {
   console.log('params', un);
-  let content =  await fetchUserFans('Admire_02', '1')
+  let content =  await fetchUserFans(un, '1')
   console.log(content.page.total_count);
   let mutualFollowsCount = content.user_list.filter(user => user.is_friend === '1').length;
   if (content.page.total_page !== '1') {
     for (let i = 2; i <= Number(content.page.total_page); i++) {
-      let temp = await fetchUserFans('Admire_02', i.toString());
+      let temp = await fetchUserFans(un, i.toString());
       content.user_list.push(...temp.user_list);
       mutualFollowsCount += temp.user_list.filter(user => user.is_friend === '1').length;
     }
@@ -24,35 +34,12 @@ export async function getFansContent(un: string) {
   return {content, mutualFollowsCount};
 }
 
-export async function FansLoader({params}:LoaderFunctionArgs<FansLoaderParams>): Promise<any> {
+export async function FriendsLoader({params}:LoaderFunctionArgs<FansLoaderParams>): Promise<any> {
   console.log('params', params);
   let {content, mutualFollowsCount}  = await getFansContent(params.un as string);
   return [content, mutualFollowsCount, params.un];
 }
 
-interface UserItemProps {
-  un: string;
-  name_show: string;
-  avatar: string;
-}
-
-const UserItem: React.FC<UserItemProps> = ({ un, name_show, avatar }) => {
-  return (
-    <User
-      name={name_show}
-      description={(
-        <Link href={"https://tieba.baidu.com/home/main?id="+avatar} size="sm" isExternal>
-          @{un}
-        </Link>
-      )}
-      avatarProps={{
-        src: 'http://tb.himg.baidu.com/sys/portraitn/item/'+avatar,
-        isBordered: true,
-        color: "default"
-      }}
-    />
-  )
-}
 
 interface FriendsCardProps {content: FansPage;}
 
@@ -61,7 +48,6 @@ const FriendsCard: React.FC<FriendsCardProps> = ({content}) => {
     if (item.is_friend !== '0') {
       return <UserItem un={item.name} name_show={item.name_show} avatar={item.portrait} key={item.id}/>;
     }
-
   });
 }
 

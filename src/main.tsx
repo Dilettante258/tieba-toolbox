@@ -13,8 +13,13 @@ import NavigationHeader from "./components/NavigationHeader.tsx";
 import About from "./pages/About.tsx";
 import UserPostContent, {UPCLoader} from "./pages/secondary/UserPostContent.tsx";
 import Config from "./pages/Config.tsx";
-import Friends, {searchFansAction} from "./pages/Friends.tsx";
-import FriendsContent, {FansLoader} from "./pages/secondary/FriendsContent.tsx";
+import Friends from "./pages/Friends.tsx";
+import FriendsContent, {FriendsLoader, searchFriendsAction} from "./pages/secondary/FriendsContent.tsx";
+import Follows, {searchFollowsAction, UnLoader} from "./pages/Follows.tsx";
+import FollowsContent, {FollowsLoader} from "./pages/secondary/FollowsContent.tsx";
+import Fans, {searchFansAction} from "./pages/Fans.tsx";
+import FansContent, {FansLoader} from "./pages/secondary/FansContent.tsx";
+import Archive from "./pages/Archive.tsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +41,34 @@ const router = createBrowserRouter([
             path: "/userpost/:un/:page",
             element: <UserPostContent />,
             loader: UPCLoader,
+            action: searchPostAction,
+          },
+        ],
+      },
+      {
+        path: "/follows",
+        element: <Follows />,
+        loader: UnLoader,
+        action: searchFollowsAction,
+        children: [
+          {
+            path: "/follows/:un",
+            element: <FollowsContent />,
+            loader: FollowsLoader,
+            action: searchFollowsAction,
+          },
+        ],
+      },
+      {
+        path: "/fans",
+        element: <Fans />,
+        loader: UnLoader,
+        action: searchFansAction,
+        children: [
+          {
+            path: "/fans/:un",
+            element: <FansContent />,
+            loader: FansLoader,
             action: searchFansAction,
           },
         ],
@@ -43,16 +76,20 @@ const router = createBrowserRouter([
       {
         path: "/friends",
         element: <Friends />,
-        loader: UPLoader,
-        action: searchFansAction,
+        loader: UnLoader,
+        action: searchFriendsAction,
         children: [
           {
             path: "/friends/:un",
             element: <FriendsContent />,
-            loader: FansLoader,
-            action: searchFansAction,
+            loader: FriendsLoader,
+            action: searchFriendsAction,
           },
         ],
+      },
+      {
+        path: "/Archive",
+        element: <Archive />,
       },
       {
         path: "/about",
@@ -64,8 +101,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
-
 ]);
 
 
@@ -79,21 +114,3 @@ ReactDOM.createRoot(document.getElementById("root")  as HTMLElement).render(
     </NextUIProvider>
   </React.StrictMode>
 );
-
-// const rootElement = document.getElementById("root") as HTMLElement;
-// const root = ReactDOMClient.createRoot(rootElement);
-//
-// root.render(
-//   <React.StrictMode>
-//     <BrowserRouter>
-//       <NextUIProvider>
-//         <NavigationHeader />
-//         <FirstViewModal />
-//         <App />
-//       </NextUIProvider>
-//     </BrowserRouter>
-//   </React.StrictMode>,
-// );
-
-// <NavigationHeader />
-// <FirstViewModal />
