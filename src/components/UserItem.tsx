@@ -17,7 +17,7 @@ const UserItem: React.FC<UserItemProps> = ({ un, name_show, avatar }) => {
         </Link>
       )}
       avatarProps={{
-        src: 'http://tb.himg.baidu.com/sys/portraitn/item/'+avatar,
+        src: '/portrait/'+avatar,
         isBordered: true,
         color: "default"
       }}

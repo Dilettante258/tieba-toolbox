@@ -24,6 +24,10 @@
       "destination": "https://tiebac.baidu.com/:match*"
     },
     {
+      "source": "/portrait/:match*",
+      "destination": "https://tb.himg.baidu.com/sys/portraitn/item/:match*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/"
     }

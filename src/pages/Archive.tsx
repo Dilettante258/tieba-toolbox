@@ -18,7 +18,7 @@ function Archive() {
         <CardHeader className="justify-between">
           <div className="flex gap-5">
             <Avatar isBordered radius="full" size="md"
-                    src="https://gss0.baidu.com/7Ls0a8Sm2Q5IlBGlnYG/sys/portrait/item/tb.1.1e1bb5f8._oTizPuMkZjpdOI6Dr4GDg?t=1658847638"/>
+                    src="/portrait/tb.1.1e1bb5f8._oTizPuMkZjpdOI6Dr4GDg?t=1658847638"/>
             <div className="flex flex-col gap-1 items-start justify-center">
               <h4 className="text-small font-semibold leading-none text-default-600">Test</h4>
               <h5 className="text-small tracking-tight text-default-400">@test</h5>
