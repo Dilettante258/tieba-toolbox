@@ -11,7 +11,6 @@
   color: #0f0f0f;
   background-color: #f6f6f6;
 
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -28,7 +27,10 @@
 
 main {
   @apply h-full px-3 lg:px-10 md:max-w-screen-lg md:mx-auto ;
-  /*h-full bg-gray-100 shadow-2xl dark:bg-gray-800*/
+}
+
+article {
+  @apply h-full p-4 md:max-w-screen-md md:mx-auto ;
 }
 
 h1 {
@@ -47,20 +49,20 @@ h4 {
   @apply scroll-m-20 text-xl font-semibold tracking-tight
 }
 
-/*main.p {*/
-/*  @apply leading-7 pb-1 [&:not(:first-child)]:mt-3*/
-/*}*/
+article p {
+  @apply leading-7 pb-1 [&:not(:first-child)]:mt-3
+}
 
-/*main.a {*/
-/*  @apply text-primary underline*/
-/*}*/
+article a {
+  @apply hover:underline hover:text-primary dark:hover:text-violet-500
+}
 
 blockquote {
   @apply mt-2 border-l-2 pl-6 italic
 }
 
-main.ul {
-  @apply my-6 ml-6 list-disc [&>li]:mt-2 [&>li>ul]:my-0
+article ul {
+  @apply my-0.5 ml-6 list-disc [&>li]:mt-2 [&>li>ul]:my-0
 }
 
 code {
@@ -89,7 +91,6 @@ td {
 }
 
 .iconCard {
-  /*@apply bg-gray-100 text-2xl rounded-lg border-1 border-solid shadow-md hover:shadow-2xl hover:bg-blue-400 hover:ring-2 m-0.5 box-content;*/
   @apply flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8];
   @apply hover:ring-2;
 }

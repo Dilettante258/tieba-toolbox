@@ -83,7 +83,7 @@ type New_god_data = {
   field_id: string;
 };
 
-type User_list = {
+type UserList = {
   id: string;
   name: string;
   portrait: string;
@@ -108,7 +108,7 @@ type User_list = {
 
 export type FansPage = {
   page: Page;
-  user_list: Array<User_list>;
+  user_list: Array<UserList>;
   tips_text: string;
   follow_list_switch: string;
   server_time: string;
@@ -134,7 +134,7 @@ type Ala_info = {
   lat: number;
 };
 
-type Follow_list = {
+type FollowList = {
   id: number;
   name: string;
   portrait: string;
@@ -163,7 +163,7 @@ export type FollowsPage = {
   ctime: string;
   server_time: number;
   error_code: number;
-  follow_list: Array<Follow_list>;
+  follow_list: Array<FollowList>;
   tips_text: string;
 };
 
@@ -171,4 +171,4 @@ export type FollowsPage = {
 export const timeFormat = Intl.DateTimeFormat('zh-CN', {
   timeStyle: "short",
   dateStyle: "short",
-})
+});

@@ -1,7 +1,7 @@
 {
   "name": "tieba-tools",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,6 @@
     "axios-tauri-api-adapter": "^0.2.1",
     "buffer": "^6.0.3",
     "framer-motion": "^11.0.20",
-    "html2canvas": "^1.4.1",
     "next-themes": "^0.3.0",
     "protobufjs": "^7.2.6",
     "react": "^18.2.0",

@@ -35,8 +35,8 @@ export default function NavigationHeader() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            功能
+          <Link color="foreground" href="/tutorial">
+            教程
           </Link>
         </NavbarItem>
         <NavbarItem isActive>

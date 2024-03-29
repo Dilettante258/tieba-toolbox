@@ -20,6 +20,7 @@ import FollowsContent, {FollowsLoader} from "./pages/secondary/FollowsContent.ts
 import Fans, {searchFansAction} from "./pages/Fans.tsx";
 import FansContent, {FansLoader} from "./pages/secondary/FansContent.tsx";
 import Archive from "./pages/Archive.tsx";
+import Tutorial from "./pages/Tutorial.tsx";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "/config",
         element: <Config />,
+      },
+      {
+        path: "/tutorial",
+        element: <Tutorial />,
       },
     ],
   },

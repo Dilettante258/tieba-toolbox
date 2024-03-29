@@ -1,6 +1,5 @@
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 import { useState } from "react";
-import html2canvas from 'html2canvas'
 import {CopySimple, DownloadSimple} from "@phosphor-icons/react";
 
 
@@ -10,55 +9,16 @@ import {CopySimple, DownloadSimple} from "@phosphor-icons/react";
 function Archive() {
   const [isFollowed, setIsFollowed] = useState(false);
 
-  async function write(blob: any) {
-    await navigator.clipboard.write([
-      // eslint-disable-next-line no-undef
-      new ClipboardItem({
-        [blob.type]: blob
-      })
-    ]);
-  }
-
-  function flip() {
-    const element = document.getElementById("content") as HTMLElement;
-    html2canvas(element).then(canvas => {
-      canvas.toBlob(
-        (blob) => {
-          if (blob) {
-            // 复制文件到剪贴板
-            try {
-              write(blob);
-              console.log("图像已成功复制到剪贴板");
-            } catch (err) {
-              console.error("无法复制图像到剪贴板", err);
-            }
-          }
-        },
-        "image/png", // 文件的格式
-        1 // 图像压缩质量 0-1
-      );
-    });
-  }
-
-  function download () {
-    const element = document.getElementById("content") as HTMLElement;
-    html2canvas(element).then(canvas => {
-      const a = document.createElement('a');
-      a.href = canvas.toDataURL('image/png');
-      a.download = 'archive.png';
-      a.click();
-    });
-  }
-
-
-
   return (
     <div id="archive">
       <h1 className="p-4">发言留档实例</h1>
+      <p className="p-4">还没开发好</p>
+
       <Card className="max-w-[340px] h-auto m-4" id="content">
         <CardHeader className="justify-between">
           <div className="flex gap-5">
-            <Avatar isBordered radius="full" size="md" src="https://gss0.baidu.com/7Ls0a8Sm2Q5IlBGlnYG/sys/portrait/item/tb.1.1e1bb5f8._oTizPuMkZjpdOI6Dr4GDg?t=1658847638"/>
+            <Avatar isBordered radius="full" size="md"
+                    src="https://gss0.baidu.com/7Ls0a8Sm2Q5IlBGlnYG/sys/portrait/item/tb.1.1e1bb5f8._oTizPuMkZjpdOI6Dr4GDg?t=1658847638"/>
             <div className="flex flex-col gap-1 items-start justify-center">
               <h4 className="text-small font-semibold leading-none text-default-600">Test</h4>
               <h5 className="text-small tracking-tight text-default-400">@test</h5>
@@ -97,12 +57,15 @@ function Archive() {
           </div>
         </CardFooter>
       </Card>
+
+      <p className="p-4">按钮是假的，转换为图片有问题，有需要请自己截图。</p>
+
       <div className="flex gap-4 items-center">
-        <Button isIconOnly color="danger" aria-label="Like" onClick={()=>download()}>
-          <DownloadSimple />
+        <Button isIconOnly color="danger" aria-label="Like">
+          <DownloadSimple/>
         </Button>
-        <Button isIconOnly color="warning" variant="faded" onClick={()=>flip()}>
-          <CopySimple />
+        <Button isIconOnly color="warning" variant="faded">
+          <CopySimple/>
         </Button>
       </div>
     </div>
