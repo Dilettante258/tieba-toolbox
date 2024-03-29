@@ -25,7 +25,7 @@
     },
     {
       "source": "/portrait/:match*",
-      "destination": "https://tb.himg.baidu.com/sys/portraitn/item/:match*"
+      "destination": "http://tb.himg.baidu.com/sys/portraitn/item/:match*"
     },
     {
       "source": "/(.*)",
