@@ -21,6 +21,8 @@ import Fans, {searchFansAction} from "./pages/Fans.tsx";
 import FansContent, {FansLoader} from "./pages/secondary/FansContent.tsx";
 import Archive from "./pages/Archive.tsx";
 import Tutorial from "./pages/Tutorial.tsx";
+import FollowForums, {searchFollowForumsAction} from "./pages/FollowForums.tsx";
+import FollowForumsContent, {FollowForumsLoader} from "./pages/secondary/FollowForumsContent.tsx";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +90,23 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/followforums",
+        element: <FollowForums />,
+        loader: UnLoader,
+        action: searchFollowForumsAction,
+        children: [
+          {
+            path: "/followforums/:un",
+            element: <FollowForumsContent />,
+            loader: FollowForumsLoader,
+            action: searchFollowForumsAction,
+          },
+        ],
+      },
+
+
+
       {
         path: "/Archive",
         element: <Archive />,

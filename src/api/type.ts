@@ -167,6 +167,32 @@ export type FollowsPage = {
   tips_text: string;
 };
 
+export type followForumDetail = {
+  id: string;
+  name: string;
+  favo_type: string;
+  level_id: string;
+  level_name: string;
+  cur_score: string;
+  levelup_score: string;
+  avatar: string;
+  slogan: string;
+};
+
+type Forum_list = {
+  'non-gconforum': Array<followForumDetail>;
+  gconforum: Array<followForumDetail>;
+};
+
+export type FollowForumsPage = {
+  forum_list: Forum_list;
+  has_more: string;
+  server_time: string;
+  time: number;
+  ctime: number;
+  logid: number;
+  error_code: string;
+};
 
 export const timeFormat = Intl.DateTimeFormat('zh-CN', {
   timeStyle: "short",

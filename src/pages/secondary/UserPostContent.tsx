@@ -13,6 +13,7 @@ type LoaderParams = {
 export async function getUserPostContent(un: string, page: string) {
   console.log('params', un, page);
   let content =  await getPost(un, Number(page)).then( (res:any) => {
+    if (res.length === 0) {return null;}
     return PostList({posts: res}) as Array<React.ReactElement>;
   })
   return content;
@@ -24,24 +25,22 @@ export async function UPCLoader({params}:LoaderFunctionArgs<LoaderParams>): Prom
   return [content,params.un,params.page];
 }
 
-const getThreadUrl = (threadId: number) => `https://tieba.baidu.com/p/${threadId}`;
-const getForumUrl = (forumName: string) => `https://tieba.baidu.com/f?kw=${forumName}`;
-const getPostUrl = (post:compactPost) =>
-  `https://tieba.baidu.com/p/${post.threadId}?fid=${post.forumId}&pid=${post.postId}&cid=0#${post.cid}`;
+
 
 const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.ReactElement> => {
+  console.log(posts);
   return posts.map((post, index) => (
     <div key={index} className="py-2">
       <p className="text-base">
         在
-        <a href={getForumUrl(post.forumName)}
+        <a href={`https://tieba.baidu.com/f?kw=${post.forumName}`}
            target="_blank"
         >
           {post.forumName}吧
         </a>
         回复{" "}
         <a
-          href={getThreadUrl(post.threadId)}
+          href={`https://tieba.baidu.com/p/${post.threadId}`}
           target="_blank"
           rel="bookmark"
         >{post.title}
@@ -53,7 +52,8 @@ const PostList: React.FC<{posts: compactPost[]}> = ({ posts }): Array<React.Reac
 
         <div>{post.affiliated?<Chip color="default" size="sm">楼中楼</Chip>:""}</div>
         <div className="text-medium text-slate-500 text-right">
-          <a href={getPostUrl(post)} target="_blank" className="">
+          <a href={`https://tieba.baidu.com/p/${post.threadId}?fid=${post.forumId}&pid=${post.postId}&cid=0#${post.cid}`}
+             target="_blank" className="">
             链接
           </a>{" "}{" "}{post.createTime}
         </div>
@@ -70,6 +70,20 @@ export default function UserPostContent() {
   const navigate=useNavigate()
   return (
     <>
+      {(content) ?
+        <div className="text-center p-2">
+          当前第{page}页
+        </div>
+        : <article className="md:ml-32 p-4">
+          没有找到相关内容，有以下几种可能：
+          <ul>
+            <li>该用户隐藏了自己帖子</li>
+            <li>您的输入有误</li>
+            <li>该用户没有发过帖子</li>
+          </ul>
+        </article>
+
+      }
       <div className="rid grid-cols-1 divide-y divide-gray-400" id="postContent">
         {content}
       </div>

@@ -62,7 +62,7 @@ function FriendsContent() {
         </div>
       </h2>
       <p>{un}共有{mutualFollowsCount}个互关对象。</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start p-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start md:p-6 px-1 py-4">
         <FriendsCard content={content} />
       </div>
     </div>

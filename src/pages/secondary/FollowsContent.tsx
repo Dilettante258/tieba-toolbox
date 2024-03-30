@@ -49,7 +49,7 @@ function FollowsContent() {
         </div>
       </h2>
       <p>{un}共有{content.total_follow_num}个关注对象。</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start p-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start p-6 md:mx-1">
         <FollowsCard content={content} />
       </div>
     </div>

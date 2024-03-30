@@ -27,10 +27,15 @@ export async function UPLoader({params}:LoaderFunctionArgs<LoaderParams>) {
 
 function UserPost() {
   const {un,page} = useLoaderData() as LoaderParams;
+
   useEffect(() => {
-
-  }, [un, page]);
-
+    const element1 = document.getElementById("un") as HTMLInputElement;
+    const element2 = document.getElementById("page") as HTMLInputElement;
+    if (element1&&element2) {
+      element1.value = un;
+      element2.value = page;
+    }
+  }, [un,page]);
   return (
       <>
         <div className="text-center">

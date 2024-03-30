@@ -25,7 +25,11 @@
     },
     {
       "source": "/portrait/:match*",
-      "destination": "https://tb.himg.baidu.com/sys/portraitn/item/:match*"
+      "destination": "http://tb.himg.baidu.com/sys/portraitn/item/:match*"
+    },
+    {
+      "source": "/forum/:match*",
+      "destination": "https://tiebapic.baidu.com/forum/:match*"
     },
     {
       "source": "/(.*)",

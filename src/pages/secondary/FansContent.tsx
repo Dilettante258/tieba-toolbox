@@ -52,7 +52,7 @@ function FansContent() {
         </div>
       </h2>
       <p>{un}共有{content.page.total_count}个粉丝。</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start p-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start md:p-6 px-1 py-4">
         <FansCard content={content} />
       </div>
     </div>

@@ -24,11 +24,15 @@ export default defineConfig(async () => ({
         secure: true,
         rewrite: (path) => path.replace(/^\/tieba/, ""),
       },
-      // "/": {
-      //   target: "/home",
-      //   secure: true,
-      //   // rewrite: (path) => path.replace("", ""),
-      // },
+      "/portrait": {
+        target: "http://tb.himg.baidu.com/sys/portraitn/item/",
+        secure: true,
+        rewrite: (path) => path.replace("/^\\/portrait", ""),
+      },
+      "/forum": {
+        target: "https://tiebapic.baidu.com/",
+        secure: true,
+      },
     },
   },
 }));

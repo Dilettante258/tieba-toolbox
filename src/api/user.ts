@@ -1,7 +1,7 @@
 import {client} from "./client.ts";
 import {getUserId} from "./cache.ts";
 import {Md5} from "ts-md5";
-import {FansPage, FollowsPage} from "./type.ts";
+import {FansPage, FollowForumsPage, FollowsPage} from "./type.ts";
 
 
 
@@ -34,7 +34,7 @@ async function fetchSignedForm (target:string,data: FormData): Promise<JSON>{
 
 export async function fetchUserFollows(UserName:string, Page:string):Promise<FollowsPage> {
   try {
-    const data = await packRequest(UserName, Page);
+    const data = await packRequest({'pn': Page, 'uid': UserName});
     const res = await fetchSignedForm ('/tieba/c/u/follow/followList',data);
     // @ts-ignore
     return res;
@@ -46,7 +46,7 @@ export async function fetchUserFollows(UserName:string, Page:string):Promise<Fol
 
 export async function fetchUserFans(UserName:string, Page:string):Promise<FansPage> {
   try {
-    const data = await packRequest(UserName, Page);
+    const data = await packRequest({'pn': Page, 'uid': UserName});
     const res = await fetchSignedForm('/tieba/c/u/fans/page',data);
     // @ts-ignore
     return res;
@@ -56,15 +56,37 @@ export async function fetchUserFans(UserName:string, Page:string):Promise<FansPa
   }
 }
 
+export async function fetchUserFollowForums(UserName:string, Page?:string):Promise<FollowForumsPage> {
+  try {
+    const data = await packRequest({'friend_uid': UserName,'page_no': Page||1, 'page_size': 400});
+    const res = await fetchSignedForm('/tieba/c/f/forum/like',data);
+    console.log(res);
+    // @ts-ignore
+    return res;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
-async function packRequest(UserName: string, Page: string): Promise<FormData> {
-  let uid = await getUserId(UserName) as number;
+async function packRequest(params: Record<string, string | number>): Promise<FormData> {
   let data = new FormData();
   let BDUSS = localStorage.getItem('BDUSS') as string;
   data.append('BDUSS', BDUSS);
   data.append('_client_version', '12.57.4.2');
-  data.append('pn', Page);
-  data.append('uid', uid.toString());
+
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      //自动转换用户名为uid
+      if (key === 'uid'||key === 'friend_uid') {
+        let uid = await getUserId(params[key] as string);
+        data.append(key, uid.toString());
+      } else {
+        data.append(key, params[key].toString());
+      }
+    }
+  }
+
   let string = '';
   data.forEach((value, key)=> {
     string = string +`${key}=${value}`})
