@@ -13,17 +13,21 @@ export async function getFollowForumsContent(un: string) {
   let content =  await fetchUserFollowForums(un, '1')
   if (content.has_more !== "0") {
     let temp = await fetchUserFollowForums(un, "2");
-    content.forum_list["non-gconforum"].push(...temp.forum_list["non-gconforum"]);
+    if (temp.forum_list["non-gconforum"] && temp.forum_list["non-gconforum"].length > 0) {
+      if (!content.forum_list["non-gconforum"]) {
+        content.forum_list["non-gconforum"] = [];
+      }
+      content.forum_list["non-gconforum"].push(...temp.forum_list["non-gconforum"]);
+    }
     content.forum_list.gconforum.push(...temp.forum_list.gconforum);
   }
-  //ts-ignore
   if (content.forum_list.length == 0) {
     return [];
   }
-
-  let combinedForums = content.forum_list["non-gconforum"].concat(content.forum_list.gconforum);
-  console.log(combinedForums);
-  return combinedForums;
+  if (content.forum_list["non-gconforum"].length !== 0) {
+    return content.forum_list.gconforum.concat(content.forum_list["non-gconforum"]);
+  }
+  return content.forum_list;
 }
 
 export async function FollowForumsLoader({params}:LoaderFunctionArgs<FollowForumsLoaderParams>): Promise<any> {

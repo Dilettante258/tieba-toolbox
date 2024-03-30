@@ -73,7 +73,7 @@ export async function fetchUserFollowForums(UserName:string, Page?:string):Promi
 
 async function packRequest(params: Record<string, string | number>): Promise<FormData> {
   let data = new FormData();
-  let BDUSS = localStorage.getItem('BDUSS') as string;
+  let BDUSS = localStorage.getItem('BDUSS') || process.env.BDUSS as string;
   data.append('BDUSS', BDUSS);
   data.append('_client_version', "8.9.8.5");
 
