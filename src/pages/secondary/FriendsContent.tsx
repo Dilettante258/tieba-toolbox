@@ -37,6 +37,8 @@ export async function getFansContent(un: string) {
 export async function FriendsLoader({params}:LoaderFunctionArgs<FansLoaderParams>): Promise<any> {
   console.log('params', params);
   let {content, mutualFollowsCount}  = await getFansContent(params.un as string);
+  console.log('Loader');
+  console.log(content);
   return [content, mutualFollowsCount, params.un];
 }
 
@@ -44,8 +46,11 @@ export async function FriendsLoader({params}:LoaderFunctionArgs<FansLoaderParams
 interface FriendsCardProps {content: FansPage;}
 
 const FriendsCard: React.FC<FriendsCardProps> = ({content}) => {
+  if (content.user_list.length == 0) {
+    return <div>(仅展示登录用户和正常账号)</div>;
+  }
   return content.user_list.map((item) => {
-    if (item.is_friend !== '0') {
+    if (item.is_friend !== '0' || item.is_followed !== '0' ||item.is_fans !== '0') {
       return <UserItem un={item.name} name_show={item.name_show} avatar={item.portrait} key={item.id}/>;
     }
   });
@@ -54,14 +59,15 @@ const FriendsCard: React.FC<FriendsCardProps> = ({content}) => {
 
 function FriendsContent() {
   const [content,mutualFollowsCount, un ] = useLoaderData() as [FansPage, number, string];
+  // console.log(content);
   return (
     <div>
       <h2>
-        <div className="flex items-end gap-x-2">互关列表
+        <div className="flex items-end gap-x-2">关联列表
           <span className="text-default text-base">(按最新关注排序)</span>
         </div>
       </h2>
-      <p>{un}共有{mutualFollowsCount}个互关对象。</p>
+      <p>{un}共有{mutualFollowsCount}个关联对象。</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-start md:p-6 px-1 py-4">
         <FriendsCard content={content} />
       </div>

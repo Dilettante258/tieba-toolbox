@@ -104,9 +104,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-
-
-
       {
         path: "/Archive",
         element: <Archive />,

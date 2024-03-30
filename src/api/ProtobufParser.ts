@@ -68,7 +68,6 @@ export function forumResDeserialize(buffer:Uint8Array) {
     // console.log(`decoded = ${JSON.stringify(decoded)}`);
     let data = decoded.data.forumInfo;
     let forumName = data.forumName;
-
     resolve(forumName);
   });
 }

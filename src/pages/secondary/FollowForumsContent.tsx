@@ -2,6 +2,7 @@ import React from 'react';
 import {fetchUserFollowForums} from "../../api/user.ts";
 import {followForumDetail} from "../../api/type.ts";
 import {LoaderFunctionArgs, useLoaderData} from "react-router-dom";
+import banned_forum from "../../assets/banned_forum.jpg";
 
 type FollowForumsLoaderParams = {
   un: string;
@@ -14,6 +15,10 @@ export async function getFollowForumsContent(un: string) {
     let temp = await fetchUserFollowForums(un, "2");
     content.forum_list["non-gconforum"].push(...temp.forum_list["non-gconforum"]);
     content.forum_list.gconforum.push(...temp.forum_list.gconforum);
+  }
+  //ts-ignore
+  if (content.forum_list.length == 0) {
+    return [];
   }
 
   let combinedForums = content.forum_list["non-gconforum"].concat(content.forum_list.gconforum);
@@ -31,10 +36,11 @@ interface FollowForumsCardProps {content: Array<followForumDetail>;}
 
 const FollowForumsCard: React.FC<FollowForumsCardProps> = ({content}) => {
   return content.map((item) => {
+    if (item === undefined) {return null;}
     return (
       <div key={item.id} className="flex flex-row gap-x-3 items-center">
         <div className="align-items">
-          <img src={item.avatar} alt={item.name}
+          <img src={item?.avatar? item.avatar:banned_forum} alt={item.name}
                className="w-12 h-12 md:w-14 md:h-14 rounded-full ring-2 ring-default-300 dark:ring-purple-600 ring-offset-4 ring-offset-slate-50 dark:ring-offset-slate-900"/>
         </div>
         <div>

@@ -36,6 +36,9 @@ export async function FansLoader({params}:LoaderFunctionArgs<FansLoaderParams>):
 interface FansCardProps {content: FansPage;}
 
 const FansCard: React.FC<FansCardProps> = ({content}) => {
+  if (content.user_list.length == 0) {
+    return <div>(仅展示登录用户和正常账号)</div>;
+  }
   return content.user_list.map((item) => {
       return <UserItem un={item.name} name_show={item.name_show} avatar={item.portrait} key={item.id}/>;
   });

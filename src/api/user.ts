@@ -5,9 +5,10 @@ import {FansPage, FollowForumsPage, FollowsPage} from "./type.ts";
 
 
 
-export async function fetchUserId(UserName:string|number) {
+export async function fetchUserId(UserName:string) {
   try {
-    const res = await client.get(`/tieba/i/sys/user_json?un=${UserName}&ie=utf-8`);
+    const res = await client.get(`/tieba/i/sys/user_json?un=${encodeURI(UserName)}&ie=utf-8`);
+    console.log('res',res.data);
     return res.data.id as number;
   } catch (error) {
     console.error(error);
@@ -36,6 +37,7 @@ export async function fetchUserFollows(UserName:string, Page:string):Promise<Fol
   try {
     const data = await packRequest({'pn': Page, 'uid': UserName});
     const res = await fetchSignedForm ('/tieba/c/u/follow/followList',data);
+
     // @ts-ignore
     return res;
   } catch (error) {
@@ -73,14 +75,14 @@ async function packRequest(params: Record<string, string | number>): Promise<For
   let data = new FormData();
   let BDUSS = localStorage.getItem('BDUSS') as string;
   data.append('BDUSS', BDUSS);
-  data.append('_client_version', '12.57.4.2');
+  data.append('_client_version', "8.9.8.5");
 
   for (const key in params) {
     if (params.hasOwnProperty(key)) {
       //自动转换用户名为uid
       if (key === 'uid'||key === 'friend_uid') {
         let uid = await getUserId(params[key] as string);
-        data.append(key, uid.toString());
+        data.append(key, String(uid));
       } else {
         data.append(key, params[key].toString());
       }

@@ -42,10 +42,10 @@ function Home() {
           <NavLink className="iconCard" to="/friends">
             <div className="iconCardHeader">
               <UserSwitch size={40} className="bigIcon"/>
-              <p className="iconCardHeading">互关查询</p>
+              <p className="iconCardHeading">关联查询</p>
             </div>
             <p className="iconCardDescription">
-              分析账号的关注列表，找出互相关注的用户。
+              分析账号的粉丝列表，找出与你的关联。（对自己搜索则为导出互关列表）
             </p>
           </NavLink>
           <NavLink className="iconCard" to="/follows">

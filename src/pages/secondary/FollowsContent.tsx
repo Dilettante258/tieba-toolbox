@@ -33,6 +33,10 @@ export async function FollowsLoader({params}:LoaderFunctionArgs<FollowsLoaderPar
 interface FollowsCardProps {content: FollowsPage;}
 
 const FollowsCard: React.FC<FollowsCardProps> = ({content}) => {
+  console.log(content);
+  if (content.total_follow_num == 0) {
+    return <div>(仅展示登录用户和正常账号)</div>;
+  }
   return content.follow_list.map((item) => {
     return <UserItem un={item.name} name_show={item.name_show} avatar={item.portrait} key={item.id}/>;
   });

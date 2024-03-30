@@ -1,5 +1,3 @@
-// import Logo from './src/assets/logo.svg';
-
 type LogoIconProps = {
   size?: number;
   height?: number;

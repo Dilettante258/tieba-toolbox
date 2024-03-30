@@ -182,6 +182,7 @@ export type followForumDetail = {
 type Forum_list = {
   'non-gconforum': Array<followForumDetail>;
   gconforum: Array<followForumDetail>;
+  length?: number;
 };
 
 export type FollowForumsPage = {
