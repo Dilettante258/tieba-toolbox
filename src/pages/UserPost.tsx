@@ -10,9 +10,7 @@ type LoaderParams = {
 
 export async function searchPostAction({ request }:{ request: Request }) {
   const formData = await request.formData();
-  console.log(formData);
   const updates = Object.fromEntries(formData);
-  console.log('updates', updates);
   if (!updates.un || !updates.page) {
     return redirect('/userpost');
   }

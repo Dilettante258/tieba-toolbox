@@ -180,8 +180,8 @@ export type followForumDetail = {
 };
 
 type Forum_list = {
-  'non-gconforum': Array<followForumDetail>;
-  gconforum: Array<followForumDetail>;
+  'non-gconforum'?: Array<followForumDetail>;
+  gconforum?: Array<followForumDetail>;
   length?: number;
 };
 

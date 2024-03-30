@@ -8,11 +8,9 @@ type LoaderParams = {
 
 export async function searchFollowForumsAction({ request }:{ request: Request }) {
   const formData = await request.formData();
-  console.log(formData);
   const updates = Object.fromEntries(formData);
-  console.log('updates', updates);
   if (!updates.un) {
-    return;
+    return null;
   }
   let encodeun = encodeURIComponent(updates.un as string);
   return redirect(`/FollowForums/${encodeun}`);
@@ -29,7 +27,7 @@ function FollowForums() {
   return (
     <>
       <div className="text-center">
-        <h1 className="p-4">贴吧关注查询</h1>
+        <h1 className="p-4">关注贴吧查询</h1>
         <Form
           className="row"
           method="post"

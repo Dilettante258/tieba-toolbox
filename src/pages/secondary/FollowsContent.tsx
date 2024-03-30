@@ -9,7 +9,6 @@ type FollowsLoaderParams = {
 };
 
 export async function getFollowsContent(un: string) {
-  console.log('params', un);
   let content =  await fetchUserFollows(un, '1')
   if (content.total_follow_num !== 1) {
     const promises = [];

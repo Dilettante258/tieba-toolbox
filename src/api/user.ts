@@ -62,7 +62,6 @@ export async function fetchUserFollowForums(UserName:string, Page?:string):Promi
   try {
     const data = await packRequest({'friend_uid': UserName,'page_no': Page||1, 'page_size': 400});
     const res = await fetchSignedForm('/tieba/c/f/forum/like',data);
-    console.log(res);
     // @ts-ignore
     return res;
   } catch (error) {

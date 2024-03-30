@@ -8,11 +8,9 @@ type LoaderParams = {
 
 export async function searchFollowsAction({ request }:{ request: Request }) {
   const formData = await request.formData();
-  console.log(formData);
   const updates = Object.fromEntries(formData);
-  console.log('updates', updates);
   if (!updates.un) {
-    return;
+    return null;
   }
   let encodeun = encodeURIComponent(updates.un as string);
   return redirect(`/follows/${encodeun}`);

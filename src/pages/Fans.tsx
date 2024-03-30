@@ -10,7 +10,7 @@ export async function searchFansAction({ request }:{ request: Request }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
   if (!updates.un) {
-    return;
+    return null;
   }
   let encodeun = encodeURIComponent(updates.un as string);
   return redirect(`/fans/${encodeun}`);

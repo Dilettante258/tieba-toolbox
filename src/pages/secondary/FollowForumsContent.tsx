@@ -9,29 +9,19 @@ type FollowForumsLoaderParams = {
 };
 
 export async function getFollowForumsContent(un: string) {
-  console.log('params', un);
-  let content =  await fetchUserFollowForums(un, '1')
-  if (content.has_more !== "0") {
-    let temp = await fetchUserFollowForums(un, "2");
-    if (temp.forum_list["non-gconforum"] && temp.forum_list["non-gconforum"].length > 0) {
-      if (!content.forum_list["non-gconforum"]) {
-        content.forum_list["non-gconforum"] = [];
-      }
-      content.forum_list["non-gconforum"].push(...temp.forum_list["non-gconforum"]);
-    }
-    content.forum_list.gconforum.push(...temp.forum_list.gconforum);
+  let content =  await fetchUserFollowForums(un, '1');
+  // if (content.has_more && content.has_more !== "0") {
+  //   let temp = await fetchUserFollowForums(un, "2");
+  //   content.forum_list = mergeForumLists(content.forum_list, temp.forum_list);
+  // }
+  if (content?.forum_list?.gconforum) {
+    return content?.forum_list['non-gconforum']?.concat(content?.forum_list?.gconforum);
   }
-  if (content.forum_list.length == 0) {
-    return [];
-  }
-  if (content.forum_list["non-gconforum"].length !== 0) {
-    return content.forum_list.gconforum.concat(content.forum_list["non-gconforum"]);
-  }
-  return content.forum_list;
+  return content?.forum_list ? content?.forum_list['non-gconforum'] : [];
 }
 
+
 export async function FollowForumsLoader({params}:LoaderFunctionArgs<FollowForumsLoaderParams>): Promise<any> {
-  console.log('params', params);
   let content  = await getFollowForumsContent(params.un as string);
   return [content, params.un];
 }
@@ -39,12 +29,19 @@ export async function FollowForumsLoader({params}:LoaderFunctionArgs<FollowForum
 interface FollowForumsCardProps {content: Array<followForumDetail>;}
 
 const FollowForumsCard: React.FC<FollowForumsCardProps> = ({content}) => {
+  if (content.length == 0) return(
+    <>
+      <div>服务器没有返回数据，这可能有一些问题，不过目前我并不知道是接口哪里出了问题。可能是因为用户设置了隐藏？</div>
+      <div>不二贴吧工具箱应该用了其他接口。</div>
+    </>
+
+  )
   return content.map((item) => {
-    if (item === undefined) {return null;}
+    if (item == undefined ) {return null;}
     return (
       <div key={item.id} className="flex flex-row gap-x-3 items-center">
         <div className="align-items">
-          <img src={item?.avatar? item.avatar:banned_forum} alt={item.name}
+          <img src={item?.avatar ? item.avatar : banned_forum} alt={item.name}
                className="w-12 h-12 md:w-14 md:h-14 rounded-full ring-2 ring-default-300 dark:ring-purple-600 ring-offset-4 ring-offset-slate-50 dark:ring-offset-slate-900"/>
         </div>
         <div>
