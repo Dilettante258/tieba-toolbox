@@ -13,9 +13,12 @@ export default function NavigationHeader() {
   const menuItems = [
     "UserPost",
     "Friends",
+    "Fans",
+    "Follows",
+    "FollowForums",
     "Home",
     "About",
-    "Help",
+    "Tutorial",
     "Config",
   ]
   return (

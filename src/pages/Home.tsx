@@ -23,7 +23,7 @@ function Home() {
         </div>
         <h1 className="text-center py-3">贴吧工具箱</h1>
         <div className="flex flex-row gap-x-2 place-content-center md:hidden text-xl">
-          <NavLink to="/about">教程</NavLink>
+          <NavLink to="/tutorial">教程</NavLink>
           <NavLink to="/about">关于</NavLink>
         </div>
 
