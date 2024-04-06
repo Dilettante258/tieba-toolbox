@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 贴吧数据查询工具
 
-## Getting Started
+这是一个贴吧数据查询工具，目前处于开发阶段。它可以帮助用户查询贴吧的各种数据，包括账号的一些信息，如注册时间、关注的贴吧等，对用户的主题帖进行分析，包括发帖时间、回复数等，将用户的单条发言导出为图片留档，分析账号的关注和粉丝，找出互相关注的用户等。
 
-First, run the development server:
+## 安装
 
+1. 克隆这个仓库
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Dilettante258/tieba-tools.git
+```
+2. 安装依赖
+```bash
+npm install
+```
+3. 运行项目
+```bash
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 使用
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+在浏览器中打开 `http://localhost:3000`，然后按照网站的指示进行操作。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 贡献
 
-## Learn More
+如果你想为这个项目做出贡献，你可以：
 
-To learn more about Next.js, take a look at the following resources:
+- 提交 bug 报告或者提出新功能的建议
+- 提交 pull request
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+在提交 pull request 之前，请确保你的代码符合我们的代码风格和标准。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 许可证
 
-## Deploy on Vercel
+这个项目遵循 MIT 许可证。详情请见 `LICENSE` 文件。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+以上是AI生成的。
