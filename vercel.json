@@ -1,0 +1,36 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "content-type"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "DELETE,PUT,POST,GET,OPTIONS"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tieba/:match*",
+      "destination": "https://tiebac.baidu.com/:match*"
+    },
+    {
+      "source": "/portrait/:match*",
+      "destination": "http://tb.himg.baidu.com/sys/portraitn/item/:match*"
+    },
+    {
+      "source": "/forum/:match*",
+      "destination": "http://tiebapic.baidu.com/forum/:match*"
+    }
+  ]
+}
+

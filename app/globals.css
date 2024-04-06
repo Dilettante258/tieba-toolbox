@@ -3,31 +3,145 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  background-color: #020617;
+  color: #f8fafc;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply h-screen;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+[data-overlay-container=true] {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  @apply flex flex-col relative flex-grow px-3 lg:px-10 w-full md:max-w-screen-lg md:mx-auto
+}
+
+article {
+  @apply h-full p-4 md:max-w-screen-md md:mx-auto
+}
+
+h1 {
+  @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
+}
+
+h2 {
+  @apply scroll-m-20 border-b pt-2 pb-2 text-3xl font-semibold tracking-tight
+}
+
+h3 {
+  @apply scroll-m-20 text-2xl font-semibold tracking-tight
+}
+
+h4 {
+  @apply scroll-m-20 text-xl font-semibold tracking-tight
+}
+
+article p {
+  @apply leading-7 pb-1 [&:not(:first-child)]:mt-3
+}
+
+article a {
+  @apply hover:underline hover:text-primary dark:hover:text-violet-500
+}
+
+blockquote {
+  @apply mt-2 border-l-2 pl-6 italic
+}
+
+article ul {
+  @apply my-0.5 ml-6 list-disc [&>li]:mt-2 [&>li>ul]:my-0
+}
+
+code {
+  @apply relative rounded bg-gray-300 px-[0.3rem] py-[0.2rem] text-sm font-semibold
+}
+
+table {
+  @apply my-6 w-full overflow-y-auto
+
+}
+
+tr {
+  @apply m-0 border-t p-0 even:bg-gray-300
+}
+
+th {
+  @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right
+}
+
+td {
+  @apply border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right
+}
+
+.bigIcon {
+  @apply flex justify-center p-1 rounded-full items-center bg-indigo-100/80 text-blue-600/80 dark:bg-slate-800/90 dark:text-blue-200/80
+}
+
+.iconCard {
+  @apply flex flex-col relative overflow-hidden text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8];
+  @apply hover:ring-2 min-h-[124px] h-full;
+}
+
+.iconCardHeader {
+  @apply flex p-3 z-10 w-full justify-start items-center shrink-0 subpixel-antialiased rounded-t-large gap-2 pb-0
+}
+
+.iconCardHeading {
+  @apply text-base font-semibold
+}
+
+.iconCardDescription {
+  @apply relative flex w-full p-3 flex-auto flex-col h-auto break-words text-left overflow-y-auto subpixel-antialiased;
+  @apply font-normal text-base text-default-500;
+}
+
+#postContent a {
+  @apply text-primary/85 hover:text-primary/100 hover:underline dark:text-violet-500/80 dark:hover:text-violet-500/100;
+}
+
+#unusual-page {
+  @apply flex flex-col relative justify-center items-center h-full;
+}
+
+#unusual-page h1{
+  @apply text-5xl font-bold p-3;
+}
+
+#unusual-page p{
+  @apply text-2xl font-semibold p-3;
+}
+
+#unusual-page i{
+  @apply text-danger text-xl;
+}
+
+#archive {
+  @apply flex flex-col justify-center text-center items-center absolute inset-0;
+}
+
+@media (max-width: 600px) {
+  .heatmap {
+    height: 80px;
+    width: 500px;
   }
 }

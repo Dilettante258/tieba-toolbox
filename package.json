@@ -9,19 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cyberblast/react-wordcloud": "^1.2.9",
+    "@nextui-org/react": "^2.2.10",
+    "@phosphor-icons/react": "^2.1.4",
+    "framer-motion": "^11.0.24",
+    "next": "14.1.4",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.4"
+    "reaviz": "^15.14.0",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "typescript": "^5"
   }
 }
