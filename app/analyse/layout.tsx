@@ -2,7 +2,9 @@
 
 import {Button, Input} from "@nextui-org/react";
 import { useRouter, usePathname } from 'next/navigation'
-import {useEffect} from "react";
+import ReactDOM from 'react-dom'
+
+
 
 export default function Layout({
                                  children
@@ -25,9 +27,8 @@ export default function Layout({
     return;
   }
 
-  useEffect(() => {
-    fetch('https://jieba-api.wang1m.tech/wakeup').then(res => res.text()).then(console.log)
-  }, []);
+  ReactDOM.preconnect('https://jieba-api.wang1m.tech/wakeup', { crossOrigin: 'use-credentials'})
+  ReactDOM.preconnect('https://tb-api.wang1m.tech/wakeup', { crossOrigin: 'use-credentials'})
 
   return (
     <>

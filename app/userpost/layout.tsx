@@ -2,6 +2,7 @@
 
 import {Button, Input} from "@nextui-org/react";
 import {usePathname, useRouter} from 'next/navigation'
+import ReactDOM from "react-dom";
 
 export default function Layout({
   children
@@ -11,6 +12,8 @@ export default function Layout({
   const router = useRouter()
   const pathname = usePathname()
   let [ username,page] = pathname.split("/").slice(2, 4);
+
+  ReactDOM.preconnect('https://tb-api.wang1m.tech/wakeup', { crossOrigin: 'use-credentials'})
 
   username = decodeURI(username||'');
 

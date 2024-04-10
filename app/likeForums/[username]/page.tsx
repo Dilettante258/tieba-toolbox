@@ -35,7 +35,7 @@ const LikeForumLists: React.FC<{ uid: number }> = ({uid}): React.ReactNode => {
           return (
             <div key={item.id} className="flex flex-row gap-x-3 items-center">
               <div className="align-items">
-                <img src={item?.avatar ? (item.avatar.includes('tiebapic')? item.avatar.slice(26):item.avatar) : './banned_forum.jpg'} alt={item.name}
+                <img src={item?.avatar ? (item.avatar.includes('tiebapic')? item.avatar.slice(26):item.avatar) : './banned_forum.jpg'} alt={item.name} crossOrigin="anonymous"
                        className="w-12 h-12 md:w-14 md:h-14 rounded-full ring-2 ring-default-300 dark:ring-purple-600 ring-offset-4 ring-offset-slate-50 dark:ring-offset-slate-900"/>
               </div>
               <div>
@@ -62,7 +62,7 @@ export default function Page({params: {username}}: {
 
   if (isError) return (
     <article className="p-4 mx-auto">
-      找不到该用户，可能输入有误。
+      找不到用户{username}，可能输入有误。
     </article>
   )
 
