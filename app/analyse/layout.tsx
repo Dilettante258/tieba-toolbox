@@ -2,6 +2,7 @@
 
 import {Button, Input} from "@nextui-org/react";
 import { useRouter, usePathname } from 'next/navigation'
+import {useEffect} from "react";
 
 export default function Layout({
                                  children
@@ -23,6 +24,10 @@ export default function Layout({
     }
     return;
   }
+
+  useEffect(() => {
+    fetch('https://jieba-api.wang1m.tech/wakeup').then(res => res.text()).then(console.log)
+  }, []);
 
   return (
     <>

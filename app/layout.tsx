@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "贴吧工具箱",
   description: "新一代的贴吧工具箱！",
+  referrer: 'no-referrer',
 };
 
 export default function RootLayout({

@@ -118,7 +118,7 @@ export default function Home() {
                 关于账号的一些信息，如注册时间、id等。
               </p>
             </div>
-            <LinkCard href="/archive">
+            <div className="iconCard">
               <div className="iconCardHeader">
                 <Archive size={40} className="bigIcon"/>
                 <p className="iconCardHeading">发言留档(开发中)</p>
@@ -126,7 +126,7 @@ export default function Home() {
               <p className="iconCardDescription">
                 将用户的单条发言导出为图片留档。
               </p>
-            </LinkCard>
+            </div>
           </div>
         </div>
       </>

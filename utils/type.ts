@@ -198,6 +198,10 @@ interface BaseResponse {
   cost: number;
 };
 
+export interface Post extends BaseResponse {
+  result: compactPost[];
+}
+
 export interface CutPost extends BaseResponse {
   result: Word[];
 }

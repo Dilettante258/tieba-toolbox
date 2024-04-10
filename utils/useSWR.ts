@@ -1,10 +1,9 @@
 import useSWR from "swr";
 import {
-  compactPost,
   CutPost,
   FansPage,
   followForumDetail,
-  FollowsPage,
+  FollowsPage, Post,
   RelatedPage,
   SimplePost
 } from "@/utils/type";
@@ -50,9 +49,9 @@ const hardDataOptions = {
   shouldRetryOnError: true,
   dedupingInterval: 600000,
   focusThrottleInterval: 600000,
-  loadingTimeout: 10000,
-  errorRetryInterval: 200,
-  errorRetryCount: 3,
+  loadingTimeout: 20000,
+  errorRetryInterval: 3000,
+  errorRetryCount: 5,
 }
 
 
@@ -68,7 +67,7 @@ export function useUid(username:string) {
 }
 
 export function useUserPost(uid:number,page:number) {
-  const {data, isLoading,error } = useSWR({ url: '/user/posts', args: {uid, page: page} }, fetchWithParams) as {data: compactPost[], isLoading: boolean, error: any}
+  const {data, isLoading,error } = useSWR({ url: '/user/posts', args: {uid, page: page} }, fetchWithParams) as {data: Post, isLoading: boolean, error: any}
   return {
     data,
     isLoading,

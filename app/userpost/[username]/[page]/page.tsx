@@ -29,7 +29,7 @@ const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,
         当前第{page}页
       </div>
       <div className="rid grid-cols-1 divide-y divide-gray-400 w-full" id="postContent">
-        {data.map((post, index) => (
+        {data.result.map((post, index) => (
           <div key={index} className="py-2">
             <p className="text-base">
               在

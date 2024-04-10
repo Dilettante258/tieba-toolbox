@@ -7,8 +7,8 @@ import {Button} from "@nextui-org/react";
 
 const TryAgain = () => (
   <div className="my-auto mx-1/3">
-    <p>重试一下吧！</p>
-    <p>也许用户是隐藏了自己的发言。</p>
+    <p>服务器没有返回数据，这可能有一些问题，不过目前我并不知道是接口哪里出了问题。可能是因为用户设置了隐藏？</p>
+    <div>不二贴吧工具箱应该用了其他接口。待研究中！</div>
     <Button type="reset">重试</Button>
   </div>
 )
