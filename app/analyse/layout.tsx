@@ -2,9 +2,8 @@
 
 import {Button, Input} from "@nextui-org/react";
 import { useRouter, usePathname } from 'next/navigation'
-import ReactDOM from 'react-dom'
-
-
+import {method2Dict} from "@/utils/type";
+import ReactDOM from "react-dom";
 
 export default function Layout({
                                  children
@@ -13,28 +12,27 @@ export default function Layout({
 }) {
   const router = useRouter()
   const pathname = usePathname()
-  let username = pathname.split("/")[2];
+  let [method, target] = pathname.split("/").slice(2, 4) as string[];
 
-  username = decodeURI(username||'');
+  target = decodeURI(target||'');
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const un = (form.elements.namedItem("un") as HTMLInputElement).value;
-    if (un) {
-      router.push(`/analyse/${un}`);
+    const target = (form.elements.namedItem("target") as HTMLInputElement).value;
+    if (target) {
+      router.push(`/analyse/${method}/${target}`);
     }
     return;
   }
 
-  ReactDOM.preconnect('https://jieba-api.wang1m.tech/wakeup', { crossOrigin: 'use-credentials'})
   ReactDOM.preconnect('https://tb-api.wang1m.tech/wakeup', { crossOrigin: 'use-credentials'})
 
   return (
     <>
       <div className="text-center">
         <h1 className="p-4">
-          发言分析
+          {method2Dict[method]}
         </h1>
         <form
           className="row"
@@ -42,11 +40,11 @@ export default function Layout({
           onSubmit={handleSubmit}
         >
           <Input
-            name="un"
-            defaultValue={username}
+            name="target"
+            defaultValue={target}
             isClearable
             type="text"
-            label="用户名 / ID"
+            label="分析对象"
             variant="bordered"
             className="max-w-xs mx-auto py-3"
           />

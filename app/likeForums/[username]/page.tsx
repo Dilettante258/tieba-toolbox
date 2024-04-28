@@ -1,8 +1,10 @@
 "use client";
 
-import {useLikeForums, useUid} from "@/utils/useSWR";
+import {useLikeForums} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import {Button} from "@nextui-org/react";
+import {useEffect, useState} from "react";
+import {getUserId} from "@/utils/cache";
 
 
 const TryAgain = () => (
@@ -56,17 +58,22 @@ export default function Page({params: {username}}: {
     username: string
   }
 }) {
-  const {data, isLoading, isError} = useUid(username);
+  const [uid, setUid] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem('username', username);
+    getUserId(username).then((id) => {
+      setUid(id);
+    });
+  }, []);
 
   username = decodeURI(username);
 
-  if (isError) return (
+  if (uid==0) return (
     <article className="p-4 mx-auto">
       找不到用户{username}，可能输入有误。
     </article>
   )
-
-  if (isLoading) return <Loading/>
 
   return (
     <div>
@@ -75,7 +82,7 @@ export default function Page({params: {username}}: {
           <span className="text-default text-base">(按等级排序)</span>
         </div>
       </h2>
-      <LikeForumLists uid={data.id} />
+      <LikeForumLists uid={uid} />
     </div>
   )
 }

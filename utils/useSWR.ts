@@ -3,11 +3,11 @@ import {
   CutPost,
   FansPage,
   followForumDetail,
-  FollowsPage, Post,
+  FollowsPage, getPostPage, Post,
   RelatedPage,
-  SimplePost
+  SimplePost, threadPage
 } from "@/utils/type";
-import {countForumOccurrences} from "@/utils/tools";
+
 
 const baseURL = "https://tb-api.wang1m.tech";
 
@@ -53,8 +53,6 @@ const hardDataOptions = {
   errorRetryInterval: 3000,
   errorRetryCount: 5,
 }
-
-
 
 
 export function useUid(username:string) {
@@ -112,7 +110,7 @@ export function useLikeForums(uid:number){
 }
 
 export function useCutPost(uid:number) {
-  const {data, isLoading,error } = useSWR({ url: '/tiebapost', args: {uid, batch: '1,30', other: 'https://jieba-api.wang1m.tech'} }, fetchWithParams, hardDataOptions) as {data: CutPost, isLoading: boolean, error: any}
+  const {data, isLoading,error } = useSWR({ url: '/tiebapost', args: {uid, batch: '1,15', other: 'https://node-jieba.wang1m.tech'} }, fetchWithParams, hardDataOptions) as {data: CutPost, isLoading: boolean, error: any}
   return {
     data,
     isLoading,
@@ -122,6 +120,24 @@ export function useCutPost(uid:number) {
 
 export function useSimplePost(uid:number) {
   const {data, isLoading,error } = useSWR({ url: '/user/posts', args: {uid, batch: '1,30',simple: "true"} }, fetchWithParams, hardDataOptions) as {data: SimplePost, isLoading: boolean, error: any}
+  return {
+    data,
+    isLoading,
+    isError: error,
+  }
+}
+
+export function useForumThread(fname:string) {
+  const {data, isLoading,error } = useSWR({ url: '/forum/getThreads', args: {fname, batch: '1,10'} }, fetchWithParams, hardDataOptions) as {data: threadPage, isLoading: boolean, error: any}
+  return {
+    data,
+    isLoading,
+    isError: error,
+  }
+}
+
+export function usePost(tid:string) {
+  const {data, isLoading,error } = useSWR({ url: '/post/getPost', args: {tid, needAll: true,with_comments:true, require: "counter,plainText,timeLine"} }, fetchWithParams, hardDataOptions) as {data: getPostPage, isLoading: boolean, error: any}
   return {
     data,
     isLoading,

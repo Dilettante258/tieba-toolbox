@@ -145,3 +145,8 @@ td {
     width: 500px;
   }
 }
+
+h3 + div {
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -6,6 +6,7 @@ import {CaretLeft, CaretRight} from "@phosphor-icons/react";
 import {useUid, useUserPost} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import { useRouter } from 'next/navigation'
+import {getForumName} from "@/utils/cache";
 
 
 const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,username}): React.ReactElement => {
@@ -33,10 +34,10 @@ const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,
           <div key={index} className="py-2">
             <p className="text-base">
               在
-              <a href={`https://tieba.baidu.com/f?kw=${post.forumName}`}
+              <a href={`https://tieba.baidu.com/f?kw=${getForumName(post.forumId)}`}
                  target="_blank"
               >
-                {post.forumName}吧
+                {getForumName(post.forumId)}吧
               </a>
               回复{" "}
               <a
@@ -73,7 +74,7 @@ const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,
                   onClick={() => {
                     router.push(`/userpost/${username}/${Number(page)-1}`);
                   }}
-                  isDisabled={page === 1}
+                  isDisabled={page == 1}
                   startContent={<CaretLeft/>}
           >
             上一页

@@ -85,7 +85,7 @@ type New_god_data = {
   field_id: string;
 };
 
-type UserList = {
+type User = {
   id: string;
   name: string;
   portrait: string;
@@ -110,7 +110,7 @@ type UserList = {
 
 export interface FansPage {
   page: Page;
-  user_list: Array<UserList>;
+  user_list: Array<User>;
   tips_text: string;
   follow_list_switch: string;
   server_time: string;
@@ -211,6 +211,141 @@ export interface SimplePost extends BaseResponse {
 }
 
 
+export interface threadPage {
+  // threadList: ThreadList[]
+  // forumInfo: ForumInfo
+  // userList: PostUserList[]
+  // emojicounter: Counter
+  // emoticonCounter: Counter
+}
+
+export interface getPostPage {
+  result: getPost
+}
+
+export interface BasicCounter {
+  emojicounter: Counter
+  emoticonCounter: Counter
+  userAttributesCount: userAttributesCount
+}
+
+export interface getPost extends BasicCounter {
+  postList: PostList[]
+  thread: BasicThread
+  forum: ForumInfo
+  timeLine: number[]
+  contentList: string[]
+}
+
+export type Counter = {
+  [key: string]: number
+}
+
+type userAttributesCount = {
+  ipAddress: {
+    name: string
+    value: number
+  }
+  levelId: Counter
+  gender: Counter
+}
+
+type PostList = {
+  content: string
+  id: string
+  floor: number
+  time: number
+  subPostNumber: number
+  authorId: string
+  agree: Agree
+  subPostList: {
+    id: string
+    authorId: string
+    time: number
+    content: string
+  }[]
+  signature?: string
+}
+
+interface BasicThread {
+  id: string
+  title: string
+  replyNum: number
+  author: PostUser
+  threadType: number
+  createTime: number
+  postId: string
+  agree: Agree
+  shareNum: number
+  originThreadInfo: any
+  isShareThread: number
+}
+
+interface SimpleThread extends BasicThread {
+  viewNum: number
+  lastTimeInt: number
+  isTop: number
+  isGood: number
+  fid: string
+  firstPostId: string
+  authorId: string
+  pollInfo?: PollInfo
+}
+
+export interface Agree {
+  agreeNum: string
+  disagreeNum: string
+}
+
+interface ForumInfo {
+  id: string
+  name: string
+  firstClass: string
+  secondClass: string
+  memberNum: number
+  threadNum: number
+  postNum: number
+  managers?: {}[]
+}
+
+interface PostUser {
+  id: string
+  name: string
+  nameShow: string
+  portrait: string
+  iconinfo?: {
+    name: string
+  }[]
+  levelId: number
+  isBawu: number
+  bawuType: string
+  fansNum: number
+  sex: number
+  gender: number
+  privSets?: Priv_sets
+  newGodData?: New_god_data
+  isDefaultAvatar: number
+  userGrowth: {
+    levelId: number
+  }
+  newTshowIcon?: {
+    name: string
+  }[]
+}
+
+export interface PollInfo {
+  isMulti: number
+  totalNum: string
+  options: {
+    num: string
+    text: string
+  }[]
+  totalPoll: string
+  title: string
+}
+
+
+
 export const timeFormat = Intl.DateTimeFormat('zh-CN', {
   timeStyle: "short",
   dateStyle: "short",
@@ -219,5 +354,11 @@ export const timeFormat = Intl.DateTimeFormat('zh-CN', {
 export const methodDict:Record<string, string> = {
   "fans": "粉丝",
   "follows": "关注",
-  "related": "关联"
+  "related": "关联",
+}
+
+export const method2Dict:Record<string, string> = {
+  "user": "用户回复贴记录分析",
+  "post": "帖子数据统计",
+  "forum": "吧数据统计",
 }

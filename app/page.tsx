@@ -55,6 +55,24 @@ export default function Home() {
                 利用旧贴吧遗留API查询用户的所有回复。
               </p>
             </LinkCard>
+            <LinkCard href="/analyse/forum">
+              <div className="iconCardHeader">
+                <ChatCenteredText size={40} className="bigIcon"/>
+                <p className="iconCardHeading">吧数据统计</p>
+              </div>
+              <p className="iconCardDescription">
+                分析帖子的回复情况：时间线、IP分布、emoji统计等。
+              </p>
+            </LinkCard>
+            <LinkCard href="/analyse/post">
+              <div className="iconCardHeader">
+                <ChatCenteredText size={40} className="bigIcon"/>
+                <p className="iconCardHeading">帖子数据统计</p>
+              </div>
+              <p className="iconCardDescription">
+                分析帖子的回复情况：时间线、IP分布、emoji统计等。
+              </p>
+            </LinkCard>
             <LinkCard href="/connections/related">
               <div className="iconCardHeader">
                 <UserSwitch size={40} className="bigIcon"/>
@@ -82,7 +100,7 @@ export default function Home() {
                 拉取用户的粉丝名单。
               </p>
             </LinkCard>
-            <LinkCard href="/analyse">
+            <LinkCard href="/analyse/user">
               <div className="iconCardHeader">
                 <ListMagnifyingGlass size={40} className="bigIcon"/>
                 <p className="iconCardHeading">回复贴记录分析</p>

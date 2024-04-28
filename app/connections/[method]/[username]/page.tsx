@@ -1,10 +1,12 @@
 "use client"
 
 
-import {useUid, useUserFans, useUserFollows, useUserRelated} from "@/utils/useSWR";
+import {useUserFans, useUserFollows, useUserRelated} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import UserItem from "@/components/UserItem";
 import {methodDict} from "@/utils/type";
+import {getUserId} from "@/utils/cache";
+import {useEffect, useState} from "react";
 
 
 const FansUserList: React.FC<{uid:number,username:string}> = ({uid,username}): React.ReactNode => {
@@ -84,17 +86,23 @@ export default function Page({params: {method, username}}: {
     username: string
   }
 }) {
-  const {data, isLoading, isError} = useUid(username);
+
+  const [uid, setUid] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem('username', username);
+    getUserId(username).then((id) => {
+      setUid(id);
+    });
+  }, []);
 
   username = decodeURI(username);
 
-  if (isError) return (
+  if (uid==0) return (
     <article className="p-4 mx-auto">
-      找不到该用户，可能输入有误。
+      找不到用户{username}，可能输入有误。
     </article>
   )
-
-  if (isLoading) return <Loading/>
 
   return (
     <div className="flex flex-col h-full">
@@ -103,9 +111,9 @@ export default function Page({params: {method, username}}: {
           <span className="text-default text-base">(按最新关注排序)</span>
         </div>
       </h2>
-      {method == 'fans' && <FansUserList uid={data.id} username={username}/>}
-      {method == 'follows' && <FollowsUserList uid={data.id} username={username}/>}
-      {method == 'related' && <RelatedUserList uid={data.id} username={username}/>}
+      {method == 'fans' && <FansUserList uid={uid} username={username}/>}
+      {method == 'follows' && <FollowsUserList uid={uid} username={username}/>}
+      {method == 'related' && <RelatedUserList uid={uid} username={username}/>}
     </div>
   )
 }
