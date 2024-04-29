@@ -12,6 +12,7 @@
     "@cyberblast/react-wordcloud": "^1.2.9",
     "@nextui-org/react": "^2.2.10",
     "@phosphor-icons/react": "^2.1.4",
+    "@vercel/analytics": "^1.2.2",
     "echarts": "^5.5.0",
     "framer-motion": "^11.0.24",
     "next": "14.2.3",
