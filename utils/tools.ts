@@ -72,9 +72,37 @@ export function transformData(input: SimplePost, offset = 0): BaseChartDataShape
   return heatmapCalendarData;
 }
 
+function filterData(data:Counter, minValue:number, maxProperties:number) {
+  // 首先，将对象的键值对转换为数组
+  let entries = Object.entries(data);
+
+  // 然后，按值从大到小排序
+  entries.sort((a, b) => b[1] - a[1]);
+
+  // 如果属性数量超过上限，就删除多余的属性
+  if (entries.length > maxProperties) {
+    entries = entries.slice(0, maxProperties);
+  }
+
+  // 删除值低于最小值的属性
+  entries = entries.filter(([, value]) => value >= minValue);
+
+  // 最后，将数组转换回对象
+  let filteredData = {};
+  for (let [key, value] of entries) {
+    // @ts-ignore
+    filteredData[key] = value;
+  }
+
+  return filteredData;
+}
+
 
 export function transformCounter(obj:Counter) {
-  const keys = Object.keys(obj);
+  let keys = Object.keys(obj);
+  if (keys.length > 50) {
+    keys =  Object.keys(filterData(obj, 5, 50));
+  }
   const result:any = [];
 
   keys.forEach((key, index) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import Map from "@/components/Map";
-import {usePost} from "@/utils/useSWR";
+import {useForumThreadCut} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import {convertCount, CountWords,} from "@/utils/tools";
 
@@ -10,8 +10,8 @@ import ReactWordcloud, {Word} from "@cyberblast/react-wordcloud";
 import {DistributionPieChart, EmotionBubbleChart, TimeTrendChart} from "@/components/Statistics";
 
 
-const PostsWordCloud: React.FC<{tid:string}> = ({tid}): React.ReactNode => {
-  const {data, isLoading, isError} = usePost(tid);
+const PostsWordCloud: React.FC<{fname:string}> = ({fname}): React.ReactNode => {
+  const {data, isLoading, isError} = useForumThreadCut(fname);
 
   const [wordsCounts, setWordsCounts] = useState<Word[] | null>(null);
 
@@ -22,12 +22,7 @@ const PostsWordCloud: React.FC<{tid:string}> = ({tid}): React.ReactNode => {
   )
 
   if (!wordsCounts) {
-    console.log(data.result.contentList);
-    CountWords(data.result.contentList)
-      .then(data => convertCount(data))
-      .then((res) => {
-        setWordsCounts(res);
-      })
+    setWordsCounts(convertCount(data.cutResult));
   }
 
   if (wordsCounts) return (
@@ -47,47 +42,39 @@ const PostsWordCloud: React.FC<{tid:string}> = ({tid}): React.ReactNode => {
 };
 
 
-const PostMap: React.FC<{ tid: string }> = ({tid}): React.ReactNode => {
-  const {data, isLoading, isError} = usePost(tid);
+const ThreadMap: React.FC<{ fname: string }> = ({fname}): React.ReactNode => {
+  const {data, isLoading, isError} = useForumThreadCut(fname);
   if (isLoading) return <Loading/>
   console.log(data);
 
-  if (!data?.result?.timeLine) return (
+  if (!data?.counter?.timeLine) return (
     <article className="p-4 mx-auto">
-      没有数据。输入的需要是一个帖子的tid（数字）。被删的帖子不能获取。
+      没有数据。输入的需要是吧名。请检查输入是否正确。
     </article>
   )
-
-  if (isError) return (
-    <article className="p-4 mx-auto">
-      好像出现了一些问题，请联系管理员。
-    </article>
-  )
-
-
 
   return (
     <>
       <div className="mx-auto my-2 flex flex-row pt-3">
-        <TimeTrendChart timeLine={data.result.timeLine}/>
-        <DistributionPieChart title={'发言用户等级分布饼状图'} data={data.result.userAttributesCount.levelId}/>
+        <TimeTrendChart timeLine={data.counter.timeLine}/>
+        <DistributionPieChart title={'发言用户等级分布饼状图'} data={data.counter.userAttributesCount.levelId}/>
       </div>
       <h3 className="text-center">发言用户IP分布图</h3>
-      <Map data={data.result.userAttributesCount.ipAddress} height/>
-      <EmotionBubbleChart result={data.result}/>
+      <Map data={data.counter.userAttributesCount.ipAddress} height/>
+      <EmotionBubbleChart result={data.counter}/>
     </>
   );
 };
 
-export default function Page({params: {tid}}: {
+export default function Page({params: {fname}}: {
   params: {
-    tid: string
+    fname: string
   }
 }) {
   return (
     <>
-      <PostMap tid={tid}/>
-      <PostsWordCloud tid={tid}/>
+      <ThreadMap fname={fname}/>
+      <PostsWordCloud fname={fname}/>
     </>
   )
 }

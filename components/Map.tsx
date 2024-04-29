@@ -6,6 +6,9 @@ import { useEffect, useRef } from 'react';
 
 const Map = (props:any) => {
   const chartRef = useRef(null);
+
+  props.data.sort((a:any, b:any) => b.value - a.value);
+
   const topNumber = props.data[0].value;
   const bottomNumber = props.data[props.data.length - 1].value;
 
@@ -43,7 +46,7 @@ const Map = (props:any) => {
         max: topNumber,
         left: 'left',
         top: 'bottom',
-        text: [topNumber + '次', bottomNumber + '次'], //取值范围的文字
+        text: [topNumber + '位', bottomNumber + '位'], //取值范围的文字
         inRange: {
           color: ['lightskyblue', 'yellow', 'orangered']
         },
@@ -73,7 +76,7 @@ const Map = (props:any) => {
       },
       series: [
         {
-          name:'发言数',
+          name:'用户数',
           type: 'map',
           geoIndex: 0,
           data: props.data,

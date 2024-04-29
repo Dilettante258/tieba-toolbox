@@ -4,7 +4,7 @@ import {
   IdentificationCard,
   Intersect,
   ListMagnifyingGlass, UserCirclePlus, UsersFour,
-  UserSwitch, ListStar
+  UserSwitch, ListStar, Disc, Equalizer, Eye
 } from "@phosphor-icons/react/dist/ssr";
 import FirstViewModal from "@/components/FirstViewModal";
 import {LogoIcon} from "@/components/LogoIcon";
@@ -57,7 +57,7 @@ export default function Home() {
             </LinkCard>
             <LinkCard href="/analyse/forum">
               <div className="iconCardHeader">
-                <ChatCenteredText size={40} className="bigIcon"/>
+                <Disc size={40} className="bigIcon"/>
                 <p className="iconCardHeading">吧数据统计</p>
               </div>
               <p className="iconCardDescription">
@@ -66,7 +66,7 @@ export default function Home() {
             </LinkCard>
             <LinkCard href="/analyse/post">
               <div className="iconCardHeader">
-                <ChatCenteredText size={40} className="bigIcon"/>
+                <Equalizer size={40} className="bigIcon"/>
                 <p className="iconCardHeading">帖子数据统计</p>
               </div>
               <p className="iconCardDescription">
@@ -115,9 +115,18 @@ export default function Home() {
                 <p className="iconCardHeading">关注贴吧查询</p>
               </div>
               <p className="iconCardDescription">
-                拉取用户的关注贴吧名单。
+                拉取用户的关注贴吧名单。（有bug）
               </p>
             </LinkCard>
+            <div className="iconCard">
+              <div className="iconCardHeader">
+                <Eye size={40} className="bigIcon"/>
+                <p className="iconCardHeading">高级发言搜索(开发中)</p>
+              </div>
+              <p className="iconCardDescription">
+                对于隐藏发言的用户，通过批量拉取某吧的帖子进行筛选。
+              </p>
+            </div>
             <button className="iconCard">
               <div className="iconCardHeader">
                 <Intersect size={40} className="bigIcon"/>

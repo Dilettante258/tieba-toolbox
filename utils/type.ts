@@ -219,6 +219,15 @@ export interface threadPage {
   // emoticonCounter: Counter
 }
 
+export interface forumThreadCutPage {
+  counter: forumThreadCounter
+  cutResult: Counter
+}
+
+interface forumThreadCounter extends BasicCounter {
+  timeLine: number[]
+}
+
 export interface getPostPage {
   result: getPost
 }

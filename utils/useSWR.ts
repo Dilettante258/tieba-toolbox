@@ -3,7 +3,7 @@ import {
   CutPost,
   FansPage,
   followForumDetail,
-  FollowsPage, getPostPage, Post,
+  FollowsPage, forumThreadCutPage, getPostPage, Post,
   RelatedPage,
   SimplePost, threadPage
 } from "@/utils/type";
@@ -119,16 +119,7 @@ export function useCutPost(uid:number) {
 }
 
 export function useSimplePost(uid:number) {
-  const {data, isLoading,error } = useSWR({ url: '/user/posts', args: {uid, batch: '1,30',simple: "true"} }, fetchWithParams, hardDataOptions) as {data: SimplePost, isLoading: boolean, error: any}
-  return {
-    data,
-    isLoading,
-    isError: error,
-  }
-}
-
-export function useForumThread(fname:string) {
-  const {data, isLoading,error } = useSWR({ url: '/forum/getThreads', args: {fname, batch: '1,10'} }, fetchWithParams, hardDataOptions) as {data: threadPage, isLoading: boolean, error: any}
+  const {data, isLoading,error } = useSWR({ url: '/user/posts', args: {uid, batch: '1,15',simple: "true"} }, fetchWithParams, hardDataOptions) as {data: SimplePost, isLoading: boolean, error: any}
   return {
     data,
     isLoading,
@@ -137,7 +128,17 @@ export function useForumThread(fname:string) {
 }
 
 export function usePost(tid:string) {
-  const {data, isLoading,error } = useSWR({ url: '/post/getPost', args: {tid, needAll: true,with_comments:true, require: "counter,plainText,timeLine"} }, fetchWithParams, hardDataOptions) as {data: getPostPage, isLoading: boolean, error: any}
+  const {data, isLoading,error } = useSWR({ url: '/post/getPost', args: {tid, needAll: true,with_comments:true, require: "counter,plainText,timeLine", maxPage: 300} }, fetchWithParams, hardDataOptions) as {data: getPostPage, isLoading: boolean, error: any}
+  return {
+    data,
+    isLoading,
+    isError: error,
+  }
+}
+
+
+export function useForumThreadCut(fname: string) {
+  const {data, isLoading,error } = useSWR({ url: '/tiebathread', args: {fname, batch: '1,5', other: 'https://node-jieba.wang1m.tech'}}, fetchWithParams, hardDataOptions) as {data: forumThreadCutPage, isLoading: boolean, error: any}
   return {
     data,
     isLoading,

@@ -2989,7 +2989,7 @@
       "type": "Feature",
       "id": "tai_wan",
       "properties": {
-        "name": "台湾",
+        "name": "中国台湾",
         "cp": [121.0254, 23.5986],
         "childNum": 1
       },
@@ -3126,7 +3126,7 @@
       "type": "Feature",
       "id": "xiang_gang",
       "properties": {
-        "name": "香港",
+        "name": "中国香港",
         "cp": [114.2578, 22.3242],
         "childNum": 1
       },
@@ -3153,7 +3153,7 @@
       "type": "Feature",
       "id": "ao_men",
       "properties": {
-        "name": "澳门",
+        "name": "中国澳门",
         "cp": [113.5547, 22.1484],
         "childNum": 1
       },
