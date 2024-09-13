@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cyberblast/react-wordcloud": "^1.2.9",
+    "@cyberblast/react-wordcloud": "^1.2.10",
     "@nextui-org/react": "^2.2.10",
     "@phosphor-icons/react": "^2.1.4",
     "@vercel/analytics": "^1.2.2",

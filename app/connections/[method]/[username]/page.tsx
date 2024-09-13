@@ -1,7 +1,7 @@
 "use client"
 
 
-import {useUserFans, useUserFollows, useUserRelated} from "@/utils/useSWR";
+import {useUid, useUserFans, useUserFollows, useUserRelated} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import UserItem from "@/components/UserItem";
 import {methodDict} from "@/utils/type";
@@ -87,18 +87,11 @@ export default function Page({params: {method, username}}: {
   }
 }) {
 
-  const [uid, setUid] = useState(0);
-
-  useEffect(() => {
-    localStorage.setItem('username', username);
-    getUserId(username).then((id) => {
-      setUid(id);
-    });
-  }, []);
+  const {data, isLoading, isError} = useUid(username);
 
   username = decodeURI(username);
 
-  if (uid==0) return (
+  if (isError) return (
     <article className="p-4 mx-auto">
       找不到用户{username}，可能输入有误。
     </article>
@@ -111,9 +104,9 @@ export default function Page({params: {method, username}}: {
           <span className="text-default text-base">(按最新关注排序)</span>
         </div>
       </h2>
-      {method == 'fans' && <FansUserList uid={uid} username={username}/>}
-      {method == 'follows' && <FollowsUserList uid={uid} username={username}/>}
-      {method == 'related' && <RelatedUserList uid={uid} username={username}/>}
+      {method == 'fans' && <FansUserList uid={data} username={username}/>}
+      {method == 'follows' && <FollowsUserList uid={data} username={username}/>}
+      {method == 'related' && <RelatedUserList uid={data} username={username}/>}
     </div>
   )
 }

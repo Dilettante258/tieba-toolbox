@@ -1,7 +1,7 @@
 "use client";
 
 import ReactWordcloud from '@cyberblast/react-wordcloud';
-import {useCutPost, useSimplePost} from "@/utils/useSWR";
+import {useCutPost, useSimplePost, useUid} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import {Button} from "@nextui-org/react";
 import {countForumOccurrences, transformCounter, transformData} from "@/utils/tools";
@@ -111,18 +111,10 @@ export default function Page({params: {username}}: {
     username: string
   }
 }) {
-  const [uid, setUid] = useState(0);
-
-  useEffect(() => {
-    localStorage.setItem('username', username);
-    getUserId(username).then((id) => {
-      setUid(id);
-    });
-  }, []);
-
+  const {data, isLoading, isError} = useUid(username);
   username = decodeURI(username);
 
-  if (uid==0) return (
+  if (!data) return (
     <article className="p-4 mx-auto">
       找不到用户{username}，可能输入有误。
     </article>
@@ -133,13 +125,13 @@ export default function Page({params: {username}}: {
       <div className="p-2 text-center text-default">{username}的数据</div>
       <div className="ring-2 rounded-3xl md:w-[747px] h-[179px] mx-auto p-4 my-2 w-full relative overflow-x-auto overflow-y-hidden">
         <h3 className="">发帖热力图</h3>
-        <PostHeatmap uid={uid}/>
+        <PostHeatmap uid={data}/>
       </div>
       <div className="ring-2 rounded-3xl md:w-[600px] md:h-[350px] mx-auto p-4 my-2 relative w-full h-[332px]">
         <h3 className="absolute">回复贴词云</h3>
-        <PostsWordCloud uid={uid}/>
+        <PostsWordCloud uid={data}/>
       </div>
-      <ForumsWordCloud uid={uid}/>
+      <ForumsWordCloud uid={data}/>
     </>
   )
 }

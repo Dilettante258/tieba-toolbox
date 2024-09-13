@@ -7,23 +7,29 @@ import {useUid, useUserPost} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import { useRouter } from 'next/navigation'
 import {getForumName} from "@/utils/cache";
+import React, {useMemo} from "react";
 
+const PostList: React.FC<{uid:number,page:number,username:string}> =
+  ({uid,page,username}): React.ReactElement => {
+    const {data, isLoading, isError} = useUserPost(uid, page);
+    if (!data) return <Loading/>
+    if (isError) return (
+      <article className="p-4 mx-auto">
+        没有找到相关内容，有以下几种可能：
+        <ul>
+          <li>该用户隐藏了自己帖子</li>
+          <li>您的输入有误</li>
+          <li>该用户没有发过帖子</li>
+          <li>请求的页数已经没有内容了</li>
+        </ul>
+      </article>
+    )
+    return <PostListContent data={data} page={page} username={username}/>
+  };
 
-const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,username}): React.ReactElement => {
-  const {data, isLoading,isError } = useUserPost(uid,page);
-  const router = useRouter()
-  if (isLoading) return <Loading />
-  if (isError) return (
-    <article className="p-4 mx-auto">
-      没有找到相关内容，有以下几种可能：
-      <ul>
-        <li>该用户隐藏了自己帖子</li>
-        <li>您的输入有误</li>
-        <li>该用户没有发过帖子</li>
-        <li>请求的页数已经没有内容了</li>
-      </ul>
-    </article>
-  )
+const PostListContent = React.memo(({data,page,username}) => {
+  const router = useRouter();
+  console.log('content')
   return (
     <>
       <div className="text-center p-2">
@@ -90,9 +96,10 @@ const PostList: React.FC<{uid:number,page:number,username:string}> = ({uid,page,
         </ButtonGroup>
       </div>
     </>
+  )
+});
 
-  );
-};
+
 
 export default function Page({params: {username, page}}: {
   params: {
@@ -101,17 +108,18 @@ export default function Page({params: {username, page}}: {
   }
 }) {
   const {data, isLoading, isError} = useUid(username);
+
   if (isError) return (
     <article className="p-4 mx-auto">
       找不到该用户，可能输入有误
     </article>
   )
 
-  if (isLoading) return <Loading />
+  if (!data)  return <Loading />
 
   return (
-    <>
-      <PostList uid={data.id} page={page} username={username}/>
-    </>
+    <PostList uid={data} page={page} username={username}/>
   )
+
+
 }

@@ -7,6 +7,7 @@ import {
   RelatedPage,
   SimplePost, threadPage
 } from "@/utils/type";
+import {useEffect, useState} from "react";
 
 
 const baseURL = "https://tb-api.wang1m.tech";
@@ -56,12 +57,36 @@ const hardDataOptions = {
 
 
 export function useUid(username:string) {
-  const { data, error, isLoading } = useSWR(`/user/getinfo/${username}`, fetcher)
-  return {
-    data: data,
-    isLoading,
-    isError: error,
-  }
+  const [data, setData] = useState(0)
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  let forumPairs = JSON.parse(localStorage.getItem("userPairs") || "{}");
+  useEffect(() => {
+    setIsLoading(false)
+    setIsError(false)
+    if (Number.isInteger(Number(username))) {
+      setData(Number(username));
+    } else if (forumPairs[username]) {
+      setData(Number(forumPairs[username]))
+    } else {
+      const fetchData = async () => {
+        setIsError(false)
+        setIsLoading(true)
+        try {
+          const result = await fetch(`${baseURL}/user/getinfo/${username}`)
+          const newData = await result.json()
+          setData(newData.id)
+          forumPairs[username] = newData.id;
+          localStorage.setItem("userPairs", JSON.stringify(forumPairs));
+        } catch(error) {
+          setIsError(false)
+        }
+        setIsLoading(false)
+      }
+      fetchData();
+    }
+  }, [])
+  return {data, isLoading, isError}
 }
 
 export function useUserPost(uid:number,page:number) {
