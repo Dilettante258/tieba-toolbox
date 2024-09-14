@@ -3,7 +3,7 @@
 import Map from "@/components/Map";
 import {useForumThreadCut} from "@/utils/useSWR";
 import Loading from "@/app/loading";
-import {convertCount, CountWords,} from "@/utils/tools";
+import {convertCount} from "@/utils/tools";
 
 import React, {useState} from "react";
 import ReactWordcloud, {Word} from "@cyberblast/react-wordcloud";
