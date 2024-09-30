@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "bunx @cloudflare/next-on-pages",
+    "preview": "bun pages:build && wrangler pages dev",
+    "deploy": "bun pages:build && wrangler pages deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
     "react": "^18",
@@ -14,13 +18,18 @@
     "next": "14.2.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@cloudflare/next-on-pages": "1",
+    "@cloudflare/workers-types": "^4.20240925.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "eslint-plugin-next-on-pages": "^1.13.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "typescript": "^5",
+    "vercel": "^37.6.0",
+    "wrangler": "^3.78.12"
   }
 }
