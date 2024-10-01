@@ -24,19 +24,21 @@ const PostList: React.FC<{uid:number,page:number,username:string}> =
         </ul>
       </article>
     )
-    return <PostListContent data={data} page={page} username={username}/>
+    return <PostListContentMemo data={data} page={page} username={username}/>
   };
 
-const PostListContent = React.memo(({data,page,username}) => {
+
+
+
+function PostListContent ({data,page,username}: {data: any,page: number,username: string})  {
   const router = useRouter();
-  console.log('content')
   return (
     <>
       <div className="text-center p-2">
         当前第{page}页
       </div>
       <div className="rid grid-cols-1 divide-y divide-gray-400 w-full" id="postContent">
-        {data.result.map((post, index) => (
+        {data.result.map((post: any, index: number) => (
           <div key={index} className="py-2">
             <p className="text-base">
               在
@@ -97,7 +99,9 @@ const PostListContent = React.memo(({data,page,username}) => {
       </div>
     </>
   )
-});
+}
+  
+const PostListContentMemo = React.memo(PostListContent);
 
 
 

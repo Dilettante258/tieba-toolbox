@@ -1,4 +1,4 @@
-import {Word} from "@cyberblast/react-wordcloud";
+import {Word} from "react-wordcloud-fork";
 
 interface PostContent {
   type: number;

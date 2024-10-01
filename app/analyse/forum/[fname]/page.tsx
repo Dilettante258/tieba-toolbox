@@ -6,7 +6,7 @@ import Loading from "@/app/loading";
 import {convertCount} from "@/utils/tools";
 
 import React, {useState} from "react";
-import ReactWordcloud, {Word} from "@cyberblast/react-wordcloud";
+import ReactWordcloud, {Word} from "react-wordcloud-fork";
 import {DistributionPieChart, EmotionBubbleChart, TimeTrendChart} from "@/components/Statistics";
 
 

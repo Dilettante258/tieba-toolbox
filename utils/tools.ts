@@ -1,4 +1,4 @@
-import {Word} from "@cyberblast/react-wordcloud";
+import {Word} from "react-wordcloud-fork";
 import {Counter, SimplePost} from "@/utils/type";
 import {BaseChartDataShape} from "reaviz";
 

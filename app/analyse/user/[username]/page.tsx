@@ -1,6 +1,6 @@
 "use client";
 
-import ReactWordcloud from '@cyberblast/react-wordcloud';
+import ReactWordcloud from 'react-wordcloud-fork';
 import {useCutPost, useSimplePost, useUid} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import {Button} from "@nextui-org/react";
