@@ -1,4 +1,5 @@
 "use client"
+export const runtime = 'edge';
 
 import {Button, ButtonGroup, Chip} from "@nextui-org/react";
 import {CaretLeft, CaretRight} from "@phosphor-icons/react";

@@ -1,5 +1,5 @@
 "use client";
-
+export const runtime = 'edge';
 import ReactWordcloud from 'react-wordcloud-fork';
 import {useCutPost, useSimplePost, useUid} from "@/utils/useSWR";
 import Loading from "@/app/loading";

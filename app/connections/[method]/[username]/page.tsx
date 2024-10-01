@@ -1,5 +1,5 @@
 "use client"
-
+export const runtime = 'edge';
 
 import {useUid, useUserFans, useUserFollows, useUserRelated} from "@/utils/useSWR";
 import Loading from "@/app/loading";

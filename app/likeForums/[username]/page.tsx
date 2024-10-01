@@ -1,5 +1,5 @@
 "use client";
-
+export const runtime = 'edge';
 import {useLikeForums, useUid} from "@/utils/useSWR";
 import Loading from "@/app/loading";
 import {Button} from "@nextui-org/react";

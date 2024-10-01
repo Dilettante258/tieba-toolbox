@@ -1,5 +1,5 @@
 "use client";
-
+export const runtime = 'edge';
 import Map from "@/components/Map";
 import {useForumThreadCut} from "@/utils/useSWR";
 import Loading from "@/app/loading";
