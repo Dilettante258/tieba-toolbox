@@ -13,9 +13,17 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
+    "@cyberblast/react-wordcloud": "^1.2.10",
+    "@nextui-org/react": "^2.4.8",
+    "@phosphor-icons/react": "^2.1.7",
+    "echarts": "^5.5.1",
+    "framer-motion": "^11.9.0",
+    "next": "14.2.5",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "reaviz": "^15.18.5",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "1",
