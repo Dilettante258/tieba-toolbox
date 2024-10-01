@@ -21,7 +21,7 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-wordcloud-forkk": "^1.2.905",
+    "react-wordcloud-fork": "^1.2.905",
     "reaviz": "^15.18.5",
     "swr": "^2.2.5"
   },
