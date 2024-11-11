@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
+import aria from "tailwindcss-react-aria-components";
 
 export default {
   content: [
@@ -15,6 +16,6 @@ export default {
     },
   },
   plugins: [
-    require('tailwindcss-react-aria-components')
+    aria()
   ]
 } satisfies Config;
