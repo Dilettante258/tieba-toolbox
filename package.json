@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@react-aria/optimize-locales-plugin": "^1.1.2",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
+    "lucide-react": "^0.456.0",
+    "next": "^14.2.18",
+    "react-activity-calendar": "^2.7.1",
+    "react-aria": "^3.35.1",
     "react-aria-components": "^1.4.1",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
     "tailwindcss-react-aria-components": "^1.1.6"
   },
   "devDependencies": {

@@ -1,0 +1,2260 @@
+.FeatureCard {
+    width: 12rem;
+    height: 16rem;
+    background: firebrick;
+    display: block;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.FeatureCard .fc-icon {
+    border-radius: 50%;
+    background-color: aqua;
+    height: 2rem;
+    width: 2rem;
+}
+
+.FeatureCard h3 {
+    font-size: 20px;
+}
+
+
+/* From Uiverse.io by SelfMadeSystem */ 
+/*
+A better ripple button. Ripples on hover too :)
+Made with Svelte and SCSS: stackblitz.com/edit/vitejs-vite-q7fgp7
+ */
+
+ .btn {
+    border-radius: 0.5em;
+    font-size: larger;
+    height: 3em;
+    width: 9em;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    isolation: isolate;
+    cursor: pointer;
+  }
+  
+  .btn>span {
+    position: relative;
+    pointer-events: none;
+    z-index: 10
+  }
+  
+  .ripple-container {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(36, 0.25em);
+    border-radius: 0.8em;
+    padding: 0.3em;
+    overflow: hidden;
+  }
+  
+  .ripple-container>span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ripple-container>span::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    background-color: #6996e2;
+    transition: width 0.5s ease-out, height 0.5s ease-out, opacity 1s;
+    width: 18.973665961em;
+    height: 18.973665961em;
+    opacity: 0;
+    border-radius: 999em
+  }
+  
+  .ripple-container>span:active::after {
+    transition: 0s;
+    width: 0em;
+    height: 0em;
+    opacity: 1
+  }
+  
+  .hover-ripple {
+    pointer-events: none;
+    position: absolute;
+    background-color: #6996e277;
+    transition: width 0.5s ease-out, height 0.5s ease-out, top 99999s linear, left 9999s linear;
+    transform: translate(-50%, -50%);
+    top: 0em;
+    left: 0em;
+    width: 0em;
+    height: 0em;
+    border-radius: 999em
+  }
+  
+  .ripple-container>span:hover~.hover-ripple {
+    transition: width 0.5s ease-out, height 0.5s ease-out, top 0s linear, left 0s linear;
+    width: 18.973665961em;
+    height: 18.973665961em
+  }
+  
+  .ripple-container>span:nth-child(1):hover~.hover-ripple {
+    top: 0.125em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(37):hover~.hover-ripple {
+    top: 0.375em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(73):hover~.hover-ripple {
+    top: 0.625em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(109):hover~.hover-ripple {
+    top: 0.875em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(145):hover~.hover-ripple {
+    top: 1.125em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(181):hover~.hover-ripple {
+    top: 1.375em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(217):hover~.hover-ripple {
+    top: 1.625em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(253):hover~.hover-ripple {
+    top: 1.875em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(289):hover~.hover-ripple {
+    top: 2.125em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(325):hover~.hover-ripple {
+    top: 2.375em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(361):hover~.hover-ripple {
+    top: 2.625em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(397):hover~.hover-ripple {
+    top: 2.875em;
+    left: 0.1875em
+  }
+  
+  .ripple-container>span:nth-child(2):hover~.hover-ripple {
+    top: 0.125em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(38):hover~.hover-ripple {
+    top: 0.375em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(74):hover~.hover-ripple {
+    top: 0.625em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(110):hover~.hover-ripple {
+    top: 0.875em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(146):hover~.hover-ripple {
+    top: 1.125em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(182):hover~.hover-ripple {
+    top: 1.375em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(218):hover~.hover-ripple {
+    top: 1.625em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(254):hover~.hover-ripple {
+    top: 1.875em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(290):hover~.hover-ripple {
+    top: 2.125em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(326):hover~.hover-ripple {
+    top: 2.375em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(362):hover~.hover-ripple {
+    top: 2.625em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(398):hover~.hover-ripple {
+    top: 2.875em;
+    left: 0.4375em
+  }
+  
+  .ripple-container>span:nth-child(3):hover~.hover-ripple {
+    top: 0.125em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(39):hover~.hover-ripple {
+    top: 0.375em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(75):hover~.hover-ripple {
+    top: 0.625em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(111):hover~.hover-ripple {
+    top: 0.875em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(147):hover~.hover-ripple {
+    top: 1.125em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(183):hover~.hover-ripple {
+    top: 1.375em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(219):hover~.hover-ripple {
+    top: 1.625em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(255):hover~.hover-ripple {
+    top: 1.875em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(291):hover~.hover-ripple {
+    top: 2.125em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(327):hover~.hover-ripple {
+    top: 2.375em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(363):hover~.hover-ripple {
+    top: 2.625em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(399):hover~.hover-ripple {
+    top: 2.875em;
+    left: 0.6875em
+  }
+  
+  .ripple-container>span:nth-child(4):hover~.hover-ripple {
+    top: 0.125em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(40):hover~.hover-ripple {
+    top: 0.375em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(76):hover~.hover-ripple {
+    top: 0.625em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(112):hover~.hover-ripple {
+    top: 0.875em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(148):hover~.hover-ripple {
+    top: 1.125em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(184):hover~.hover-ripple {
+    top: 1.375em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(220):hover~.hover-ripple {
+    top: 1.625em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(256):hover~.hover-ripple {
+    top: 1.875em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(292):hover~.hover-ripple {
+    top: 2.125em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(328):hover~.hover-ripple {
+    top: 2.375em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(364):hover~.hover-ripple {
+    top: 2.625em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(400):hover~.hover-ripple {
+    top: 2.875em;
+    left: 0.9375em
+  }
+  
+  .ripple-container>span:nth-child(5):hover~.hover-ripple {
+    top: 0.125em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(41):hover~.hover-ripple {
+    top: 0.375em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(77):hover~.hover-ripple {
+    top: 0.625em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(113):hover~.hover-ripple {
+    top: 0.875em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(149):hover~.hover-ripple {
+    top: 1.125em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(185):hover~.hover-ripple {
+    top: 1.375em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(221):hover~.hover-ripple {
+    top: 1.625em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(257):hover~.hover-ripple {
+    top: 1.875em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(293):hover~.hover-ripple {
+    top: 2.125em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(329):hover~.hover-ripple {
+    top: 2.375em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(365):hover~.hover-ripple {
+    top: 2.625em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(401):hover~.hover-ripple {
+    top: 2.875em;
+    left: 1.1875em
+  }
+  
+  .ripple-container>span:nth-child(6):hover~.hover-ripple {
+    top: 0.125em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(42):hover~.hover-ripple {
+    top: 0.375em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(78):hover~.hover-ripple {
+    top: 0.625em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(114):hover~.hover-ripple {
+    top: 0.875em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(150):hover~.hover-ripple {
+    top: 1.125em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(186):hover~.hover-ripple {
+    top: 1.375em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(222):hover~.hover-ripple {
+    top: 1.625em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(258):hover~.hover-ripple {
+    top: 1.875em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(294):hover~.hover-ripple {
+    top: 2.125em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(330):hover~.hover-ripple {
+    top: 2.375em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(366):hover~.hover-ripple {
+    top: 2.625em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(402):hover~.hover-ripple {
+    top: 2.875em;
+    left: 1.4375em
+  }
+  
+  .ripple-container>span:nth-child(7):hover~.hover-ripple {
+    top: 0.125em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(43):hover~.hover-ripple {
+    top: 0.375em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(79):hover~.hover-ripple {
+    top: 0.625em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(115):hover~.hover-ripple {
+    top: 0.875em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(151):hover~.hover-ripple {
+    top: 1.125em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(187):hover~.hover-ripple {
+    top: 1.375em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(223):hover~.hover-ripple {
+    top: 1.625em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(259):hover~.hover-ripple {
+    top: 1.875em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(295):hover~.hover-ripple {
+    top: 2.125em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(331):hover~.hover-ripple {
+    top: 2.375em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(367):hover~.hover-ripple {
+    top: 2.625em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(403):hover~.hover-ripple {
+    top: 2.875em;
+    left: 1.6875em
+  }
+  
+  .ripple-container>span:nth-child(8):hover~.hover-ripple {
+    top: 0.125em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(44):hover~.hover-ripple {
+    top: 0.375em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(80):hover~.hover-ripple {
+    top: 0.625em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(116):hover~.hover-ripple {
+    top: 0.875em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(152):hover~.hover-ripple {
+    top: 1.125em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(188):hover~.hover-ripple {
+    top: 1.375em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(224):hover~.hover-ripple {
+    top: 1.625em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(260):hover~.hover-ripple {
+    top: 1.875em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(296):hover~.hover-ripple {
+    top: 2.125em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(332):hover~.hover-ripple {
+    top: 2.375em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(368):hover~.hover-ripple {
+    top: 2.625em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(404):hover~.hover-ripple {
+    top: 2.875em;
+    left: 1.9375em
+  }
+  
+  .ripple-container>span:nth-child(9):hover~.hover-ripple {
+    top: 0.125em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(45):hover~.hover-ripple {
+    top: 0.375em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(81):hover~.hover-ripple {
+    top: 0.625em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(117):hover~.hover-ripple {
+    top: 0.875em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(153):hover~.hover-ripple {
+    top: 1.125em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(189):hover~.hover-ripple {
+    top: 1.375em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(225):hover~.hover-ripple {
+    top: 1.625em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(261):hover~.hover-ripple {
+    top: 1.875em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(297):hover~.hover-ripple {
+    top: 2.125em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(333):hover~.hover-ripple {
+    top: 2.375em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(369):hover~.hover-ripple {
+    top: 2.625em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(405):hover~.hover-ripple {
+    top: 2.875em;
+    left: 2.1875em
+  }
+  
+  .ripple-container>span:nth-child(10):hover~.hover-ripple {
+    top: 0.125em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(46):hover~.hover-ripple {
+    top: 0.375em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(82):hover~.hover-ripple {
+    top: 0.625em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(118):hover~.hover-ripple {
+    top: 0.875em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(154):hover~.hover-ripple {
+    top: 1.125em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(190):hover~.hover-ripple {
+    top: 1.375em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(226):hover~.hover-ripple {
+    top: 1.625em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(262):hover~.hover-ripple {
+    top: 1.875em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(298):hover~.hover-ripple {
+    top: 2.125em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(334):hover~.hover-ripple {
+    top: 2.375em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(370):hover~.hover-ripple {
+    top: 2.625em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(406):hover~.hover-ripple {
+    top: 2.875em;
+    left: 2.4375em
+  }
+  
+  .ripple-container>span:nth-child(11):hover~.hover-ripple {
+    top: 0.125em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(47):hover~.hover-ripple {
+    top: 0.375em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(83):hover~.hover-ripple {
+    top: 0.625em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(119):hover~.hover-ripple {
+    top: 0.875em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(155):hover~.hover-ripple {
+    top: 1.125em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(191):hover~.hover-ripple {
+    top: 1.375em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(227):hover~.hover-ripple {
+    top: 1.625em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(263):hover~.hover-ripple {
+    top: 1.875em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(299):hover~.hover-ripple {
+    top: 2.125em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(335):hover~.hover-ripple {
+    top: 2.375em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(371):hover~.hover-ripple {
+    top: 2.625em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(407):hover~.hover-ripple {
+    top: 2.875em;
+    left: 2.6875em
+  }
+  
+  .ripple-container>span:nth-child(12):hover~.hover-ripple {
+    top: 0.125em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(48):hover~.hover-ripple {
+    top: 0.375em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(84):hover~.hover-ripple {
+    top: 0.625em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(120):hover~.hover-ripple {
+    top: 0.875em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(156):hover~.hover-ripple {
+    top: 1.125em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(192):hover~.hover-ripple {
+    top: 1.375em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(228):hover~.hover-ripple {
+    top: 1.625em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(264):hover~.hover-ripple {
+    top: 1.875em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(300):hover~.hover-ripple {
+    top: 2.125em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(336):hover~.hover-ripple {
+    top: 2.375em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(372):hover~.hover-ripple {
+    top: 2.625em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(408):hover~.hover-ripple {
+    top: 2.875em;
+    left: 2.9375em
+  }
+  
+  .ripple-container>span:nth-child(13):hover~.hover-ripple {
+    top: 0.125em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(49):hover~.hover-ripple {
+    top: 0.375em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(85):hover~.hover-ripple {
+    top: 0.625em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(121):hover~.hover-ripple {
+    top: 0.875em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(157):hover~.hover-ripple {
+    top: 1.125em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(193):hover~.hover-ripple {
+    top: 1.375em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(229):hover~.hover-ripple {
+    top: 1.625em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(265):hover~.hover-ripple {
+    top: 1.875em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(301):hover~.hover-ripple {
+    top: 2.125em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(337):hover~.hover-ripple {
+    top: 2.375em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(373):hover~.hover-ripple {
+    top: 2.625em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(409):hover~.hover-ripple {
+    top: 2.875em;
+    left: 3.1875em
+  }
+  
+  .ripple-container>span:nth-child(14):hover~.hover-ripple {
+    top: 0.125em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(50):hover~.hover-ripple {
+    top: 0.375em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(86):hover~.hover-ripple {
+    top: 0.625em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(122):hover~.hover-ripple {
+    top: 0.875em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(158):hover~.hover-ripple {
+    top: 1.125em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(194):hover~.hover-ripple {
+    top: 1.375em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(230):hover~.hover-ripple {
+    top: 1.625em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(266):hover~.hover-ripple {
+    top: 1.875em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(302):hover~.hover-ripple {
+    top: 2.125em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(338):hover~.hover-ripple {
+    top: 2.375em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(374):hover~.hover-ripple {
+    top: 2.625em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(410):hover~.hover-ripple {
+    top: 2.875em;
+    left: 3.4375em
+  }
+  
+  .ripple-container>span:nth-child(15):hover~.hover-ripple {
+    top: 0.125em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(51):hover~.hover-ripple {
+    top: 0.375em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(87):hover~.hover-ripple {
+    top: 0.625em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(123):hover~.hover-ripple {
+    top: 0.875em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(159):hover~.hover-ripple {
+    top: 1.125em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(195):hover~.hover-ripple {
+    top: 1.375em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(231):hover~.hover-ripple {
+    top: 1.625em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(267):hover~.hover-ripple {
+    top: 1.875em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(303):hover~.hover-ripple {
+    top: 2.125em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(339):hover~.hover-ripple {
+    top: 2.375em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(375):hover~.hover-ripple {
+    top: 2.625em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(411):hover~.hover-ripple {
+    top: 2.875em;
+    left: 3.6875em
+  }
+  
+  .ripple-container>span:nth-child(16):hover~.hover-ripple {
+    top: 0.125em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(52):hover~.hover-ripple {
+    top: 0.375em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(88):hover~.hover-ripple {
+    top: 0.625em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(124):hover~.hover-ripple {
+    top: 0.875em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(160):hover~.hover-ripple {
+    top: 1.125em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(196):hover~.hover-ripple {
+    top: 1.375em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(232):hover~.hover-ripple {
+    top: 1.625em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(268):hover~.hover-ripple {
+    top: 1.875em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(304):hover~.hover-ripple {
+    top: 2.125em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(340):hover~.hover-ripple {
+    top: 2.375em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(376):hover~.hover-ripple {
+    top: 2.625em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(412):hover~.hover-ripple {
+    top: 2.875em;
+    left: 3.9375em
+  }
+  
+  .ripple-container>span:nth-child(17):hover~.hover-ripple {
+    top: 0.125em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(53):hover~.hover-ripple {
+    top: 0.375em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(89):hover~.hover-ripple {
+    top: 0.625em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(125):hover~.hover-ripple {
+    top: 0.875em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(161):hover~.hover-ripple {
+    top: 1.125em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(197):hover~.hover-ripple {
+    top: 1.375em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(233):hover~.hover-ripple {
+    top: 1.625em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(269):hover~.hover-ripple {
+    top: 1.875em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(305):hover~.hover-ripple {
+    top: 2.125em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(341):hover~.hover-ripple {
+    top: 2.375em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(377):hover~.hover-ripple {
+    top: 2.625em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(413):hover~.hover-ripple {
+    top: 2.875em;
+    left: 4.1875em
+  }
+  
+  .ripple-container>span:nth-child(18):hover~.hover-ripple {
+    top: 0.125em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(54):hover~.hover-ripple {
+    top: 0.375em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(90):hover~.hover-ripple {
+    top: 0.625em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(126):hover~.hover-ripple {
+    top: 0.875em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(162):hover~.hover-ripple {
+    top: 1.125em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(198):hover~.hover-ripple {
+    top: 1.375em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(234):hover~.hover-ripple {
+    top: 1.625em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(270):hover~.hover-ripple {
+    top: 1.875em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(306):hover~.hover-ripple {
+    top: 2.125em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(342):hover~.hover-ripple {
+    top: 2.375em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(378):hover~.hover-ripple {
+    top: 2.625em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(414):hover~.hover-ripple {
+    top: 2.875em;
+    left: 4.4375em
+  }
+  
+  .ripple-container>span:nth-child(19):hover~.hover-ripple {
+    top: 0.125em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(55):hover~.hover-ripple {
+    top: 0.375em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(91):hover~.hover-ripple {
+    top: 0.625em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(127):hover~.hover-ripple {
+    top: 0.875em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(163):hover~.hover-ripple {
+    top: 1.125em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(199):hover~.hover-ripple {
+    top: 1.375em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(235):hover~.hover-ripple {
+    top: 1.625em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(271):hover~.hover-ripple {
+    top: 1.875em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(307):hover~.hover-ripple {
+    top: 2.125em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(343):hover~.hover-ripple {
+    top: 2.375em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(379):hover~.hover-ripple {
+    top: 2.625em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(415):hover~.hover-ripple {
+    top: 2.875em;
+    left: 4.6875em
+  }
+  
+  .ripple-container>span:nth-child(20):hover~.hover-ripple {
+    top: 0.125em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(56):hover~.hover-ripple {
+    top: 0.375em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(92):hover~.hover-ripple {
+    top: 0.625em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(128):hover~.hover-ripple {
+    top: 0.875em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(164):hover~.hover-ripple {
+    top: 1.125em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(200):hover~.hover-ripple {
+    top: 1.375em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(236):hover~.hover-ripple {
+    top: 1.625em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(272):hover~.hover-ripple {
+    top: 1.875em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(308):hover~.hover-ripple {
+    top: 2.125em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(344):hover~.hover-ripple {
+    top: 2.375em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(380):hover~.hover-ripple {
+    top: 2.625em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(416):hover~.hover-ripple {
+    top: 2.875em;
+    left: 4.9375em
+  }
+  
+  .ripple-container>span:nth-child(21):hover~.hover-ripple {
+    top: 0.125em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(57):hover~.hover-ripple {
+    top: 0.375em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(93):hover~.hover-ripple {
+    top: 0.625em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(129):hover~.hover-ripple {
+    top: 0.875em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(165):hover~.hover-ripple {
+    top: 1.125em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(201):hover~.hover-ripple {
+    top: 1.375em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(237):hover~.hover-ripple {
+    top: 1.625em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(273):hover~.hover-ripple {
+    top: 1.875em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(309):hover~.hover-ripple {
+    top: 2.125em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(345):hover~.hover-ripple {
+    top: 2.375em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(381):hover~.hover-ripple {
+    top: 2.625em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(417):hover~.hover-ripple {
+    top: 2.875em;
+    left: 5.1875em
+  }
+  
+  .ripple-container>span:nth-child(22):hover~.hover-ripple {
+    top: 0.125em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(58):hover~.hover-ripple {
+    top: 0.375em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(94):hover~.hover-ripple {
+    top: 0.625em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(130):hover~.hover-ripple {
+    top: 0.875em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(166):hover~.hover-ripple {
+    top: 1.125em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(202):hover~.hover-ripple {
+    top: 1.375em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(238):hover~.hover-ripple {
+    top: 1.625em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(274):hover~.hover-ripple {
+    top: 1.875em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(310):hover~.hover-ripple {
+    top: 2.125em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(346):hover~.hover-ripple {
+    top: 2.375em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(382):hover~.hover-ripple {
+    top: 2.625em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(418):hover~.hover-ripple {
+    top: 2.875em;
+    left: 5.4375em
+  }
+  
+  .ripple-container>span:nth-child(23):hover~.hover-ripple {
+    top: 0.125em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(59):hover~.hover-ripple {
+    top: 0.375em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(95):hover~.hover-ripple {
+    top: 0.625em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(131):hover~.hover-ripple {
+    top: 0.875em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(167):hover~.hover-ripple {
+    top: 1.125em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(203):hover~.hover-ripple {
+    top: 1.375em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(239):hover~.hover-ripple {
+    top: 1.625em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(275):hover~.hover-ripple {
+    top: 1.875em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(311):hover~.hover-ripple {
+    top: 2.125em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(347):hover~.hover-ripple {
+    top: 2.375em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(383):hover~.hover-ripple {
+    top: 2.625em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(419):hover~.hover-ripple {
+    top: 2.875em;
+    left: 5.6875em
+  }
+  
+  .ripple-container>span:nth-child(24):hover~.hover-ripple {
+    top: 0.125em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(60):hover~.hover-ripple {
+    top: 0.375em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(96):hover~.hover-ripple {
+    top: 0.625em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(132):hover~.hover-ripple {
+    top: 0.875em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(168):hover~.hover-ripple {
+    top: 1.125em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(204):hover~.hover-ripple {
+    top: 1.375em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(240):hover~.hover-ripple {
+    top: 1.625em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(276):hover~.hover-ripple {
+    top: 1.875em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(312):hover~.hover-ripple {
+    top: 2.125em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(348):hover~.hover-ripple {
+    top: 2.375em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(384):hover~.hover-ripple {
+    top: 2.625em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(420):hover~.hover-ripple {
+    top: 2.875em;
+    left: 5.9375em
+  }
+  
+  .ripple-container>span:nth-child(25):hover~.hover-ripple {
+    top: 0.125em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(61):hover~.hover-ripple {
+    top: 0.375em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(97):hover~.hover-ripple {
+    top: 0.625em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(133):hover~.hover-ripple {
+    top: 0.875em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(169):hover~.hover-ripple {
+    top: 1.125em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(205):hover~.hover-ripple {
+    top: 1.375em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(241):hover~.hover-ripple {
+    top: 1.625em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(277):hover~.hover-ripple {
+    top: 1.875em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(313):hover~.hover-ripple {
+    top: 2.125em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(349):hover~.hover-ripple {
+    top: 2.375em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(385):hover~.hover-ripple {
+    top: 2.625em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(421):hover~.hover-ripple {
+    top: 2.875em;
+    left: 6.1875em
+  }
+  
+  .ripple-container>span:nth-child(26):hover~.hover-ripple {
+    top: 0.125em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(62):hover~.hover-ripple {
+    top: 0.375em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(98):hover~.hover-ripple {
+    top: 0.625em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(134):hover~.hover-ripple {
+    top: 0.875em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(170):hover~.hover-ripple {
+    top: 1.125em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(206):hover~.hover-ripple {
+    top: 1.375em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(242):hover~.hover-ripple {
+    top: 1.625em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(278):hover~.hover-ripple {
+    top: 1.875em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(314):hover~.hover-ripple {
+    top: 2.125em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(350):hover~.hover-ripple {
+    top: 2.375em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(386):hover~.hover-ripple {
+    top: 2.625em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(422):hover~.hover-ripple {
+    top: 2.875em;
+    left: 6.4375em
+  }
+  
+  .ripple-container>span:nth-child(27):hover~.hover-ripple {
+    top: 0.125em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(63):hover~.hover-ripple {
+    top: 0.375em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(99):hover~.hover-ripple {
+    top: 0.625em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(135):hover~.hover-ripple {
+    top: 0.875em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(171):hover~.hover-ripple {
+    top: 1.125em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(207):hover~.hover-ripple {
+    top: 1.375em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(243):hover~.hover-ripple {
+    top: 1.625em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(279):hover~.hover-ripple {
+    top: 1.875em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(315):hover~.hover-ripple {
+    top: 2.125em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(351):hover~.hover-ripple {
+    top: 2.375em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(387):hover~.hover-ripple {
+    top: 2.625em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(423):hover~.hover-ripple {
+    top: 2.875em;
+    left: 6.6875em
+  }
+  
+  .ripple-container>span:nth-child(28):hover~.hover-ripple {
+    top: 0.125em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(64):hover~.hover-ripple {
+    top: 0.375em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(100):hover~.hover-ripple {
+    top: 0.625em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(136):hover~.hover-ripple {
+    top: 0.875em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(172):hover~.hover-ripple {
+    top: 1.125em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(208):hover~.hover-ripple {
+    top: 1.375em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(244):hover~.hover-ripple {
+    top: 1.625em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(280):hover~.hover-ripple {
+    top: 1.875em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(316):hover~.hover-ripple {
+    top: 2.125em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(352):hover~.hover-ripple {
+    top: 2.375em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(388):hover~.hover-ripple {
+    top: 2.625em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(424):hover~.hover-ripple {
+    top: 2.875em;
+    left: 6.9375em
+  }
+  
+  .ripple-container>span:nth-child(29):hover~.hover-ripple {
+    top: 0.125em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(65):hover~.hover-ripple {
+    top: 0.375em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(101):hover~.hover-ripple {
+    top: 0.625em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(137):hover~.hover-ripple {
+    top: 0.875em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(173):hover~.hover-ripple {
+    top: 1.125em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(209):hover~.hover-ripple {
+    top: 1.375em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(245):hover~.hover-ripple {
+    top: 1.625em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(281):hover~.hover-ripple {
+    top: 1.875em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(317):hover~.hover-ripple {
+    top: 2.125em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(353):hover~.hover-ripple {
+    top: 2.375em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(389):hover~.hover-ripple {
+    top: 2.625em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(425):hover~.hover-ripple {
+    top: 2.875em;
+    left: 7.1875em
+  }
+  
+  .ripple-container>span:nth-child(30):hover~.hover-ripple {
+    top: 0.125em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(66):hover~.hover-ripple {
+    top: 0.375em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(102):hover~.hover-ripple {
+    top: 0.625em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(138):hover~.hover-ripple {
+    top: 0.875em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(174):hover~.hover-ripple {
+    top: 1.125em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(210):hover~.hover-ripple {
+    top: 1.375em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(246):hover~.hover-ripple {
+    top: 1.625em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(282):hover~.hover-ripple {
+    top: 1.875em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(318):hover~.hover-ripple {
+    top: 2.125em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(354):hover~.hover-ripple {
+    top: 2.375em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(390):hover~.hover-ripple {
+    top: 2.625em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(426):hover~.hover-ripple {
+    top: 2.875em;
+    left: 7.4375em
+  }
+  
+  .ripple-container>span:nth-child(31):hover~.hover-ripple {
+    top: 0.125em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(67):hover~.hover-ripple {
+    top: 0.375em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(103):hover~.hover-ripple {
+    top: 0.625em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(139):hover~.hover-ripple {
+    top: 0.875em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(175):hover~.hover-ripple {
+    top: 1.125em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(211):hover~.hover-ripple {
+    top: 1.375em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(247):hover~.hover-ripple {
+    top: 1.625em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(283):hover~.hover-ripple {
+    top: 1.875em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(319):hover~.hover-ripple {
+    top: 2.125em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(355):hover~.hover-ripple {
+    top: 2.375em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(391):hover~.hover-ripple {
+    top: 2.625em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(427):hover~.hover-ripple {
+    top: 2.875em;
+    left: 7.6875em
+  }
+  
+  .ripple-container>span:nth-child(32):hover~.hover-ripple {
+    top: 0.125em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(68):hover~.hover-ripple {
+    top: 0.375em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(104):hover~.hover-ripple {
+    top: 0.625em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(140):hover~.hover-ripple {
+    top: 0.875em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(176):hover~.hover-ripple {
+    top: 1.125em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(212):hover~.hover-ripple {
+    top: 1.375em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(248):hover~.hover-ripple {
+    top: 1.625em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(284):hover~.hover-ripple {
+    top: 1.875em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(320):hover~.hover-ripple {
+    top: 2.125em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(356):hover~.hover-ripple {
+    top: 2.375em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(392):hover~.hover-ripple {
+    top: 2.625em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(428):hover~.hover-ripple {
+    top: 2.875em;
+    left: 7.9375em
+  }
+  
+  .ripple-container>span:nth-child(33):hover~.hover-ripple {
+    top: 0.125em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(69):hover~.hover-ripple {
+    top: 0.375em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(105):hover~.hover-ripple {
+    top: 0.625em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(141):hover~.hover-ripple {
+    top: 0.875em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(177):hover~.hover-ripple {
+    top: 1.125em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(213):hover~.hover-ripple {
+    top: 1.375em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(249):hover~.hover-ripple {
+    top: 1.625em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(285):hover~.hover-ripple {
+    top: 1.875em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(321):hover~.hover-ripple {
+    top: 2.125em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(357):hover~.hover-ripple {
+    top: 2.375em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(393):hover~.hover-ripple {
+    top: 2.625em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(429):hover~.hover-ripple {
+    top: 2.875em;
+    left: 8.1875em
+  }
+  
+  .ripple-container>span:nth-child(34):hover~.hover-ripple {
+    top: 0.125em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(70):hover~.hover-ripple {
+    top: 0.375em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(106):hover~.hover-ripple {
+    top: 0.625em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(142):hover~.hover-ripple {
+    top: 0.875em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(178):hover~.hover-ripple {
+    top: 1.125em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(214):hover~.hover-ripple {
+    top: 1.375em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(250):hover~.hover-ripple {
+    top: 1.625em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(286):hover~.hover-ripple {
+    top: 1.875em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(322):hover~.hover-ripple {
+    top: 2.125em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(358):hover~.hover-ripple {
+    top: 2.375em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(394):hover~.hover-ripple {
+    top: 2.625em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(430):hover~.hover-ripple {
+    top: 2.875em;
+    left: 8.4375em
+  }
+  
+  .ripple-container>span:nth-child(35):hover~.hover-ripple {
+    top: 0.125em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(71):hover~.hover-ripple {
+    top: 0.375em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(107):hover~.hover-ripple {
+    top: 0.625em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(143):hover~.hover-ripple {
+    top: 0.875em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(179):hover~.hover-ripple {
+    top: 1.125em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(215):hover~.hover-ripple {
+    top: 1.375em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(251):hover~.hover-ripple {
+    top: 1.625em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(287):hover~.hover-ripple {
+    top: 1.875em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(323):hover~.hover-ripple {
+    top: 2.125em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(359):hover~.hover-ripple {
+    top: 2.375em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(395):hover~.hover-ripple {
+    top: 2.625em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(431):hover~.hover-ripple {
+    top: 2.875em;
+    left: 8.6875em
+  }
+  
+  .ripple-container>span:nth-child(36):hover~.hover-ripple {
+    top: 0.125em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(72):hover~.hover-ripple {
+    top: 0.375em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(108):hover~.hover-ripple {
+    top: 0.625em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(144):hover~.hover-ripple {
+    top: 0.875em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(180):hover~.hover-ripple {
+    top: 1.125em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(216):hover~.hover-ripple {
+    top: 1.375em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(252):hover~.hover-ripple {
+    top: 1.625em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(288):hover~.hover-ripple {
+    top: 1.875em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(324):hover~.hover-ripple {
+    top: 2.125em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(360):hover~.hover-ripple {
+    top: 2.375em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(396):hover~.hover-ripple {
+    top: 2.625em;
+    left: 8.9375em
+  }
+  
+  .ripple-container>span:nth-child(432):hover~.hover-ripple {
+    top: 2.875em;
+    left: 8.9375em
+  }
+  
