@@ -1,49 +1,33 @@
-
 import Image from "next/image";
-
-import SelectComp from '@/components/custom/select'
-
-
-import { ActivityCalendar } from 'react-activity-calendar';
-import FeatureCard from "@/components/custom/FeatureCard";
-
-const data = [
-  {
-    date: '2024-01-01',
-    count: 2,
-    level: 1,
-  },
-  {
-    date: '2024-06-23',
-    count: 2,
-    level: 1,
-  },
-  {
-    date: '2024-08-02',
-    count: 16,
-    level: 4,
-  },
-  {
-    date: '2024-09-29',
-    count: 11,
-    level: 3,
-  },
-];
+import LandingItem from "@custom/LandingItem";
+import Link from "next/link";
 
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <SelectComp />
-      <ActivityCalendar 
-      
-      theme={{
-          light: ['hsl(0, 0%, 92%)', 'firebrick'],
-          dark: ['#333', 'rgb(214, 16, 174)'],
-         }}
-      data={data} />;
+    <div className='landing-page'>
+      <div className='landing-page-content'>
+        <div className='content-text'>
+          <h1>贴吧工具箱</h1>
+          <p>
+            Google Play 是面向超过 20 亿活跃 Android 设备快速发布应用和游戏的理想平台，不仅能帮助您在全球范围内拓展用户群，还能让您通过应用和游戏赚取收入。
+          </p>
+          <Link href='/help'>
+            <button>访问使用说明</button>
+          </Link>
+        </div>
+        <div className='mx-16'>
+          <Image src='/hero.png' alt='icon' width={250} height={250} />
+        </div>
+      </div>
+      <div className='flex flex-row justify-between gap-32'>
+        <LandingItem />
+        <LandingItem />
+        <LandingItem />
+      </div>
 
-      <FeatureCard />
+
+
     </div>
   );
 }

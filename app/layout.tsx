@@ -1,17 +1,31 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
+import type {Metadata} from "next";
 import "./globals.css";
+import NavBar from "@custom/NavBar";
+import { Ubuntu, Ubuntu_Mono } from 'next/font/google'
+import AppProviders from "./_providers";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   // weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   // weight: "100 900",
+// });
+const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-ubuntu',
+})
+
+const ubuntuMono = Ubuntu_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-ubuntu-mono',
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,17 +33,24 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+
+    <html lang='zh-CN'>
+    <body
+      className={`${ubuntu.className} ${ubuntuMono.className} antialiased`}
+    >
+    <AppProviders>
+      <NavBar />
+      {children}
+    </AppProviders>
+    </body>
     </html>
+
   );
 }

@@ -2,20 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+.landing-page {
+  background-color: #202124;
+  height: 88vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.landing-page-content {
+  margin: 4rem auto;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+
+  .content-text {
+    width: 50%;
+
+    & > h1 {
+      font-size: 64px;
+    }
+    & > h1:hover {
+      text-decoration-line: underline;
+    }
+    & > p {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+
+    & button {
+      background-color: white;
+      border-radius: 100px;
+      /*width: 10rem;*/
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    & button:hover {
+      color: white;
+      background-color: #80868b; /* 鼠标悬停时的背景颜色 */
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-device-width: 768px) {
+  .landing-page-content {
+    margin: 4rem auto;
+    padding: 0 1rem;
+    color: #ffffff;
+
+
+    .content-text {
+      width: 100%;
+      & h1 {
+        font-size: 64px;
+      }
+
+      & p {
+        font-size: 20px;
+      }
+    }
+  }
 }
+
+
+
+
+.back {
+  width: 100%;
+  height: 100%;
+  --color: #E1E1E1;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+  linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 30px 30px;
+}
+
+
+.cyan-gradient-background {
+  --a: oklch(90% 0.05 200);
+  --a-shape: ellipse 30% 23% at 30% 56%;
+  --b: oklch(94% 0.09 175);
+  --b-shape: ellipse 30% 30% at 71% 42%;
+  --c: oklch(96% 0.06 218);
+  --c-shape: ellipse 40% 25% at 50% 72%;
+  background: radial-gradient(var(--a-shape), var(--a), transparent),
+  radial-gradient(var(--b-shape), var(--b), transparent),
+  radial-gradient(var(--c-shape), var(--c), transparent);
+}
+
+@media (width < 768px) {
+  .cyan-gradient-background {
+    --a-shape: circle 250px at 26% 65%;
+    --b-shape: circle 250px at 73% 64%;
+    --c-shape: circle 250px at 50% 70%;
+  }
+}
+
+.dark .cyan-gradient-background  {
+  --a: oklch(25% 0.1 200);
+  --b: oklch(27% 0.1 175);
+  --c: oklch(26% 0.08 218);
+}
+
+

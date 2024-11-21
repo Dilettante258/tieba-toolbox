@@ -1,0 +1,165 @@
+.TripleSelectInput {
+
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: 2.2rem;
+  color: var(--text-color);
+
+
+  border-radius: 100rem;
+  border: #2ab7fe 1px solid;
+  background: #283542;
+  /*overflow: clip;*/
+
+  backdrop-filter: blur(2px);
+
+}
+
+.tsi-Select {
+  position: relative;
+  color: var(--text-color);
+  border-right: #2ab7fe 2px solid;
+
+  .tsi-Button {
+    font-size: 1.072rem;
+    display: flex;
+    align-items: center;
+    width: 6rem;
+    height: 2.2rem;
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    &[data-focus-visible] {
+      outline: 3px solid var(--focus-ring-color);
+      outline-offset: -1px;
+    }
+  }
+
+  .tsi-SelectValue {
+    padding-left: 0.75rem;
+    &[data-placeholder] {
+      font-style: italic;
+      color: var(--text-color-placeholder);
+    }
+  }
+
+  span[aria-hidden] {
+    position: absolute;
+    right: 0.25rem;
+    width: 1.5rem;
+    line-height: 1.375rem;
+    padding: 1px;
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
+    forced-color-adjust: none;
+    border-radius: 4px;
+    font-size: 0.857rem;
+  }
+}
+
+.tsi-Popover[data-trigger=Select] {
+  .tsi-ListBox {
+    display: block;
+    width: 6rem;
+    max-height: inherit;
+    min-height: unset;
+    border: #1d1d1d 1px solid;
+    border-radius: 6px;
+    overflow: clip;
+
+  }
+
+  .tsi-ListBoxItem {
+    padding: 0.286rem 0.571rem 0.286rem 1.571rem;
+
+
+    &[data-focus-visible] {
+      outline: none;
+    }
+
+    &[data-selected] {
+      font-weight: 600;
+      background: yellow;
+      color: rebeccapurple;
+      position: relative;
+      &::before {
+        content: '✓';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+    }
+
+    /*&[data-focused],*/
+    /*&[data-pressed] {*/
+    /*  background: var(--highlight-background);*/
+    /*  color: var(--highlight-foreground);*/
+    /*}*/
+  }
+
+  &[data-entering] {
+    animation: popover-slide 200ms;
+  }
+
+  &[data-exiting] {
+    animation: popover-slide 200ms reverse ease-in;
+  }
+}
+
+.tsi-Input,
+.tsi-TextArea {
+  padding: 0.286rem;
+  margin: 0;
+  /*border: 1px solid var(--border-color);*/
+  /*border-radius: 6px;*/
+  background: transparent;
+  font-size: 1.143rem;
+  color: var(--field-text-color);
+  border: none;
+  outline: none;
+
+  &[data-focused] {
+    /*outline: 2px solid var(--focus-ring-color);*/
+    outline-offset: -1px;
+  }
+}
+
+.tsi-Confirm {
+  border: none;
+  outline: none;
+  background: #2ab7fe;
+  border-radius: 100rem;
+  width: 3rem;
+  margin: 2px 2px;
+  color: var(--text-color);
+  /*margin: 0 auto;*/
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.4);
+
+  }
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    position: relative;
+    top: 50%;
+    transform: translate(-5%,-50%);
+  }
+}
+
+@keyframes popover-slide {
+  from {
+    transform: var(--origin);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
