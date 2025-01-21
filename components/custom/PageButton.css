@@ -1,0 +1,26 @@
+.page-button {
+  margin: 0 auto;
+  border-radius: 0.25rem;
+  overflow: clip;
+}
+
+.pg-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3b82f6;
+  border: none;
+  /*border-radius: 4px;*/
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pg-btn:hover {
+  background-color: #1d4ed8
+}
+
+.pg-btn:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
