@@ -5,3 +5,14 @@ export interface Agree {
   disagreeNum: string;
   diffAgreeNum: string;
 }
+
+export type RequestProps1 = {
+  method: string,
+  id: string,
+  page: string
+}
+
+export type RequestProps2 = {
+  method: string,
+  id: string
+}

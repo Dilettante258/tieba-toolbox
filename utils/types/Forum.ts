@@ -117,3 +117,23 @@ interface Tab {
 interface ForumRule {
 	hasForumRule: number;
 }
+
+
+export interface ForumMemberRes {
+	data: ForumMember[];
+	pageData: ForumMemberPageData;
+}
+
+export interface ForumMember {
+	portrait: string;
+	username: string;
+	nickname: string;
+}
+
+export interface ForumMemberPageData {
+	all: number;
+	now: number;
+	membersNum: number;
+	forumId: number,
+	forumName: string,
+}

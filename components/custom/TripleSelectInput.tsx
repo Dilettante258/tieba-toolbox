@@ -1,15 +1,14 @@
-'use client'
+'use client';
 
 import {Button, ListBox, ListBoxItem, Popover, Select, SelectValue} from 'react-aria-components';
 import {Input} from 'react-aria-components';
 import './TripleSelectInput.css';
 import {Search} from "lucide-react";
-import {TSIForm} from "@/app/actions";
 
 
-export default function TripleSelectInput() {
+export default function TripleSelectInput({action}:{action(formData: FormData):(void | Promise<void>)}) {
  return (
-    <form className='TripleSelectInput' action={TSIForm}>
+    <form className='TripleSelectInput' action={action}>
       <Select name='method' defaultSelectedKey='uid' className="tsi-Select" aria-label='选择查询方式'>
         <Button  className="tsi-Button" aria-label='展开列表'>
           <SelectValue defaultValue='uid' className='tsi-SelectValue'/>
@@ -28,6 +27,5 @@ export default function TripleSelectInput() {
         <Search />
       </Button>
     </form>
-
   );
 }

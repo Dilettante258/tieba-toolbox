@@ -43,7 +43,8 @@ export default function RootLayout({
 
     <html lang='zh-CN'>
     <body
-      className={`${ubuntu.className} ${ubuntuMono.className} antialiased`}
+      className={` antialiased`}
+      //${ubuntu.className} ${ubuntuMono.className}
     >
     <AppProviders>
       <NavBar />

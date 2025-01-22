@@ -156,3 +156,16 @@ html, body {
     max-width: 95%;
   }
 }
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-device-width: 768px) {
+  .mobile-only {
+    display: initial;
+  }
+  .pc-only {
+    display: none;
+  }
+}

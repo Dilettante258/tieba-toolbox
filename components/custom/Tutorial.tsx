@@ -15,8 +15,6 @@ function Tutorial() {
         </li>
         <li>
           <h3>2. ID</h3>
-
-
           <span>
             <pre><code>
               <span className="line"><span className="style1">&#123;</span></span>
@@ -31,7 +29,7 @@ function Tutorial() {
             <span className="line"><span className="style1">&#125;</span></span></code></pre></span>
 
 
-        <p>百度贴吧内部数据存储时更为通用的数字身份标识，一般不可直接获得，具有唯一性并可直接定位。在内部接口中也广泛运用。</p>
+        <p>百度贴吧内部数据存储时通用的数字身份标识，不可直接获得，但是具有唯一性并可直接定位。广泛运用在在各接口中。</p>
       </li>
       <li>
         <h3>3. 用户名</h3>

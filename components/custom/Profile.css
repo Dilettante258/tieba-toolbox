@@ -1,0 +1,11 @@
+.profile-container {
+
+}
+
+.user-info-title {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  border-bottom: #3f3f46 2px solid;
+}
