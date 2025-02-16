@@ -1,11 +1,53 @@
 .profile-container {
-
+  max-width: 58vw;
+  margin: 0 auto;
 }
 
 .user-info-title {
-  font-size: 18px;
+  font-size: 19px;
   display: block;
   margin-bottom: 0.8rem;
   width: 100%;
   border-bottom: #3f3f46 2px solid;
+}
+
+.user-avatar {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100%;
+  border: 0.2rem solid #ccc;
+  margin: 0 auto;
+}
+
+.profile-title {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 0.7fr;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding: 0.5rem 0;
+
+}
+.user-uname {
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-left: #f2f2f2 2px solid;
+  border-right: #f2f2f2 2px solid;
+}
+
+
+
+.user-tbage {
+  font-size: 1.2rem;
+  color: #3f3f46;
+}
+
+.user-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #3f3f46;
+}
+
+.dark .user-info-grid {
+  color: var(--text-color);
 }

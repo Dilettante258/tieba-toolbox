@@ -1,55 +1,99 @@
-import {UserPanel, UserPost} from "@utils/types";
+import {CondenseProfile, Manager} from "@utils/types";
 import './Profile.css'
-import {AlignVerticalSpaceAround} from "lucide-react";
 import {type RequestProps2} from "@type/common";
 
+import Image from "next/image";
+import {getData} from "@utils/constants";
 
-async function getProfileData({method,id}: RequestProps2):Promise<UserPanel> {
-  const res = await fetch(`http://localhost:3001/user/panel?${method}=${id}`)
-  return res.json()
+
+async function getProfileData({method,id}: RequestProps2):Promise<CondenseProfile> {
+  return await getData('/user/condenseProfile', {method, id}) as CondenseProfile;
 }
 
+const Male = () => {
+  return (<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#37B8D5" viewBox="0 0 256 256" className='mx-auto'>
+    <path
+      d="M216,32H168a8,8,0,0,0,0,16h28.69L154.62,90.07a80,80,0,1,0,11.31,11.31L208,59.32V88a8,8,0,0,0,16,0V40A8,8,0,0,0,216,32ZM149.24,197.29a64,64,0,1,1,0-90.53A64.1,64.1,0,0,1,149.24,197.29Z"></path>
+  </svg>)
+}
 
-export default async function Profile({method,id}: RequestProps2) {
-  const data = await getProfileData({method,id});
+const Female = () => {
+  return (<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FF7F7F" viewBox="0 0 256 256" className='mx-auto'>
+    <path
+      d="M208,96a80,80,0,1,0-88,79.6V200H88a8,8,0,0,0,0,16h32v24a8,8,0,0,0,16,0V216h32a8,8,0,0,0,0-16H136V175.6A80.11,80.11,0,0,0,208,96ZM64,96a64,64,0,1,1,64,64A64.07,64.07,0,0,1,64,96Z"></path>
+  </svg>)
+}
 
-  if (data)
+export default async function Profile({method, id}: RequestProps2) {
+  const data = await getProfileData({method, id});
+  if (data) {
+    const vipTime = new Date(data.vip.expireTime * 1000)
     return (
       <div className="profile-container">
-        {data.name}
-        {data.show_nickname}
+        <Image
+          src={`http://gss0.baidu.com/7Ls0a8Sm2Q5IlBGlnYG/sys/portraith/item/${data.portrait}`}
+          width={160} height={160}
+          alt='' className='user-avatar'/>
+        <div className='profile-title'>
+          {data.sex === 1 ? <Male/> : <Female/>}
+          <span className='user-uname'>{data.name}</span>
+          <span className='user-tbage'>{data.tbAge}</span>
+        </div>
+
         <div className='basic-info'>
           <h3 className='user-info-title'>基本信息</h3>
-
-          <div>百度ID：{}</div>
-
-          昵称：【🧊】虚环加强阿梓
-          吧龄：13.4年
-          粉丝数：9550
-          发帖量：61990
-          回帖数：60984
-          主题数：1006
-          关注贴吧数：41
-          点赞数：164654
-          关注数：197
-          群组数：3
-          T豆数：0
-          礼物数：1
-          访客数：0
-          最后活跃时间：暂不开放
-
+          <div className='user-info-grid'>
+            <div>百度ID：{data.id}</div>
+            <div>主页UID：{data.uid}</div>
+            <div>昵称：{data.nickname}</div>
+            <div>吧龄：{data.tbAge}年</div>
+            <div>粉丝数：{data.fan}</div>
+            <div>关注数：{data.follow}</div>
+            <div>回帖数：{data.postNum}</div>
+            <div>点赞数：{data.totalAgreeNum}</div>
+          </div>
         </div>
-        <div className='augment-info'>
-
-        </div>
-        <div className='vip-info'>
-
-        </div>
-        <div className='vip-info'>
-
-        </div>
-
+        {
+          data.vip.level!=="0" &&
+          (
+            <div className='vip-info'>
+              <h3 className='user-info-title'>基本信息</h3>
+              <div className='user-info-grid'>
+                <div>会员等级：{data.vip.level}</div>
+                <div>会员类型：{data.vip.status}</div>
+                <div>过期时间：{vipTime.toLocaleString()}
+                  ({
+                    vipTime < new Date() ?
+                      <span>已过期{Math.round((new Date().getTime()/1000-data.vip.expireTime)/(3600*24))}天</span> :
+                      <span>还剩余{Math.round((data.vip.expireTime-new Date().getTime()/1000)/(3600*24))}</span>
+                  })
+                </div>
+              </div>
+            </div>
+          )
+        }
+        {
+          Object.keys(data.manager).length !== 0 &&
+          (
+            <div className='info-row'>
+              <h3 className='user-info-title'>吧务信息</h3>
+              <div className='user-info-grid'>
+                {
+                  Object.keys(data.manager).map((key) => {
+                    return (
+                      <div key={key}>
+                        {key==="manager"?"吧主":"小吧主"}
+                        ：{(data.manager[key as keyof Manager] ?? {})?.forum_list?.[0]}
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          )
+        }
       </div>
     )
+  }
 }
 

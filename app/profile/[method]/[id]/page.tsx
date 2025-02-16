@@ -12,9 +12,8 @@ export default function ProfileContentPage({ params:{method,id} }: { params: Req
   }
   return (
     <div className="main-container justify-center">
-      <h1>用户资料查询</h1>
+      <div className='mt-[-4rem]'></div>
       <TripleSelectInput action={ProfileForm}/>
-      <p className="page-info">当前正在查询用户<span>{id}</span>的关注贴吧。</p>
       <Profile method={method} id={id}/>
     </div>
   );

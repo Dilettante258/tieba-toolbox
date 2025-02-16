@@ -135,7 +135,7 @@ html, body {
   margin: 0 auto;
   gap: 2rem;
   padding: 8px 0;
-  max-width: 80%;
+  width: 80%;
   flex-grow: 1;
   h1 {
     text-align: center;
@@ -168,4 +168,57 @@ html, body {
   .pc-only {
     display: none;
   }
+}
+
+.typography {
+  font-family: 'Noto Sans SC', sans-serif;
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    scroll-margin: 5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  h2 {
+    scroll-margin: 5rem;
+    border-bottom-width: 1px;
+    padding-bottom: 0.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  h2:first-child {
+    margin-top: 0;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  p {
+    line-height: 1.75rem;
+  }
+  p:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+  blockquote {
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    border-left-width: 2px;
+    font-style: italic;
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3rem;
+      line-height: 1;
+    }
+  }
+}
+
+.stack-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }

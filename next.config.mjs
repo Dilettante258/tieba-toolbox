@@ -23,9 +23,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'imgsrc.baidu.com'
       },
-
-
-
+      {
+        protocol: 'http',
+        hostname: 'gss0.baidu.com'
+      },
     ]
   }
 }

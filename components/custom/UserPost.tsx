@@ -2,18 +2,17 @@ import {UserPost} from "@utils/types";
 import './UserPost.css'
 import {AlignVerticalSpaceAround} from "lucide-react";
 import {type RequestProps1} from "@type/common";
+import {getData} from "@utils/constants";
 
 
 async function getUserPost({method,id,page}: RequestProps1) {
-  const res = await fetch(`http://localhost:3001/user/posts?${method}=${id}&page=${page}`)
-  return res.json()
+  return await getData('/user/posts', {method, id, page}) as UserPost[];
 }
 
 
 export default async function UserPostList({method,id,page}: RequestProps1) {
   const data = await getUserPost({method,id,page});
-  if(data.error) return <div>{data.error}</div>
-
+  // if(data.error) return <div>{data.error}</div>
   if (data)
   return (
     <div className="post-container">

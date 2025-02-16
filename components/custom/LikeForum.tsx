@@ -1,19 +1,11 @@
-import {type Grade, type LikeForum, type UserPanel} from "@utils/types";
+import {type Grade, HiddenLikeForum, type LikeForum} from "@utils/types";
 import './LikeForum.css'
-import {AlignVerticalSpaceAround} from "lucide-react";
 import {RequestProps2} from "@type/common";
 import Image from "next/image";
 
 async function getLikeForum({method,id}: RequestProps2) {
-  const res = await fetch(`http://localhost:3001/user/likeForum?${method}=${id}`)
-  const temp1 = await res.json() as LikeForum[];
-  if(temp1.length === 0) {
-    const res2 = await fetch(`http://localhost:3001/user/panel?${method}=${id}`);
-    const temp2 = await res2.json() as UserPanel;
-    return temp2.honor.grade;
-  } else {
-    return temp1;
-  }
+  const res = await fetch(`http://localhost:3001/user/likeForum?method=${method}&id=${id}`)
+  return await res.json() as LikeForum[]|HiddenLikeForum;
 }
 
 
@@ -45,11 +37,10 @@ export default async function LikeForum({method,id}: RequestProps2) {
       </div>
     )
   if (data)
-    console.log(data)
     return (
       <div className='text-lg'>
-        <p>该用户隐藏了关注贴吧，只能通过其他API获得部分关注贴吧。</p>
-        {Object.entries(data as { [key: string]: Grade }).map(([key, value]) => (
+        <p>该用户隐藏了关注贴吧，只能通过获得部分关注的贴吧。</p>
+        {Object.entries(data.grade as { [key: string]: Grade }).map(([key, value]) => (
             <div key={key}>
               <p>吧内等级为<span className='mx-0.5'>{key}级</span>的有<span className='mx-0.5'>{value.count}</span>个，可查询到的有
               </p>
@@ -60,6 +51,15 @@ export default async function LikeForum({method,id}: RequestProps2) {
               </ul>
             </div>
           ))}
+        {data.plain.length !== 0 &&
+          <p>此外关注的贴吧有：{data.plain.map(
+            (item) => {
+              return (
+                <span className='mx-1 font-bold' key={item}>{item}吧</span>
+              )
+            }
+          )}</p>
+        }
       </div>
     )
 }

@@ -1,0 +1,42 @@
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  flex-grow: 1;
+  margin: 1rem;
+  border: #e0e1e6 0.125rem solid;
+  background: #f6f5f4;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease;
+  .tech-item-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    width: 100%;
+    svg,img {
+      max-width: 50%;
+      max-height: 80%;
+    }
+  }
+  .tech-item-name {
+    background: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #60646c;
+    width: 100%;
+    border-top: inherit;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    p {
+      display: inline;
+    }
+  }
+}
+
