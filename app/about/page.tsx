@@ -16,10 +16,6 @@ export default function About() {
         <TechItem svg={<PostgreSQLSVG />} name={"PostgreSQL"} href={"https://www.postgresql.org/"}/>
         <TechItem svg={<AdobeSVG />} name={"React Aria"} href={"https://react-spectrum.adobe.com/react-aria/index.html"}/>
         <TechItem svg={<AuthJsSVG />} name={"Auth.js"} href={"https://authjs.dev/"}/>
-
-
-
-
       </div>
 
 

@@ -1,7 +1,7 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import NavBar from "@custom/NavBar";
-import { Ubuntu, Ubuntu_Mono } from 'next/font/google'
+// import { Ubuntu, Ubuntu_Mono } from 'next/font/google'
 import AppProviders from "./_providers";
 
 // const geistSans = localFont({
@@ -14,17 +14,17 @@ import AppProviders from "./_providers";
 //   variable: "--font-geist-mono",
 //   // weight: "100 900",
 // });
-const ubuntu = Ubuntu({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-ubuntu',
-})
-
-const ubuntuMono = Ubuntu_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-ubuntu-mono',
-})
+// const ubuntu = Ubuntu({
+//   subsets: ['latin'],
+//   weight: ['300', '400', '500', '700'],
+//   variable: '--font-ubuntu',
+// })
+//
+// const ubuntuMono = Ubuntu_Mono({
+//   subsets: ['latin'],
+//   weight: ['400', '700'],
+//   variable: '--font-ubuntu-mono',
+// })
 
 
 export const metadata: Metadata = {

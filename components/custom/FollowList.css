@@ -1,0 +1,47 @@
+.follow-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.6rem;
+  margin: 1rem 5% 0;
+  justify-items: center;
+  align-items: center;
+
+}
+
+.user-item {
+  display: block;
+  width: 90%;
+  height: 5rem;
+  border: #3f3f46 1px solid;
+  border-radius: 0.2rem;
+  overflow: clip;
+  div {
+    display: grid;
+    grid-template-rows: 3.3rem 1fr;
+    grid-template-columns: 5rem 1fr;
+    column-gap: 0.2rem;
+    img {
+      grid-row: span 2;
+      height: 100%;
+    }
+    p {
+      /*display: block;*/
+      height: 100%;
+      align-content: center;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis; /* 显示省略号 */
+      /*overflow: hidden; !* 隐藏溢出的内容 *!*/
+      word-break: break-word; /* 防止长单词或 URL 破坏布局 */
+    }
+    p.user-item-name {
+      font-size: 1rem;
+      -webkit-line-clamp: 2;
+    }
+    p.user-item-name_show {
+      font-size: 0.7rem;
+      -webkit-line-clamp: 1;
+      color: #5f6368;
+    }
+  }
+}

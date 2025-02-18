@@ -1,7 +1,6 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
 
 export async function UserPostForm(data: FormData) {
   if(data.get('id') === '') redirect('/userpost');
@@ -16,4 +15,9 @@ export async function LikeForumForm(data: FormData) {
 export async function ProfileForm(data: FormData) {
   if(data.get('id') === '') redirect('/profile');
   redirect(`/profile/${data.get('method')}/${data.get('id')}`)
+}
+
+export async function FollowForm(data: FormData) {
+  if(data.get('id') === '') redirect('/follow');
+  redirect(`/follow/${data.get('method')}/${data.get('id')}`)
 }
