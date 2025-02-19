@@ -21,3 +21,8 @@ export async function FollowForm(data: FormData) {
   if(data.get('id') === '') redirect('/follow');
   redirect(`/follow/${data.get('method')}/${data.get('id')}`)
 }
+
+export async function FanForm(data: FormData) {
+  if(data.get('id') === '') redirect('/fan');
+  redirect(`/fan/${data.get('method')}/${data.get('id')}`)
+}

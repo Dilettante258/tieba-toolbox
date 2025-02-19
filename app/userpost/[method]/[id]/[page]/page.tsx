@@ -11,7 +11,7 @@ export default function UserPostContentPage({ params:{method,id,page} }: { param
     redirect('/userpost');
   }
   return (
-    <div className="main-container justify-center">
+    <div className="main-container justify-start">
       <h1>用户回复贴查询</h1>
       <TripleSelectInput action={UserPostForm}/>
       <p className="page-info">当前正在查询用户<span>{id}</span>的回复贴，当前是第<span>{page}</span>页</p>

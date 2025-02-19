@@ -10,7 +10,7 @@ function NavBar() {
   const pathname = usePathname()
   return (
     <div className="site-header">
-      <h3 onClick={() => window.location.href = '/'}>着信工具箱</h3>
+      <h3 onClick={() => window.location.href = '/'}>ToEasy</h3>
       <ul>
         <li data-active={pathname==='/'}><Link href="/">首页</Link></li>
         <li data-active={pathname==='/help'}><Link href='/help'>使用说明</Link></li>

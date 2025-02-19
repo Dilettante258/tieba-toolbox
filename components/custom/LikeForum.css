@@ -1,6 +1,6 @@
 .forums-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.6rem;
   margin-top: 1rem;
 }
@@ -13,7 +13,6 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   transition: background-color 0.3s ease;
-  /*width: 21rem;*/
 }
 
 .forum-item:hover {
@@ -48,7 +47,6 @@
 
 
 .forum-item-info {
-
   h4 {
     font-size: 22px;
     display: block;
@@ -81,6 +79,13 @@
   .forum-item-info {
     grid-column: span 2 / span 2;
   }
+  .forum-name {
+    font-size: 1.2rem;
+  }
+  .forum-level-p{
+    font-size: 0.6rem;
+  }
+
 }
 
 @media (max-device-width: 320px) {
@@ -94,6 +99,8 @@
     font-size: 20px;
   }
 }
+
+
 
 .forums-list-2 {
   list-style: circle inside;

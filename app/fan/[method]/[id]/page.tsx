@@ -1,8 +1,8 @@
 import TripleSelectInput from "@custom/TripleSelectInput";
 import {redirect} from "next/navigation";
-import {FollowForm, LikeForumForm} from "@/app/actions";
+import {FanForm} from "@/app/actions";
 import {type RequestProps2} from "@type/common";
-import FollowList from "@custom/FollowList";
+import FanList from "@custom/FanList";
 
 export default function FollowContentPage({ params:{method,id} }: { params: RequestProps2 }) {
   if (!['uid', 'id', 'un'].includes(method)){
@@ -11,9 +11,9 @@ export default function FollowContentPage({ params:{method,id} }: { params: Requ
   return (
     <div className="main-container justify-start">
       <h1>关注列表查询</h1>
-      <TripleSelectInput action={FollowForm} />
+      <TripleSelectInput action={FanForm} />
       <p className="page-info">当前正在查询用户<span>{id}</span>的关注列表。</p>
-      <FollowList method={method} id={id} />
+      <FanList method={method} id={id} />
     </div>
   );
 }

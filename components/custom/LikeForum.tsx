@@ -2,10 +2,11 @@ import {type Grade, HiddenLikeForum, type LikeForum} from "@utils/types";
 import './LikeForum.css'
 import {RequestProps2} from "@type/common";
 import Image from "next/image";
+import NoData from "@custom/NoData";
+import {getData} from "@utils/constants";
 
 async function getLikeForum({method,id}: RequestProps2) {
-  const res = await fetch(`http://localhost:3001/user/likeForum?method=${method}&id=${id}`)
-  return await res.json() as LikeForum[]|HiddenLikeForum;
+  return await getData('/user/likeForum', {method, id}) as LikeForum[]|HiddenLikeForum;
 }
 
 
@@ -20,8 +21,8 @@ export default async function LikeForum({method,id}: RequestProps2) {
             <Image src={forum.avatar} alt={forum.name} height={100} width={100} className={"forum-avatar shadow-nav"}/>
             <div className='mobile-only mr-auto'>
               <h4 className='forum-name'>{forum.name}</h4>
-              <p><span className='forum-level'>{forum.level_id}</span> {forum.level_name}</p>
-              <p><span>{forum.cur_score}/{forum.levelup_score}</span></p>
+              <p className='forum-level-p'><span className='forum-level'>{forum.level_id}</span> {forum.level_name}</p>
+              <p className='forum-level-p'><span>{forum.cur_score}/{forum.levelup_score}</span></p>
             </div>
             <div className="forum-item-info">
               <div className='pc-only'>
@@ -62,5 +63,7 @@ export default async function LikeForum({method,id}: RequestProps2) {
         }
       </div>
     )
+  else
+    return <NoData />
 }
 

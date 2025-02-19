@@ -173,7 +173,7 @@ export interface RelativeUserList {
     live_id: string;
     display_auth_type: string;
     work_creator_info: string;
-    bazhu_grade: any[] | BazhuGradeClass | string;
+    bazhu_grade?: BazhuGradeClass;
     priv_sets: PrivSets | string;
     intro: string;
     is_followed: string;

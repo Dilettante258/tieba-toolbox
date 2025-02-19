@@ -1,9 +1,15 @@
 .TripleSelectInput {
+  --height: 3rem;
+  --padding: 0.5rem;
+  --border-radius: 0.3rem;
+  --border-color: #D1D5DB;
+  --border-color-focus: #D1D5DB;
+
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   width: fit-content;
-  height: 3rem;
+  height: var(--height);
   color: var(--text-color);
   border-radius: 0.3rem;
   border: #D1D5DB 2px solid;
@@ -19,7 +25,7 @@
 }
 
 .tsi-Select {
-  position: relative;
+    position: relative;
   color: #1f2937;
   border-right: #cdcdcd 2px solid;
   background-color: #e6e6e6;
@@ -28,7 +34,7 @@
     display: flex;
     align-items: center;
     width: 6rem;
-    height: 3rem;
+    height: var(--height);
     background: transparent;
 
     border: none;
@@ -153,7 +159,16 @@
 @media (max-device-width: 768px) {
   .tsi-Input,
   .tsi-TextArea {
-    width: 12rem;
+    width: 60%;
+    font-size: 0.9rem;
+  }
+  .TripleSelectInput {
+    --height: 2.2rem;
+  }
+  .tsi-Select {
+    .tsi-Button {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -161,7 +176,7 @@
 .tsi-Confirm {
   border: none;
   outline: none;
-  width: 3rem;
+  width: var(--height);
   color: #4b5563;
   position: relative;
   svg {

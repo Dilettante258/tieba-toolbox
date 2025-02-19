@@ -3,6 +3,7 @@ import './UserPost.css'
 import {AlignVerticalSpaceAround} from "lucide-react";
 import {type RequestProps1} from "@type/common";
 import {getData} from "@utils/constants";
+import NoData from "@custom/NoData";
 
 
 async function getUserPost({method,id,page}: RequestProps1) {
@@ -61,5 +62,7 @@ export default async function UserPostList({method,id,page}: RequestProps1) {
       ))}
     </div>
   )
+  else
+    return <NoData />
 }
 

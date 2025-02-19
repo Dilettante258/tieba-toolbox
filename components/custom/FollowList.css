@@ -56,7 +56,9 @@
   img {
     grid-row: span 2;
     height: 100%;
+    width: 100%;
     border-radius: inherit;
+    object-fit: fill;
   }
   p {
     height: 100%;
