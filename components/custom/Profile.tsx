@@ -1,13 +1,14 @@
 import {CondenseProfile, Manager} from "@utils/types";
-import './Profile.css'
+import styles from './Profile.module.css'
 import {type RequestProps2} from "@type/common";
 
 import Image from "next/image";
 import {getData} from "@utils/constants";
+import { type ErrorRes, isErrorData} from "@utils/typeTools";
+import NoData from "@custom/NoData";
 
-
-async function getProfileData({method,id}: RequestProps2):Promise<CondenseProfile> {
-  return await getData('/user/condenseProfile', {method, id}) as CondenseProfile;
+async function getProfileData({method,id}: RequestProps2) {
+  return await getData('/user/condenseProfile', {method, id}) as CondenseProfile|ErrorRes;
 }
 
 const Male = () => {
@@ -26,23 +27,24 @@ const Female = () => {
 
 export default async function Profile({method, id}: RequestProps2) {
   const data = await getProfileData({method, id});
-  if (data) {
+  if (data&&!isErrorData(data)){
     const vipTime = new Date(data.vip.expireTime * 1000)
+    const avatarTime = new Date(parseInt(data.portrait.slice(data.portrait.lastIndexOf('=')+1))*1000)
     return (
-      <div className="profile-container">
+      <div className={styles.container}>
         <Image
           src={`http://gss0.baidu.com/7Ls0a8Sm2Q5IlBGlnYG/sys/portraith/item/${data.portrait}`}
           width={160} height={160}
-          alt='' className='user-avatar'/>
-        <div className='profile-title'>
+          alt='' className={styles.userAvatar}/>
+        <div className={styles.profileTitle}>
           {data.sex === 1 ? <Male/> : <Female/>}
-          <span className='user-uname'>{data.name}</span>
-          <span className='user-tbage'>{data.tbAge}</span>
+          <span className={styles.userUname}>{data.name}</span>
+          <span className={styles.userTbage}>{data.tbAge}</span>
         </div>
 
-        <div className='basic-info'>
-          <h3 className='user-info-title'>基本信息</h3>
-          <div className='user-info-grid'>
+        <div>
+          <h3 className={styles.userInfoTitle}>基本信息</h3>
+          <div className={styles.userInfoGrid}>
             <div>百度ID：{data.id}</div>
             <div>主页UID：{data.uid}</div>
             <div>昵称：{data.nickname}</div>
@@ -51,14 +53,15 @@ export default async function Profile({method, id}: RequestProps2) {
             <div>关注数：{data.follow}</div>
             <div>回帖数：{data.postNum}</div>
             <div>点赞数：{data.totalAgreeNum}</div>
+            <div className="col-span-2">头像上传时间：{avatarTime.toLocaleString()}</div>
           </div>
         </div>
         {
           data.vip.level!=="0" &&
           (
-            <div className='vip-info'>
-              <h3 className='user-info-title'>基本信息</h3>
-              <div className='user-info-grid'>
+            <div>
+              <h3 className={styles.userInfoTitle}>基本信息</h3>
+              <div className={styles.userInfoGrid}>
                 <div>会员等级：{data.vip.level}</div>
                 <div>会员类型：{data.vip.status}</div>
                 <div>过期时间：{vipTime.toLocaleString()}
@@ -73,11 +76,11 @@ export default async function Profile({method, id}: RequestProps2) {
           )
         }
         {
-          Object.keys(data.manager).length !== 0 &&
+          Object.keys(data.manager??{}).length !== 0 &&
           (
-            <div className='info-row'>
-              <h3 className='user-info-title'>吧务信息</h3>
-              <div className='user-info-grid'>
+            <div>
+              <h3 className={styles.userInfoTitle}>吧务信息</h3>
+              <div className={styles.userInfoGrid}>
                 {
                   Object.keys(data.manager).map((key) => {
                     return (
@@ -94,6 +97,6 @@ export default async function Profile({method, id}: RequestProps2) {
         }
       </div>
     )
-  }
+  } else return <NoData/>
 }
 

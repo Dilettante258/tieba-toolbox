@@ -1,4 +1,4 @@
-.site-header {
+.siteHeader {
   width: 100%;
   background: #ffffff;
   height: 3rem;
@@ -6,11 +6,8 @@
   display: flex;
   flex-direction: row;
   font-size: 0.875rem;
-  & h3 {
-    color: #202124;
-    font-size: 1.25rem;
-    margin: auto 2rem;
-  }
+  align-items: center;
+  gap: 0.35rem;
 
   & ul {
     list-style: none;
@@ -18,6 +15,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
     & li {
       margin: 0 1rem;
       color: #5f6368;
@@ -27,6 +25,7 @@
       align-items: center;
       & a {
         display: block;
+        padding: 0.3rem;
       }
     }
     & li:hover {
@@ -58,7 +57,23 @@
   }
 }
 
-.theme-switch {
+.siteLogo {
+  display: flex;
+  color: #202124;
+  font-size: 1.25rem;
+  margin: auto 1.5rem;
+}
+
+.siteLogo img {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+:global(.dark) .siteLogo {
+  color: #ffffff;
+}
+
+.themeSwitch {
   height: 100%;
   width: 3rem;
   margin: auto 0;
@@ -67,12 +82,12 @@
   justify-content: center;
 }
 
-.dark .site-header {
+
+
+
+:global(.dark) .siteHeader {
   background: #121212;
-  border-bottom: 1px solid #5f6368;
-  & h3 {
-    color: #ffffff;
-  }
+  border-bottom: 1px solid #363A3F;
   & ul {
     list-style: none;
     display: flex;
@@ -98,15 +113,74 @@
   }
 }
 
-@media (max-device-width: 768px) {
-  .site-header {
-    height: 2rem;
+@media (max-width: 768px) {
+  .siteHeader {
+    height: 2.5rem;
     font-size: 0.875rem;
-
-    & h3 {
-      font-size: 1rem;
-      margin: auto 0.2rem;
-      white-space: nowrap;
-    }
+    justify-content: space-between;
+    padding: 0 0.75rem;
   }
+  .siteLogo {
+    display: block;
+    flex: 1;
+    font-size: 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 0 0.2rem;
+  }
+
+}
+
+
+
+
+.menu {
+  position: absolute;
+  top: 2.51rem;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 2.51rem);
+  background: #ffffff;
+  z-index: 1000;
+}
+
+:global(.dark) .menu {
+  background: #121212;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  gap: 0.5rem;
+  /*color: #B0B4BA;*/
+}
+
+.menuContent a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-height: 30px;
+  border-radius: 0.1rem;
+  padding: 0.25rem;
+}
+.menuContent a:hover {
+  background-color: #18191B;
+}
+
+.menuContent svg {
+  color: #60646C;
+}
+
+:global(.dark) .menuContent svg {
+  color: #B0B4BA;
+}
+
+
+
+.menuBtn {
+  width: 100%;
+  justify-content: center;
+  border-radius: 0.25rem;
 }

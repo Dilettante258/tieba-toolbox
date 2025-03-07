@@ -1,0 +1,112 @@
+.tutorial h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.tutorial img {
+  max-height: 100px;
+}
+
+.tutorialDescription {
+  font-size: 15px;
+  color: #5e687e;
+  font-weight: bold;
+}
+
+.tutorialDescription svg {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+:global(.dark) .tutorialDescription {
+  color: #ebecf0;
+}
+
+.tutorialList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.tutorialListItem {
+  border: 1px solid #d9dbe3;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.tutorialListItem:hover {
+  background-color: #f1f2f5;
+}
+
+
+:global(.dark) .tutorialListItem:hover {
+  background-color: #16181d;
+}
+
+@media (max-device-width: 768px) {
+  .tutorialList{
+    grid-template-columns: 1fr;
+  }
+}
+
+.languageJson {
+  color:#000000;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+:global(.dark) .languageJson {
+  background-color:#1e1e1e;
+  color: #d4d4d4;
+}
+
+.languageJson :global(.style1) {
+  color:#000000
+}
+.languageJson :global(.style2) {
+  color:#0451A5
+}
+.languageJson :global(.style3) {
+  color:#A31515
+}
+.languageJson :global(.style4) {
+  color:#098658
+}
+.languageJson :global(.style5) {
+  color:#CD3131
+}
+
+.languageJson :global(.line) {
+  display: block;
+}
+
+:global(.dark) .languageJson :global(.style1) {
+  color: #d4d4d4;
+}
+:global(.dark) .languageJson :global(.style2) {
+  color: #9CDCFE;
+}
+:global(.dark) .languageJson :global(.style3) {
+  color: #CE9178;
+}
+:global(.dark) .languageJson :global(.style4) {
+  color: #B5CEA8;
+}
+:global(.dark) .languageJson :global(.style5) {
+  color: #F44747;
+}

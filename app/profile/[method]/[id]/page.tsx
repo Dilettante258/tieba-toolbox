@@ -11,8 +11,7 @@ export default function ProfileContentPage({ params:{method,id} }: { params: Req
     redirect('/profile');
   }
   return (
-    <div className="main-container justify-start">
-      <div className='mt-[-4rem]'></div>
+    <div className="main-container justify-start relative">
       <TripleSelectInput action={ProfileForm}/>
       <Profile method={method} id={id}/>
     </div>

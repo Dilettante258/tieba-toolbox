@@ -2,28 +2,28 @@
 
 import {Button, ListBox, ListBoxItem, Popover, Select, SelectValue} from 'react-aria-components';
 import {Input} from 'react-aria-components';
-import './TripleSelectInput.css';
+import styles from './TripleSelectInput.module.css';
 import {Search} from "lucide-react";
 
 
 export default function TripleSelectInput({action}:{action(formData: FormData):(void | Promise<void>)}) {
  return (
-    <form className='TripleSelectInput' action={action}>
-      <Select name='method' defaultSelectedKey='uid' className="tsi-Select" aria-label='选择查询方式'>
-        <Button  className="tsi-Button" aria-label='展开列表'>
-          <SelectValue defaultValue='uid' className='tsi-SelectValue'/>
+    <form className={styles.TripleSelectInput} action={action}>
+      <Select name='method' defaultSelectedKey='uid' className={styles.tsiSelect} aria-label='选择查询方式'>
+        <Button  className={styles.tsiButton} aria-label='展开列表'>
+          <SelectValue defaultValue='uid' className={styles.tsiSelectValue}/>
           <span aria-hidden="true">▼</span>
         </Button>
-        <Popover className="tsi-Popover">
-          <ListBox className='tsi-ListBox' aria-label='listbox'>
-            <ListBoxItem id='uid' className='tsi-ListBoxItem' aria-label='uid'>UID</ListBoxItem>
-            <ListBoxItem id='id' className='tsi-ListBoxItem' aria-label='id'>ID</ListBoxItem>
-            <ListBoxItem id='un' className='tsi-ListBoxItem' aria-label='username'>用户名</ListBoxItem>
+        <Popover className={styles.tsiPopover}>
+          <ListBox className={styles.tsiListBox} aria-label='listbox'>
+            <ListBoxItem id='uid' className={styles.tsiListBoxItem} aria-label='uid'>UID</ListBoxItem>
+            <ListBoxItem id='id' className={styles.tsiListBoxItem} aria-label='id'>ID</ListBoxItem>
+            <ListBoxItem id='un' className={styles.tsiListBoxItem} aria-label='username'>用户名</ListBoxItem>
           </ListBox>
         </Popover>
       </Select>
-      <Input  className='tsi-Input' name='id' placeholder='输入点什么吧……'  />
-      <Button className='tsi-Confirm' aria-label='搜索' type='submit'>
+      <Input  className={styles.tsiInput} name='id' placeholder='输入点什么吧……'  />
+      <Button className={styles.tsiConfirm} aria-label='搜索' type='submit'>
         <Search />
       </Button>
     </form>

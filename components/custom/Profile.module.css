@@ -1,9 +1,22 @@
-.profile-container {
-  max-width: 58vw;
-  margin: 0 auto;
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32rem;
+  padding: 1rem;
+  border: #5f6368 1px solid;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.user-info-title {
+@media (max-device-width: 768px) {
+  .container {
+    width: 95vw;
+  }
+}
+
+.userInfoTitle {
   font-size: 19px;
   display: block;
   margin-bottom: 0.8rem;
@@ -11,7 +24,7 @@
   border-bottom: #3f3f46 2px solid;
 }
 
-.user-avatar {
+.userAvatar {
   width: 10rem;
   height: 10rem;
   border-radius: 100%;
@@ -19,7 +32,7 @@
   margin: 0 auto;
 }
 
-.profile-title {
+.profileTitle {
   display: grid;
   grid-template-columns: 0.7fr 1fr 0.7fr;
   align-items: center;
@@ -28,7 +41,7 @@
   padding: 0.5rem 0;
 
 }
-.user-uname {
+.userUname {
   font-size: 1.5rem;
   font-weight: 700;
   border-left: #f2f2f2 2px solid;
@@ -37,17 +50,17 @@
 
 
 
-.user-tbage {
+.userTbage {
   font-size: 1.2rem;
   color: #3f3f46;
 }
 
-.user-info-grid {
+.userInfoGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: #3f3f46;
 }
 
-.dark .user-info-grid {
+:global(.dark) .userInfoGrid {
   color: var(--text-color);
 }

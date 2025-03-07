@@ -1,15 +1,15 @@
 'use client'
 
 import {useTheme} from "next-themes";
-import './ThemeSwitch.css'
+import clsx from "clsx";
 
-export default function ThemeSwitch() {
+export default function ThemeSwitch({className}:{className?: string}) {
   const {setTheme, resolvedTheme} = useTheme();
 
   return (
     <label
       htmlFor="themeToggle"
-      className="themeToggle st-sunMoonThemeToggleBtn"
+      className={clsx("themeToggle st-sunMoonThemeToggleBtn", className)}
     >
       <input type="checkbox" id="themeToggle" className="themeToggleInput"
              onChange={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}/>

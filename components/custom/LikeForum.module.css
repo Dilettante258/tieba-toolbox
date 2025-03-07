@@ -1,4 +1,4 @@
-.forums-list {
+.forumsList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.6rem;
@@ -7,7 +7,7 @@
 
 
 
-.forum-item {
+.forumItem {
   display: flex;
   border: 1px solid #d9dbe3;
   border-radius: 0.5rem;
@@ -15,15 +15,15 @@
   transition: background-color 0.3s ease;
 }
 
-.forum-item:hover {
+.forumItem:hover {
   background-color: #f1f2f5;
 }
 
-.dark .forum-item:hover {
+:global(.dark) .forumItem:hover {
   background-color: #16181d;
 }
 
-.forum-avatar {
+.forumAvatar {
   width: 5rem;
   height: 5rem;
   border-radius: 1.5rem;
@@ -31,7 +31,7 @@
 }
 
 @media (max-device-width: 768px) {
-  .forum-avatar {
+  .forumAvatar {
     width: 4rem;
     height: 4rem;
     border-radius: 1rem;
@@ -39,72 +39,70 @@
   }
 }
 
-.shadow-nav, .shadow-none {
-  box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
-  --tw-shadow: 0 16px 32px -16px rgba(0, 0, 0, .1), 0 0 0 1px rgba(0, 0, 0, .1);
-  --tw-shadow-colored: 0 16px 32px -16px var(--tw-shadow-color), 0 0 0 1px var(--tw-shadow-color);
-}
 
 
-.forum-item-info {
-  h4 {
-    font-size: 22px;
-    display: block;
-  }
-  .forum-level {
+.forumItemInfo {
+
+  .forumLevel {
     font-weight: bold;
     margin: 0 3px;
   }
 }
 
-.forum-slogan::before {
+.forumItemInfo h4 {
+  font-size: 22px;
+  display: block;
+}
+
+.forumSlogan::before {
   content: "> ";
   font-weight: bold;
 }
-.forum-slogan {
+.forumSlogan {
   font-size: 15px;
 }
 
 @media (max-device-width: 768px) {
-  .forums-list {
+  .forumsList {
     grid-template-columns: 1fr 1fr;
   }
-  .forum-item {
+  .forumItem {
     display: grid;
     grid-template-columns: 0.7fr 1fr;
     width: 100%;
     flex-wrap: wrap;
   }
 
-  .forum-item-info {
+  .forumItemInfo {
     grid-column: span 2 / span 2;
   }
-  .forum-name {
+  .forumName {
     font-size: 1.2rem;
   }
-  .forum-level-p{
+  .forumLevelP{
     font-size: 0.6rem;
   }
 
 }
 
 @media (max-device-width: 320px) {
-  .forums-list {
+  .forumsList {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-device-width: 1024px) {
-  .forum-name {
+  .forumName {
     font-size: 20px;
   }
 }
 
 
 
-.forums-list-2 {
+.forumsList2 {
   list-style: circle inside;
-  li {
-    font-weight: 600;
-  }
+}
+
+.forumsList2 li {
+  font-weight: 600;
 }

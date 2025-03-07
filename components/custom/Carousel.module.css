@@ -1,0 +1,115 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.processBar {
+  z-index: 10;
+  display: flex;
+  max-width: 596px;
+  justify-content: center;
+  gap: 0.625rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.item {
+  height: 0.375rem;
+  width: 90px;
+  cursor: pointer;
+  border-radius: 0.125rem;
+  background-color: #f0f0f3;
+}
+
+.processBar .item[data-active="true"]:nth-child(1) {
+  background-color: #8ec8f6;
+}
+
+.processBar .item[data-active="true"]:nth-child(2) {
+  background-color: #f5ae73;
+}
+
+.processBar .item[data-active="true"]:nth-child(3) {
+  background-color: #8eceaa;
+}
+
+:global(.dark) .processBar .item[data-active="true"]:nth-child(1) {
+  background-color: #205D9E;
+}
+
+:global(.dark) .processBar .item[data-active="true"]:nth-child(2) {
+  background-color: #7E451D;
+}
+
+:global(.dark) .processBar .item[data-active="true"]:nth-child(3) {
+  background-color: #28684A;
+}
+
+.container div[data-direction="right"] div {
+  animation: easeInFromRight 0.5s ease-in-out;
+}
+
+.container div[data-direction="left"] div {
+  animation: easeInFromLeft 0.5s ease-in-out;
+}
+
+
+
+@keyframes easeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes easeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card {
+  width: 22.5rem;
+  height: 28.75rem;
+  border-radius: 1.5rem;
+}
+
+.card1 {
+  composes: card;
+  background-color: #E6F4FE;
+}
+
+.card2 {
+  composes: card;
+  background-color: #FFEFD6;
+}
+
+.card3 {
+  composes: card;
+  background-color: #E6F6EB;
+}
+
+
+:global(.dark) .container {
+  .card1 {
+    background-color: #205D9E;
+  }
+  .card2 {
+    background-color: #331E0B;
+  }
+  .card3 {
+    background-color: #132D21;
+  }
+}
+
