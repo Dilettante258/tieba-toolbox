@@ -48,7 +48,7 @@
   background-color: #16181d;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .tutorialList{
     grid-template-columns: 1fr;
   }

@@ -68,7 +68,7 @@
 /*  }*/
 /*}*/
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .landing-page-content {
     margin: 4rem auto;
     flex-direction: column-reverse;
@@ -76,7 +76,7 @@
 }
 
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .landing-page-content {
     margin: 4rem auto;
     padding: 0 1rem;
@@ -143,7 +143,7 @@
   display: none;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .mobile-only {
     display: initial;
   }

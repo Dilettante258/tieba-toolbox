@@ -30,7 +30,7 @@
   margin: auto 0.2rem auto 0;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .forumAvatar {
     width: 4rem;
     height: 4rem;
@@ -62,7 +62,7 @@
   font-size: 15px;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .forumsList {
     grid-template-columns: 1fr 1fr;
   }
@@ -85,13 +85,13 @@
 
 }
 
-@media (max-device-width: 320px) {
+@media (max-width: 320px) {
   .forumsList {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-device-width: 1024px) {
+@media (max-width: 1024px) {
   .forumName {
     font-size: 20px;
   }

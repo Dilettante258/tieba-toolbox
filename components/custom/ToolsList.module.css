@@ -4,6 +4,13 @@
   gap: 0.5rem
 }
 
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+}
+
 .item {
   display: flex;
   flex-direction: column;
@@ -13,11 +20,17 @@
   border: #363A3F 1px solid;
   color: #EDEEF0;
   border-radius: 10px;
-  width: 242px;
-  height: 226px;
   position: relative;
   overflow: clip;
   padding: 1.25rem;
+}
+
+@media (min-width: 769px) {
+  .item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.08;
+  }
 }
 
 .item h3 {

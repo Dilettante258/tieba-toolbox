@@ -108,7 +108,7 @@ p.userItemNameShow {
   justify-content: center;
 }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .followListWrapper {
     display: flex;
     flex-direction: column;
