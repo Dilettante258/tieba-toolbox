@@ -6,7 +6,7 @@ import clsx from "clsx";
 function Brand() {
   return (
     <div className={styles.section}>
-      <Link href='/changelog' className={styles.news}>
+      <Link href='/about' className={styles.news}>
         <div className={styles.newsTip}>
           <Sparkles size={16}/>
           了解最近更新！

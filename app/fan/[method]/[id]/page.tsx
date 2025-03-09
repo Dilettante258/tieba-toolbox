@@ -10,9 +10,9 @@ export default function FollowContentPage({ params:{method,id} }: { params: Requ
   }
   return (
     <div className="main-container justify-start">
-      <h1>关注列表查询</h1>
+      <h1>粉丝列表查询</h1>
       <TripleSelectInput action={FanForm} />
-      <p className="page-info">当前正在查询用户<span>{id}</span>的关注列表。</p>
+      <p className="page-info">当前正在查询用户<span>{id}</span>的粉丝列表。</p>
       <FanList method={method} id={id} />
     </div>
   );
