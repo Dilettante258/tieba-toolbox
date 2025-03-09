@@ -1,9 +1,7 @@
 "use client"
 import {motion} from "motion/react"
 import {Reducer, useReducer, useRef} from "react";
-import {PanInfo} from "framer-motion";
 import styles from './Carousel.module.css'
-import clsx from "clsx";
 
 type CarouselState = {
   direction: 'left' | 'right';
@@ -40,7 +38,7 @@ function Carousel() {
   // 用于存储拖拽起点的 x 坐标
   const startXRef = useRef(0);
 
-  const handleDrag = (_: PointerEvent, info: PanInfo) => {
+  const handleDrag = (_: PointerEvent, info: any) => {
     const currentX = info.point.x;
 
     // 如果是拖拽的起点（第一次触发 onDrag）
@@ -58,23 +56,13 @@ function Carousel() {
     }
   };
 
-  const handleDragEnd = (event: PointerEvent, info: PanInfo) => {
+  const handleDragEnd = (event: PointerEvent, info: any) => {
     const currentX = info.point.x;
-
-    console.log('Current Point:', currentX);
-
-    // 比较当前 x 坐标是否小于最远距离
     const dragDistance = currentX - startXRef.current;
-    console.log('Drag Distance:', dragDistance);
-    console.log('Farthest Distance:', farthestXRef.current);
-    console.log('Is current X less than farthest X?(Can Check)', Math.abs(dragDistance) >= (farthestXRef.current - 5));
     if (Math.abs(dragDistance) >= (farthestXRef.current - 5) && farthestXRef.current > 100) {
       dispatch({type: dragDistance > 0 ? 'left' : 'right'})
     }
-
-    // 重置状态
     startXRef.current = 0;
-
   };
 
 
