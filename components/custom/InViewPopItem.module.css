@@ -1,0 +1,50 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1.5rem;
+  column-gap: 0;
+}
+
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+
+}
+
+.item h3 {
+  color: #1C2024;
+  text-align: center;
+  font-size: 25px;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+.item p {
+  color: #60646c;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.icon {
+  border-radius: 6px;
+  border: #e0e1e6 1px solid;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  padding: 0.5rem;
+  background-color: white;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.icon svg {
+  width: 2rem;
+  height: 2rem;
+}

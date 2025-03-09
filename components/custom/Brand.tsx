@@ -5,7 +5,7 @@ import {ArrowRight, ArrowUpRight, Sparkles} from "lucide-react";
 import clsx from "clsx";
 function Brand() {
   return (
-    <section className={styles.section}>
+    <div className={styles.section}>
       <Link href='/changelog' className={styles.news}>
         <div className={styles.newsTip}>
           <Sparkles size={16}/>
@@ -33,7 +33,7 @@ function Brand() {
         <Link href='/sign' className={clsx(buttonStyles.solid, buttonStyles.large)}>免费注册<ArrowRight /></Link>
         <Link href='/help' className={clsx(buttonStyles.bordered, buttonStyles.large)}>阅读文档<ArrowUpRight /></Link>
       </div>
-    </section>
+    </div>
   )
 }
 

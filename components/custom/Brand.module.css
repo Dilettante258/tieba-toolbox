@@ -5,8 +5,6 @@
   margin: 1rem 5% 0;
   gap: 1rem;
   min-height: 20rem;
-  width: 100%;
-  padding: 2rem 0;
 }
 
 .news{
@@ -42,16 +40,12 @@
   padding: 4px 20px 4px 16px;
 }
 
-
-
-
 .textContainer {
   font-size: 2.4rem;
 }
 
 .textContainer span {
   display: inline-block;
-
   opacity: 0;
   animation: staggerUp 0.4s ease-out forwards;
 }

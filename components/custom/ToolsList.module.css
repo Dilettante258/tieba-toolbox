@@ -1,0 +1,20 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  background-color: #212225;
+  border: #363A3F 1px solid;
+  color: white;
+  border-radius: 10px;
+  width: 242px;
+  height: 226px;
+  position: relative;
+  overflow: clip;
+}

@@ -14,30 +14,31 @@ import Image from "next/image";
 function NavBar() {
   const pathname = usePathname()
   const MenuRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(() =>
+    typeof window === 'undefined' ? 1000 : window.innerWidth);
   const [showMenu, setShowMenu] = useState(false);
 
-  const [width, setWidth] = useState(700);
+
 
   useLayoutEffect(() => {
-    setWidth(window.innerWidth);
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
+  const handleMenuToggle = () => {
+    setShowMenu(prev => !prev);
+  };
 
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  function handleMenuButton() {
-    setShowMenu(!showMenu);
-  }
-
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
 
   return (
     <>
@@ -65,7 +66,7 @@ function NavBar() {
                 <div className={styles.themeSwitch}>
                     <ThemeSwitch/>
                 </div>
-            </> : <div onClick={handleMenuButton} className={clsx(buttonStyles.light, buttonStyles.icon, 'justify-self-end')}>
+            </> : <div onClick={handleMenuToggle} className={clsx(buttonStyles.light, buttonStyles.icon, 'justify-self-end')}>
 
               {!showMenu ?
                 <Menu /> : <X />}
@@ -78,13 +79,13 @@ function NavBar() {
         showMenu &&
           <div className={styles.menu} ref={MenuRef} id="my-Menu">
               <div className={styles.menuContent}>
-                  <Link href='/sign' className={clsx(buttonStyles.flat, buttonStyles.small, styles.menuBtn)}>登录</Link>
-                  <Link href='/sign' className={clsx(buttonStyles.bordered, buttonStyles.small, styles.menuBtn)}>注册</Link>
+                  <Link href='/sign' className={clsx(buttonStyles.flat, buttonStyles.small, styles.menuBtn)} onClick={closeMenu}>登录</Link>
+                  <Link href='/sign' className={clsx(buttonStyles.bordered, buttonStyles.small, styles.menuBtn)} onClick={closeMenu}>注册</Link>
                   <div className='flex items-center w-full p-1'>
                       <Palette className='pr-1' size={20}/>主题
                       <ThemeSwitch className='ml-auto justify-self-end'  />
                   </div>
-                  <div onClick={() => setShowMenu(false)} className='flex flex-col gap-3'>
+                  <div onClick={closeMenu} className='flex flex-col gap-3'>
                       <Link href='/' ><House className='pr-1' size={20} />主页</Link>
                       <Link href='/about'><Book className='pr-1' size={20}/>文档</Link>
                       <Link href='/help'><BadgeHelp className='pr-1' size={20}/>帮助</Link>
@@ -92,8 +93,6 @@ function NavBar() {
               </div>
           </div>
       }
-
-
     </>
   )
 }

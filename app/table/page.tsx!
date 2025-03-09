@@ -143,7 +143,7 @@ export default function ExampleApp() {
   const hasAtLeast4Items = items.length >= 4;
   useEffect(() => {
     if (hideOnScroll) {
-      hideOnScroll.style.opacity = isScrolled || !hasAtLeast4Items ? '0' : '1';
+      // hideOnScroll.style.opacity = isScrolled || !hasAtLeast4Items ? '0' : '1';
     }
   }, [isScrolled, hasAtLeast4Items]);
 
@@ -171,7 +171,7 @@ export default function ExampleApp() {
 
 
       <div className="grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1.1fr_auto_auto_1fr_auto] gap-2 items-end">
-        <SearchField aria-label="Search" value={search} onChange={setSearch} className="col-span-3 sm:col-span-1" placeholder="Search..." />
+        <SearchField aria-label="Search" value={search} onChange={setSearch} className="col-span-3 sm:col-span-1" defaultValue={"placeholder=\"Search...\""} />
         <DialogTrigger>
           <TooltipTrigger>
             <Button aria-label="Filters" variant="secondary" className="w-9 h-9 flex-shrink-0 p-0 relative">
