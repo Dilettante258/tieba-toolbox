@@ -11,10 +11,35 @@
   gap: 0.5rem;
   background-color: #212225;
   border: #363A3F 1px solid;
-  color: white;
+  color: #EDEEF0;
   border-radius: 10px;
   width: 242px;
   height: 226px;
   position: relative;
   overflow: clip;
+  padding: 1.25rem;
+}
+
+.item h3 {
+  font-size: 1.25rem;
+}
+
+
+.content * {
+  margin-bottom: 1rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.bgSvg {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 10rem;
+  height: 10rem;
+  opacity: 10%;
+  color: #43484e;
 }

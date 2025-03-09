@@ -70,7 +70,37 @@ html, body {
   }
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 8px 0;
+  width: 80%;
+  flex-grow: 1;
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .page-info {
+    margin: -1rem 0;
+    text-align: center;
+    span{
+      margin: 0 3px;
+    }
+  }
+}
 
+@media (max-width: 768px) {
+  .main-container {
+    width: 95%;
+    gap: 1.2rem;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
 
 
 

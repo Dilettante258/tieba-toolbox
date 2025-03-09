@@ -1,12 +1,13 @@
 'use client'
 
-import {useEffect, useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 
-import { animate, hover, inView, stagger} from 'motion';
+import { animate, inView, stagger} from 'motion';
 import styles from './ToolsList.module.css'
 import {Rows3} from "lucide-react";
 import clsx from "clsx";
 import { motion, useMotionValue, useTransform } from "motion/react";
+import Link from "next/link";
 
 function useElementDimensions(
   ref: React.RefObject<HTMLDivElement | null>
@@ -30,35 +31,48 @@ function useElementDimensions(
   return [size, measure]
 }
 
-function ToolsItem({icon, title, description}: { icon: React.ReactNode, title: string, description: string }) {
+function ToolsItem({icon, title, description, href}: { icon: React.ReactNode, title: string, description: string,  href: string}) {
   const ref = useRef<HTMLDivElement>(null)
-  const [{ width, height, top, left }, measure] = useElementDimensions(ref)
+  const [{top, left }, measure] = useElementDimensions(ref)
+  const useHoverBack = useMotionValue(false)
   const mouseX = useMotionValue(Infinity)
   const mouseY = useMotionValue(Infinity)
   const background = useTransform(()=>
-    `radial-gradient(200px at ${mouseX.get()-left}px ${mouseY.get()-top}px, rgba(142, 78, 198, 0.125), transparent 80%)`
+    useHoverBack.get() ? `radial-gradient(200px at ${mouseX.get()-left}px ${mouseY.get()-top}px, rgba(142, 78, 198, 0.125), transparent 80%)`: ''
   )
+  function addClassName(node: React.ReactNode,className: string) {
+    if (React.isValidElement(node)) {
+      return React.cloneElement(node, {
+        // @ts-ignore
+        className: clsx(node.props.className, className) as string,
+      });
+    }
+  }
 
 
   return (
-    <div className={clsx(styles.item, 'feature-item')}
+    <Link className={clsx(styles.item, 'feature-item')} href={href}
+         onPointerEnter={(e) => {
+           mouseX.set(e.clientX, false);
+           mouseY.set(e.clientY, true);
+           useHoverBack.set(true)
+         }}
          onPointerMove={(e) => {
-           mouseX.set(e.clientX, false)
-           mouseY.set(e.clientY, true)
-           console.log(mouseX.get(),mouseY.get())
+           mouseX.set(e.clientX, false);
+           mouseY.set(e.clientY, true);
+           console.log(useHoverBack.get())
          }}
          onPointerOut={()=>{
-           console.log('111')
-           mouseX.set(10000000);
-           mouseY.set(10000000);
-           // background.set('radial-gradient(200px at 0px 0px, rgba(142, 78, 198, 0.125), transparent 80%)')
+           useHoverBack.set(false)
+           console.log(background.get());
          }}
     >
-      <div className={styles.icon}>
-        {icon}
+      {addClassName(icon, styles.bgSvg)}
+      <div className={styles.content}>
+        {addClassName(icon, styles.icon)}
+        <h3>{title}</h3>
+        <p>{description}</p>
       </div>
-      <h3>{title}</h3>
-      <p>{background.get()}</p>
       <motion.div ref={ref}
                   style={{
                     background: background.get(),
@@ -71,7 +85,7 @@ function ToolsItem({icon, title, description}: { icon: React.ReactNode, title: s
                   onPointerMove={() => measure()}
 
       />
-    </div>
+    </Link>
   )
 }
 
@@ -84,21 +98,16 @@ function ToolsList() {
       animate('.feature-item', { opacity: [0, 1], y: [100, 0] }, { delay: stagger(0.15, { from: "first" }) })
 
     })
-    hover('.feature-item', (element, startEvent) => {
-      console.log("Hover started on", element)
-      console.log("At", startEvent.clientX, startEvent.clientY)
-    })
   }, []);
 
 
   return (
     <div className={clsx(styles.container,'feature-list')}>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
-      <ToolsItem icon={<Rows3 />} title='Test' description='Test Test'/>
+      <ToolsItem icon={<Rows3 />} title='发言查询' description='查询用户发言' href='/userpost' />
+      <ToolsItem icon={<Rows3 />} title='关注查询' description='查询用户关注了哪些用户' href='/follow' />
+      <ToolsItem icon={<Rows3 />} title='粉丝查询' description='查询用户的粉丝' href='/fan' />
+      <ToolsItem icon={<Rows3 />} title='关注贴吧查询' description='查询用户关注了哪些贴吧' href='/likeForum' />
+      <ToolsItem icon={<Rows3 />} title='个人资料查询' description='查询用户个人资料' href='/userpost' />
     </div>
   )
 }
