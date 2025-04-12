@@ -16,10 +16,15 @@
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 2px;
   border-radius: 2px;
   position: relative;
   transition: background-color 0.8s ease;
+  border-bottom: #D1D5DB 1px solid;
+  gap: 0.2rem;
 }
 
 .post:hover {
@@ -29,16 +34,7 @@
 :global(.dark) .post:hover {
   background-color: #16181d;
 }
-.post::after {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  height: 3px;
-  border-bottom: #D1D5DB 1px solid;
 
-  transform: scaleY(50%);
-}
 
 .post:last-child::after {
   display: none;
@@ -80,6 +76,7 @@
   outline: #93c5fd 1px solid;
   border-radius: 10rem;
   transition: all 0.8s ease;
+  align-items: center;
 }
 
 :global(.dark) .tag {

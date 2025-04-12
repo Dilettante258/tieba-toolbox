@@ -1,16 +1,17 @@
 // @ts-check
-// import localesPlugin from "@react-aria/optimize-locales-plugin";
+import localesPlugin from "@react-aria/optimize-locales-plugin";
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  output: 'standalone',
   webpack: (
     config,{ isServer }
   ) => {
-    // if (!isServer) {
-    //   config.plugins.push(localesPlugin.webpack({locales: []}));
-    // }
+    if (!isServer) {
+      config.plugins.push(localesPlugin.webpack({locales: []}));
+    }
     return config
   },
   eslint: {

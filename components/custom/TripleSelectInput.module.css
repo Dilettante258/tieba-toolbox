@@ -1,9 +1,9 @@
-.TripleSelectInput {
+.field {
   --height: 3rem;
   --padding: 0.5rem;
   --border-radius: 0.3rem;
-  --border-color: #D1D5DB;
-  --border-color-focus: #D1D5DB;
+  --border-color: #d1d5db;
+  --border-color-focus: #d1d5db;
 
   display: flex;
   flex-direction: row;
@@ -12,21 +12,30 @@
   height: var(--height);
   color: var(--text-color);
   border-radius: 0.3rem;
-  border: #D1D5DB 2px solid;
+  border: #d1d5db 2px solid;
   /*background: #283542;*/
   overflow: clip;
   backdrop-filter: blur(2px);
+  align-items: center;
 }
 
-:global(.dark).TripleSelectInput {
+.field[data-empty] button.tsiClear {
+  display: none;
+}
+
+.field button {
+  transition: all 0.3s ease-in-out;
+}
+
+:global(.dark).field {
   color: var(--text-color);
   border: #23272f 2px solid;
-  background: #333a45;
+  background: #151515;
 }
 
 .tsiSelect {
   position: relative;
-  color: #1f2937;
+  color: #13161a;
   border-right: #cdcdcd 2px solid;
   background-color: #e6e6e6;
 }
@@ -70,7 +79,6 @@
   font-size: 0.857rem;
 }
 
-
 :global(.dark) .tsiSelect {
   position: relative;
   color: #e6e6e6;
@@ -78,7 +86,7 @@
   background-color: #1f2937;
 }
 
-.tsiPopover[data-trigger=Select] .tsiListBox {
+.tsiPopover[data-trigger="Select"] .tsiListBox {
   display: block;
   width: 6rem;
   max-height: inherit;
@@ -90,7 +98,7 @@
   padding: 4px;
 }
 
-.tsiPopover[data-trigger=Select] .tsiListBoxItem {
+.tsiPopover[data-trigger="Select"] .tsiListBoxItem {
   padding: 0.286rem 0.571rem 0.286rem 0.571rem;
   border-radius: 4px;
   color: #334155;
@@ -113,7 +121,7 @@
   }
 }
 
-.tsiPopover[data-trigger=Select] {
+.tsiPopover[data-trigger="Select"] {
   &[data-entering] {
     animation: popover-slide 200ms;
   }
@@ -123,7 +131,7 @@
   }
 }
 
-:global(.dark) .tsiPopover[data-trigger=Select] {
+:global(.dark) .tsiPopover[data-trigger="Select"] {
   .tsiListBox {
     border: #686868 1px solid;
     background-color: #101010;
@@ -142,7 +150,6 @@
   }
 }
 
-
 .tsiInput,
 .tsiTextArea {
   padding: 0.286rem;
@@ -157,8 +164,16 @@
   &[data-focused] {
     outline-offset: -1px;
   }
-}
 
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  &::placeholder {
+    opacity: 0.8;
+  }
+}
 
 @media (max-width: 768px) {
   .tsiInput,
@@ -167,7 +182,7 @@
     font-size: 0.9rem;
   }
 
-  .TripleSelectInput {
+  .field {
     --height: 2.2rem;
   }
 
@@ -178,13 +193,35 @@
 }
 
 
+
+.tsiClear {
+  position: absolute;
+  color: #4b5563;
+  right: 3.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.tsiClear:hover {
+  color: #64748b;
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+
 .tsiConfirm {
   border: none;
   outline: none;
+  height: 100%;
   width: var(--height);
   color: #4b5563;
   position: relative;
+}
 
+.tsiConfirm:hover {
+  color: #64748b;
+  cursor: pointer;
+  background-color: #F1F2F5;
 }
 
 .tsiConfirm svg {

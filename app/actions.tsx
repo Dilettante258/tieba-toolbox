@@ -26,3 +26,8 @@ export async function FanForm(data: FormData) {
   if(data.get('id') === '') redirect('/fan');
   redirect(`/fan/${data.get('method')}/${data.get('id')}`)
 }
+
+export async function UserPostAnalyseForm(data: FormData) {
+  if(data.get('id') === '') redirect('/userPostAnalyse');
+  redirect(`/userPostAnalyse/${data.get('method')}/${data.get('id')}`)
+}

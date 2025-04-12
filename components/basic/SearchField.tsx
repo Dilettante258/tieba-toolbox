@@ -23,7 +23,7 @@ export function SearchField(
       {label && <Label>{label}</Label>}
       <FieldGroup>
         <SearchIcon aria-hidden className="w-4 h-4 ml-2 text-gray-500 dark:text-zinc-400 forced-colors:text-[ButtonText] group-disabled:text-gray-200 dark:group-disabled:text-zinc-600 forced-colors:group-disabled:text-[GrayText]" />
-        <Input className="[&::-webkit-search-cancel-button]:hidden" />
+        <Input className="[&::-webkit-search-cancel-button]:hidden" placeholder="搜索..."/>
         <Button variant="icon" className="mr-1 w-6 group-empty:invisible">
           <XIcon aria-hidden className="w-4 h-4" />
         </Button>

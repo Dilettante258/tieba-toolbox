@@ -2,17 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden; /*修复拖拽时出现滚动条的问题*/
 }
 
-
 .mobile-only {
   display: none;
 }
+
+
+html {
+  --primary: #09090B;
+  --muted-foreground: #09090B;
+  --secondary: #000000;
+}
+
+html.dark  {
+  --primary: #F8FAFC;
+  --muted-foreground: #F8FAFC;
+  --secondary: #000000;
+}
+
+
+
 
 @media (max-width: 768px) {
   .mobile-only {
@@ -24,7 +40,7 @@ html, body {
 }
 
 .typography {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: "Noto Sans SC", sans-serif;
   h1 {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -86,7 +102,7 @@ html, body {
   .page-info {
     margin: -1rem 0;
     text-align: center;
-    span{
+    span {
       margin: 0 3px;
     }
   }
@@ -101,9 +117,6 @@ html, body {
     }
   }
 }
-
-
-
 
 /*ThemeSwitch*/
 .themeToggle {
@@ -187,4 +200,25 @@ html, body {
   100% {
     transform: scale(1);
   }
+}
+
+.flexMain {
+  padding: 0 15%;
+}
+
+@media (max-width: 768px) {
+  .flexMain {
+    margin: 0 1.5rem;
+  }
+}
+
+::highlight(rainbow-color) {
+  display: inline-block;
+  background-color: #6D28D9;
+  margin: 0 2px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: underline wavy #0284C7;
+  text-underline-offset: 3px;
 }

@@ -6,6 +6,7 @@ import clsx from "clsx";
 export default function ThemeSwitch({className}:{className?: string}) {
   const {setTheme, resolvedTheme} = useTheme();
 
+
   return (
     <label
       htmlFor="themeToggle"

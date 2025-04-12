@@ -1,11 +1,9 @@
-import styles from './FollowList.module.css'
-import {RequestProps2} from "@type/common";
-import Image from "next/image";
-import {getData} from "@utils/constants";
-import {FollowRes} from "@type/User";
-import { Info, Link as LinkIcon } from 'lucide-react';
 import NoData from "@custom/NoData";
-import clsx from "clsx";
+import { RequestProps2 } from "@type/common";
+import { FollowRes } from "@type/User";
+import { getData } from "@utils/constants";
+import styles from './FollowList.module.css';
+import { UserCard, UserCardSimple } from './UserCard';
 
 
 async function getFollowData({method,id}: RequestProps2):Promise<FollowRes> {
@@ -26,23 +24,17 @@ export default async function FollowList({method,id}: RequestProps2) {
         <div className={styles.followList}>
           { brilliantList.length > 0 ?
             brilliantList.map((userItem, index: number) => (
-              <div key={index} className={clsx(styles.userItem, styles.userItemSpec)}>
-                <Image src={"http://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/"+userItem.portrait} alt={""} width={80} height={80} />
-                <p className={styles.userItemName}>{userItem.name??userItem.name_show}</p>
-                <p className={styles.userItemNameShow}>{userItem.name_show}</p>
-                <a href={`https://tieba.baidu.com/home/main?id=${userItem.portrait}`} target="_blank" className={styles.userItemLink}><LinkIcon size={12} /></a>
-                <div className={styles.userItemSpecInfo}>
-                  {
-                    Boolean(userItem.new_god_data?.field_name) !== Boolean(userItem.bazhu_grade?.desc) && <Info size={12}/>
-                  }
-                  {
-                    Boolean(userItem.new_god_data?.field_name) && <span>{userItem.new_god_data?.field_name+"领域大神"}</span>
-                  }
-                  {
-                    Boolean(userItem.bazhu_grade?.desc) && <span>{userItem.bazhu_grade.desc}</span>
-                  }
-                </div>
-              </div>
+              <UserCard
+                key={index}
+                avatar={
+                  "http://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/" +
+                  userItem.portrait
+                }
+                username={userItem.name ?? userItem.name_show}
+                nickname={userItem.name_show}
+                category={userItem.new_god_data?.field_name}
+                extraTag={userItem.bazhu_grade?.desc}
+              />
             ))
             :
             <p className='text-left w-3/4'>无</p>
@@ -53,12 +45,12 @@ export default async function FollowList({method,id}: RequestProps2) {
         </h3>
         <div className={styles.followList}>
           {data.map((userItem, index: number) => (
-            <div key={index} className={styles.userItem}>
-              <Image src={"http://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/"+userItem.portrait} alt={""} width={80} height={80} />
-              <p className={styles.userItemName}>{userItem.name??userItem.name_show}</p>
-              <p className={styles.userItemNameShow}>{userItem.name_show}</p>
-              <a href={`https://tieba.baidu.com/home/main?id=${userItem.portrait}`} target="_blank" className={styles.userItemLink}><LinkIcon size={12} /></a>
-            </div>
+            <UserCardSimple
+              key={index}
+              avatar={userItem.portrait}
+              username={userItem.name ?? userItem.name_show}
+              nickname={userItem.name_show}
+            />
           ))}
         </div>
       </div>
