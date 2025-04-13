@@ -61,7 +61,7 @@ function CustomScript() {
   return (
     <Fragment>
       {scripts.map((item, index) => (
-        <Script {...item} />
+        <Script {...item} key={index} />
       ))}
     </Fragment>
   );

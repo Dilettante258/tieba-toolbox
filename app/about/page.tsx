@@ -187,7 +187,11 @@ export default function ProjectCards() {
           </div>
         </div>
       </section>
-
+      <iframe
+        src="https://umami-yzbptegx.sealosbja.site/share/h3VAm5GN50MHgPiZ/www.eztb.org"
+        className="w-full h-[300px]"
+        title="umami"
+      />
       <footer className={styles.footer}>
         <p>© 2023-2025 Dilettante258 · 保留所有权利</p>
       </footer>

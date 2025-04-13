@@ -9,6 +9,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
+
+  "packageManager": "bun@1.2.9",
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@internationalized/date": "^3.5.6",
