@@ -1,0 +1,260 @@
+.card {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  background-color: #1e1e2e;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #e0e0e0;
+}
+
+.header {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2c2c44 0%, #1a1a2e 100%);
+}
+
+.avatarWrapper {
+  margin-right: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6e56cf;
+  box-shadow: 0 0 20px rgba(110, 86, 207, 0.4);
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.username {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gender {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.badgeWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: rgba(110, 86, 207, 0.2);
+  border: 1px solid #6e56cf;
+}
+
+.badgeValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6e56cf;
+}
+
+.badgeIcon {
+  margin-right: 4px;
+}
+
+.badgeLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6e56cf;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  background-color: #252538;
+  border-top: 1px solid #333347;
+  border-bottom: 1px solid #333347;
+}
+
+.statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.statItem > div:nth-child(1) {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.statItem > div:nth-child(2) {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin-top: 4px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #333347;
+}
+
+.content {
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6e56cf;
+  margin: 0 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333347;
+}
+
+.infoTable {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoRow {
+  display: flex;
+  gap: 15px;
+}
+
+.infoCell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoCell > span:nth-child(1) {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin-bottom: 4px;
+}
+
+.infoCell > span:nth-child(2) {
+  font-size: 0.95rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.emoji {
+  margin-right: 4px;
+}
+
+.membershipStatus {
+  background-color: #252538;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.expiryInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.expiryDate {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.expiryRemaining {
+  font-size: 0.9rem;
+  color: #ffb74d;
+  font-weight: 600;
+}
+
+.progressWrapper {
+  margin-top: 10px;
+}
+
+.progressBar {
+  height: 6px;
+  background-color: #333347;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(90deg, #6e56cf 0%, #a78bfa 100%);
+  border-radius: 3px;
+}
+
+.footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #333347;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerLabel {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+}
+
+.footerValue {
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatarWrapper {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .nameWrapper {
+    justify-content: center;
+  }
+
+  .badgeWrapper {
+    justify-content: center;
+  }
+
+  .infoRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

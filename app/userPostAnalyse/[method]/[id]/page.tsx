@@ -77,7 +77,7 @@ function PostListRowVirtualizer({
       const node = parentRef.current;
       node.addEventListener("scroll", () => {
         highlight(search);
-        console.log("scroll");
+        ("scroll");
       });
       return () => {
         node.removeEventListener("scroll", () => {

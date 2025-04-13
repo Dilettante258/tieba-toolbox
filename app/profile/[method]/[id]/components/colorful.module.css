@@ -1,0 +1,238 @@
+.card {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .header {
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    color: white;
+    text-align: center;
+  }
+  
+  .avatarContainer {
+    margin: 0 auto 15px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .userMeta {
+    margin-top: 10px;
+  }
+  
+  .username {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userTags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .genderTag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .scoreTag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: #ffb74d;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .body {
+    padding: 0 20px 20px;
+  }
+  
+  .statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: -30px 0 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px 10px;
+  }
+  
+  .statItem {
+    text-align: center;
+    padding: 5px;
+  }
+
+  .statItem > div:nth-child(1) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .statItem > div:nth-child(2) {
+    font-size: 0.8rem;
+    color: #757575;
+    margin-top: 2px;
+  }
+
+  
+  .section {
+    margin-top: 25px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 15px;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed #e0e0e0;
+  }
+  
+  .infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .infoItem {
+    display: flex;
+    align-items: center;
+  }
+  
+  .infoItem > span:nth-child(1) {
+    margin-right: 8px;
+    font-size: 1.1rem;
+    width: 1.2rem;
+  }
+  
+  .infoItem > span:nth-child(2) {
+    font-size: 0.9rem;
+    color: #757575;
+    width: 6rem;
+  }
+  
+  .infoItem > span:nth-child(3) {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  
+  .membershipInfo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .memberLevel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    margin-right: 15px;
+  }
+  
+  .levelLabel {
+    font-size: 0.7rem;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .levelValue {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+  }
+  
+  .memberDetails {
+    flex: 1;
+  }
+  
+  .memberType {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .expireDate {
+    font-size: 0.9rem;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .remainingDays {
+    color: #ff9800;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+  
+  .adminInfo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .adminIcon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+  }
+  
+  .adminLabel {
+    font-size: 0.9rem;
+    color: #757575;
+    width: 70px;
+  }
+  
+  .adminValue {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 480px) {
+    .statsRow {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .statItem {
+      padding: 8px 5px;
+    }
+  }
+  

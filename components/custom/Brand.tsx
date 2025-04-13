@@ -30,7 +30,7 @@ function Brand() {
         <p className={styles.description}>现代化UI，便捷的操作，丰富的功能，为你带来最好的体验</p>
       </div>
       <div className={styles.btnContainer}>
-        <Link href='/sign' className={clsx(buttonStyles.solid, buttonStyles.large)}>免费注册<ArrowRight /></Link>
+        <Link href='/about' className={clsx(buttonStyles.solid, buttonStyles.large)}>关于本项目<ArrowRight /></Link>
         <Link href='/help' className={clsx(buttonStyles.bordered, buttonStyles.large)}>阅读文档<ArrowUpRight /></Link>
       </div>
     </div>

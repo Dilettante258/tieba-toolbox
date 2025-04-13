@@ -14,7 +14,7 @@ async function getLikeForum({method,id}: RequestProps2) {
 
 export default async function LikeForum({method,id}: RequestProps2) {
   const data = await getLikeForum({method,id});
-  console.log(data)
+  (data)
 
 
   if (Array.isArray(data))

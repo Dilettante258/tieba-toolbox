@@ -1,3 +1,9 @@
+.tutorial {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 .tutorial h3 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -6,13 +12,29 @@
 
 
 .tutorial img {
-  max-height: 100px;
+  margin: 0.5rem auto;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.tutorial p code {
+  background-color: #f0f0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", Courier, monospace;
+}
+
+:global(.dark) .tutorial p code {
+  background-color: #1a213f;
+  color: #d4d4d4;
 }
 
 .tutorialDescription {
   font-size: 15px;
   color: #5e687e;
   font-weight: bold;
+  margin-bottom: 1rem;  
 }
 
 .tutorialDescription svg {
@@ -20,39 +42,7 @@
   margin: 0 4px;
 }
 
-:global(.dark) .tutorialDescription {
-  color: #ebecf0;
-}
 
-.tutorialList {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding: 0.5rem;
-}
-
-.tutorialListItem {
-  border: 1px solid #d9dbe3;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.tutorialListItem:hover {
-  background-color: #f1f2f5;
-}
-
-
-:global(.dark) .tutorialListItem:hover {
-  background-color: #16181d;
-}
-
-@media (max-width: 768px) {
-  .tutorialList{
-    grid-template-columns: 1fr;
-  }
-}
 
 .languageJson {
   color:#000000;

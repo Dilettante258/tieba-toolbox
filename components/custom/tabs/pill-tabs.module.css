@@ -1,0 +1,84 @@
+.tabsContainer {
+  width: 100%;
+  max-width: 600px;
+}
+
+.tabsList {
+  display: flex;
+  gap: 8px;
+  background-color: #f1f5f9;
+  padding: 6px;
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.tabButton:hover:not(.activeTab) {
+  background-color: rgba(203, 213, 225, 0.5);
+}
+
+.activeTab {
+  background-color: white;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: scaleIn 0.3s ease;
+}
+
+.tabContent {
+  padding: 20px 0;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+:global(.dark) .tabsList {
+  background-color: #1e293b;
+}
+
+:global(.dark) .tabButton {
+  color: #94a3b8;
+}
+
+:global(.dark) .tabButton:hover:not(.activeTab) {
+  background-color: rgba(51, 65, 85, 0.5);
+}
+
+:global(.dark) .activeTab {
+  background-color: #2d3748;
+  color: #f1f5f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .tabContent {
+  color: #e2e8f0;
+}

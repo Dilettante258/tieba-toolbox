@@ -3,6 +3,8 @@ import "./globals.css";
 import NavBar from "@custom/NavBar";
 // import { Ubuntu, Ubuntu_Mono } from 'next/font/google'
 import AppProviders from "./_providers";
+import Script from "next/script";
+import { Fragment } from "react";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -50,8 +52,21 @@ export default function RootLayout({
       <NavBar />
       {children}
     </AppProviders>
+    <CustomScript />
     </body>
     </html>
 
   );
+}
+
+
+function CustomScript() {
+  const scripts = JSON.parse(process.env.NEXT_PUBLIC_SCRIPTS || '[]');
+  return (
+    <Fragment>
+    {scripts.map((script: string) => (
+      <Script src={script} key={script} />
+    ))}
+    </Fragment>
+  )
 }

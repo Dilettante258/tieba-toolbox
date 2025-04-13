@@ -100,7 +100,7 @@ function ToolsList() {
 
   useEffect(() => {
     inView('.feature-list', (element) => {
-      console.log("Element2 has entered the viewport")
+      ("Element2 has entered the viewport")
       animate(element, { opacity: [0, 1] }, { duration: 1 })
       animate('.feature-item', { opacity: [0, 1], y: [100, 0] }, { delay: stagger(0.15, { from: "first" }) })
 

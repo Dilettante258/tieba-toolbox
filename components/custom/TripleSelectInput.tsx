@@ -5,7 +5,6 @@ import {
   ListBox,
   ListBoxItem,
   Popover,
-  SearchField,
   Select,
   SelectValue,
 } from "react-aria-components";

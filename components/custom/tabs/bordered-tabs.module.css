@@ -1,0 +1,115 @@
+.tabsContainer {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabsList {
+  display: flex;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tabButton:not(:last-child) {
+  border-right: 1px solid #e2e8f0;
+}
+
+.tabButton:hover {
+  color: #0f172a;
+  background-color: rgba(241, 245, 249, 0.8);
+}
+
+.activeTab {
+  color: #3b82f6;
+  background-color: white;
+}
+
+.indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #3b82f6;
+  animation: rotateIn 0.4s ease;
+}
+
+.tabContent {
+  padding: 24px;
+  background-color: white;
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:global(.dark) .tabsContainer {
+  border-color: #2d3748;
+  background-color: #111827;
+}
+
+:global(.dark) .tabsList {
+  background-color: #1e293b;
+  border-bottom-color: #2d3748;
+}
+
+:global(.dark) .tabButton {
+  color: #94a3b8;
+}
+
+:global(.dark) .tabButton:not(:last-child) {
+  border-right-color: #2d3748;
+}
+
+:global(.dark) .tabButton:hover {
+  color: #e2e8f0;
+  background-color: rgba(30, 41, 59, 0.8);
+}
+
+:global(.dark) .activeTab {
+  color: #60a5fa;
+  background-color: #111827;
+}
+
+:global(.dark) .indicator {
+  background-color: #60a5fa;
+}
+
+:global(.dark) .tabContent {
+  background-color: #111827;
+  color: #e2e8f0;
+}

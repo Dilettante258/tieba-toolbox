@@ -1,0 +1,476 @@
+/* Base styles */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: #111827;
+}
+
+.version {
+  font-family: monospace;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  color: #6b7280;
+}
+
+.projectInfo {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+
+/* Description */
+.description {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.description svg {
+  width: 24px;
+  height: 24px;
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.description p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Section */
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: #111827;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background-color: #e5e7eb;
+  border-radius: 3px;
+}
+
+/* Tech Grid */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.techCard {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.techCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.expanded {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.techHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1rem;
+}
+
+.techIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+}
+
+.techIconWrapper svg {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+}
+
+.techInfo {
+  flex: 1;
+}
+
+.techName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #111827;
+}
+
+.techCategory {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+
+.separator {
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 0 1.25rem 1.25rem;
+}
+
+.techContent {
+  padding: 0 1.25rem 1.25rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.techDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 1rem 0;
+}
+
+.techDetails {
+  margin-bottom: 1rem;
+}
+
+.detailsTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #6b7280;
+}
+
+.detailsText {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+.learnMoreButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.learnMoreButton:hover {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.externalIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 2px;
+  background-color: #e5e7eb;
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+.timelineItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #9ca3af;
+  z-index: 1;
+}
+
+.timelineDate {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.timelineContent {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.timelineTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: #111827;
+}
+
+.timelineDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 4rem;
+}
+
+/* Dark mode styles */
+:global(.dark).container {
+  color: #e5e7eb;
+}
+
+:global(.dark).title {
+  color: #f9fafb;
+}
+
+:global(.dark).version {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+:global(.dark).infoItem {
+  color: #9ca3af;
+}
+
+
+:global(.dark).description {
+  background-color: #1f2937;
+}
+
+:global(.dark).description svg {
+  color: #9ca3af;
+}
+
+:global(.dark).description p {
+  color: #d1d5db;
+}
+
+:global(.dark).sectionTitle {
+  color: #f9fafb;
+}
+
+:global(.dark).sectionTitle::after {
+  background-color: #4b5563;
+}
+
+:global(.dark).techCard {
+  background-color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark).techCard:hover,
+:global(.dark).expanded {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark).techIconWrapper {
+  background-color: #111827;
+}
+
+:global(.dark).techIconWrapper svg {
+  color: #9ca3af;
+}
+
+:global(.dark).techName {
+  color: #f9fafb;
+}
+
+:global(.dark).techCategory {
+  color: #9ca3af;
+}
+
+:global(.dark).expandIcon {
+  color: #6b7280;
+}
+
+:global(.dark).separator {
+  background-color: #374151;
+}
+
+:global(.dark).techDescription {
+  color: #d1d5db;
+}
+
+:global(.dark).detailsTitle {
+  color: #9ca3af;
+}
+
+:global(.dark).detailsText {
+  color: #d1d5db;
+}
+
+:global(.dark).learnMoreButton {
+  border-color: #374151;
+  color: #9ca3af;
+}
+
+:global(.dark).learnMoreButton:hover {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+:global(.dark).timeline::before {
+  background-color: #4b5563;
+}
+
+:global(.dark).timelineItem::before {
+  background-color: #1f2937;
+  border-color: #6b7280;
+}
+
+:global(.dark).timelineDate {
+  color: #9ca3af;
+}
+
+:global(.dark).timelineContent {
+  background-color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark).timelineTitle {
+  color: #f9fafb;
+}
+
+:global(.dark).timelineDescription {
+  color: #d1d5db;
+}
+
+:global(.dark).footer {
+  color: #9ca3af;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .projectInfo {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .description {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+}

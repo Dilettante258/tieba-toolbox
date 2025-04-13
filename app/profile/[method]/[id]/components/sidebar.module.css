@@ -1,0 +1,210 @@
+.card {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #5c6bc0 0%, #3949ab 100%);
+  padding: 30px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarSection {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.userInfo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.username {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: white;
+}
+
+.userMeta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gender {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+}
+
+.userMeta > span:not(.gender) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+}
+
+.quickStats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statItem > div:nth-child(1) {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.statItem > div:nth-child(2) {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.memberBadge {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.memberBadge > div:nth-child(1) {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.memberBadge > div:nth-child(2) {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f9fafc;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3949ab;
+  margin: 0 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e6ed;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoItem > span:nth-child(1) {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.infoItem > span:nth-child(2) {
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.emoji {
+  margin-right: 4px;
+}
+
+.membershipInfo {
+  background-color: #eef2ff;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.expiryDate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.expiryDate > span:nth-child(1) {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.expiryDate > span:nth-child(2) {
+  font-size: 0.9rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.expiryRemaining {
+  font-size: 0.9rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+}
