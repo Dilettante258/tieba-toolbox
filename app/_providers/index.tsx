@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, JSX } from "react";
 import AppTanstackProvider from "./tanstack";
 import AppThemeProvider from "./theme";
 

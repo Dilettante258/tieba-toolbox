@@ -52,16 +52,16 @@
   outline: none;
 }
 
-.tsiButton &[data-focus-visible] {
+.tsiButton[data-focus-visible] {
   outline: 3px solid var(--focus-ring-color);
   outline-offset: -1px;
-}
+} 
 
 .tsiSelectValue {
   padding-left: 0.75rem;
 }
 
-.tsiSelectValue &[data-placeholder] {
+.tsiSelectValue[data-placeholder] {
   font-style: italic;
   color: var(--text-color-placeholder);
 }

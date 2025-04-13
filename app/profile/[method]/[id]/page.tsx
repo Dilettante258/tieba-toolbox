@@ -6,11 +6,18 @@ import { redirect } from "next/navigation";
 import ProfileCards from "./components/Card";
 import { Suspense, use } from "react";
 
-export default function ProfileContentPage({
-  params: { method, id },
-}: {
-  params: RequestProps2;
-}) {
+export default function ProfileContentPage(
+  props: {
+    params: Promise<RequestProps2>;
+  }
+) {
+  const params = use(props.params);
+
+  const {
+    method,
+    id
+  } = params;
+
   if (!["uid", "id", "un"].includes(method)) {
     redirect("/profile");
   }

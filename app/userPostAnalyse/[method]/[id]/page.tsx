@@ -13,7 +13,7 @@ import { BaChart, SankeyChart, ScatterChart } from "@custom/Chart";
 import type { clickEvent } from "@custom/Chart";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, use } from "react";
 import UpStyles from "@custom/UserPost.module.css";
 
 function highlight(search: string) {
@@ -21,7 +21,7 @@ function highlight(search: string) {
   const textNode2 = document.getElementsByClassName(UpStyles.postTitle);
   const textNode = [...textNode1, ...textNode2];
   const colorHighlight = new Highlight();
-  CSS.highlights.set(`rainbow-color`, colorHighlight);
+  CSS.highlights.set("rainbow-color", colorHighlight);
   if (textNode.length > 0 && search !== "") {
     for (const node of textNode) {
       try {
@@ -179,11 +179,12 @@ import type { Activity } from "react-activity-calendar";
 import { UPSelectorStore, useUPSelectorStore } from "@/utils/store/app";
 import { useTheme } from "next-themes";
 
-export default function UserPostAnalyseContentPage({
-  params,
-}: {
-  params: { method: string; id: string };
-}) {
+export default function UserPostAnalyseContentPage(
+  props: {
+    params: Promise<{ method: string; id: string }>;
+  }
+) {
+  const params = use(props.params);
   const date = useUPSelectorStore((state) => state.selectedDate);
   const [hiddenModules, setHiddenModules] = useState<Set<string>>(new Set());
 

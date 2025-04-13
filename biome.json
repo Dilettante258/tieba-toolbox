@@ -26,5 +26,13 @@
 		"formatter": {
 			"quoteStyle": "double"
 		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true
+		},
+		"formatter": {
+			"quoteStyle": "double"
+		}
 	}
 }

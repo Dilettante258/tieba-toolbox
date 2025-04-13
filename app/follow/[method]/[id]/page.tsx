@@ -4,7 +4,14 @@ import {FollowForm, LikeForumForm} from "@/app/actions";
 import {type RequestProps2} from "@type/common";
 import FollowList from "@custom/FollowList";
 
-export default function FollowContentPage({ params:{method,id} }: { params: RequestProps2 }) {
+export default async function FollowContentPage(props: { params: Promise<RequestProps2> }) {
+  const params = await props.params;
+
+  const {
+    method,
+    id
+  } = params;
+
   if (!['uid', 'id', 'un'].includes(method)){
     redirect('/follow');
   }

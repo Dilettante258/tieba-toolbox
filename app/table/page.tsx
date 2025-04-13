@@ -352,7 +352,7 @@ function CycleLabel({cycle}: {cycle: string}) {
   return <Label color="green" icon={cycleIcon}>{cycle}</Label>;
 }
 
-const sunIcons: Record<string, ReactElement> = {
+const sunIcons: Record<string, ReactElement<any>> = {
   'full sun': <Sun aria-hidden="true" className="w-4 h-4 flex-shrink-0" />,
   'part sun': <SunDim aria-hidden="true" className="w-4 h-4 flex-shrink-0" />,
   'part shade': <CloudSun aria-hidden="true" className="w-4 h-4 flex-shrink-0" />
@@ -372,7 +372,7 @@ function getSunlight(item: Plant) {
   return (item.sunlight.find(s => s.startsWith('part')) || item.sunlight[0]).split('/')[0];
 }
 
-const wateringIcons: Record<string, ReactElement> = {
+const wateringIcons: Record<string, ReactElement<any>> = {
   'Frequent': <Droplets aria-hidden="true" className="w-4 h-4 flex-shrink-0" />,
   'Average': <Droplet aria-hidden="true" className="w-4 h-4 flex-shrink-0" />,
   'Minimum': <Dessert aria-hidden="true" className="w-4 h-4 flex-shrink-0" />

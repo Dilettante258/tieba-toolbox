@@ -28,7 +28,7 @@ function reducer(state: CarouselState, action: { type: string; }): CarouselState
 
 function Carousel() {
   // 用于存储当前拖拽的最远距离（x 轴）
-  const [state, dispatch] = useReducer<Reducer<CarouselState, { type: string; }>>(reducer, {
+  const [state, dispatch] = useReducer<CarouselState, [{ type: string; }]>(reducer, {
     direction: "right",
     value: 0
   })

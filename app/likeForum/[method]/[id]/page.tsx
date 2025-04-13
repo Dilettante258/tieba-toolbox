@@ -6,7 +6,14 @@ import LikeForum from "@custom/LikeForum";
 
 
 
-export default function LikeForumContentPage({ params:{method,id} }: { params: RequestProps2 }) {
+export default async function LikeForumContentPage(props: { params: Promise<RequestProps2> }) {
+  const params = await props.params;
+
+  const {
+    method,
+    id
+  } = params;
+
   if (!['uid', 'id', 'un'].includes(method)){
     redirect('/likeForum');
   }

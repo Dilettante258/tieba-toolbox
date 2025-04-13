@@ -1,4 +1,4 @@
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@custom/NavBar";
 // import { Ubuntu, Ubuntu_Mono } from 'next/font/google'
@@ -28,45 +28,41 @@ import { Fragment } from "react";
 //   variable: '--font-ubuntu-mono',
 // })
 
-
 export const metadata: Metadata = {
   title: "ToEazy贴吧工具箱",
   description: "让查询贴吧数据变得简单",
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
-
-    <html lang='zh-CN'>
-    <body
-      className={` antialiased`}
-      //${ubuntu.className} ${ubuntuMono.className}
-    >
-    <AppProviders>
-      <NavBar />
-      {children}
-    </AppProviders>
-    <CustomScript />
-    </body>
+    <html lang="zh-CN">
+      <body
+        className={` antialiased`}
+        //${ubuntu.className} ${ubuntuMono.className}
+      >
+        <AppProviders>
+          <NavBar />
+          {children}
+        </AppProviders>
+        <CustomScript />
+      </body>
     </html>
-
   );
 }
 
-
 function CustomScript() {
-  const scripts = JSON.parse(process.env.NEXT_PUBLIC_SCRIPTS || '[]');
+  const scripts: { [k: string]: string }[] = JSON.parse(
+    process.env.NEXT_PUBLIC_SCRIPTS || "{}"
+  );
   return (
     <Fragment>
-    {scripts.map((script: string) => (
-      <Script src={script} key={script} />
-    ))}
+      {scripts.map((item, index) => (
+        <Script {...item} />
+      ))}
     </Fragment>
-  )
+  );
 }

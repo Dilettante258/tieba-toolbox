@@ -6,7 +6,15 @@ import {UserPostForm} from "@/app/actions";
 import {RequestProps1} from "@type/common";
 
 
-export default function UserPostContentPage({ params:{method,id,page} }: { params: RequestProps1 }) {
+export default async function UserPostContentPage(props: { params: Promise<RequestProps1> }) {
+  const params = await props.params;
+
+  const {
+    method,
+    id,
+    page
+  } = params;
+
   if (!['uid', 'id', 'un'].includes(method)){
     redirect('/userpost');
   }
