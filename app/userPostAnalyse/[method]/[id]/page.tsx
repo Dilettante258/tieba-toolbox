@@ -178,6 +178,7 @@ import { ArrowUpDown } from "lucide-react";
 import type { Activity } from "react-activity-calendar";
 import { UPSelectorStore, useUPSelectorStore } from "@/utils/store/app";
 import { useTheme } from "next-themes";
+import { backendUrl } from "@/utils/constants";
 
 export default function UserPostAnalyseContentPage(
   props: {
@@ -224,7 +225,7 @@ export default function UserPostAnalyseContentPage(
     queryKey: ["projects"],
     queryFn: async ({ pageParam }) => {
       const res = await GET<UserPost[]>(
-        `http://localhost:8000/user/postsBatch?method=${params.method}&id=${params.id}&fromP=${pageParam[0]}&toP=${pageParam[1]}`
+        `${backendUrl}/user/postsBatch?method=${params.method}&id=${params.id}&fromP=${pageParam[0]}&toP=${pageParam[1]}`
       );
       if (isErrorMsg(res)) {
         console.error(res);

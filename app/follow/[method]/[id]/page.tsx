@@ -1,6 +1,5 @@
 import TripleSelectInput from "@custom/TripleSelectInput";
 import {redirect} from "next/navigation";
-import {FollowForm, LikeForumForm} from "@/app/actions";
 import {type RequestProps2} from "@type/common";
 import FollowList from "@custom/FollowList";
 
@@ -18,7 +17,7 @@ export default async function FollowContentPage(props: { params: Promise<Request
   return (
     <div className="main-container justify-start">
       <h1>关注列表查询</h1>
-      <TripleSelectInput action={FollowForm} />
+      <TripleSelectInput path="/follow" />
       <p className="page-info">当前正在查询用户<span>{id}</span>的关注列表。</p>
       <FollowList method={method} id={id} />
     </div>

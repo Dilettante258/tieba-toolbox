@@ -1,7 +1,6 @@
 import TripleSelectInput from "@custom/TripleSelectInput";
 import {redirect} from "next/navigation";
-import {LikeForumForm} from "@/app/actions";
-import {type RequestProps2} from "@type/common";
+import type {RequestProps2} from "@type/common";
 import LikeForum from "@custom/LikeForum";
 
 
@@ -20,7 +19,7 @@ export default async function LikeForumContentPage(props: { params: Promise<Requ
   return (
     <div className="main-container justify-start">
       <h1>用户关注贴吧查询</h1>
-      <TripleSelectInput action={LikeForumForm}/>
+      <TripleSelectInput path="/likeForum" />
       <p className="page-info">当前正在查询用户<span>{id}</span>的关注贴吧。</p>
       <LikeForum method={method} id={id} />
     </div>

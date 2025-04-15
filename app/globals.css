@@ -212,7 +212,7 @@ html.dark  {
   }
 }
 
-::highlight(rainbow-color) {
+:root::highlight(rainbow-color) {
   display: inline-block;
   background-color: #6D28D9;
   margin: 0 2px;

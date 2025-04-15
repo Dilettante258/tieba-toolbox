@@ -11,14 +11,23 @@ import {
 import { Input } from "react-aria-components";
 import styles from "./TripleSelectInput.module.css";
 import { Search, X } from "lucide-react";
+import { useRouter } from 'next/navigation'
 
 export default function TripleSelectInput({
-  action,
+  path,
 }: {
-  action(formData: FormData): void | Promise<void>;
+  path: string;
 }) {
+  const router = useRouter();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    router.push(`${path}/${formData.get('method')}/${formData.get('id')}`);
+  }
+
   return (
-    <form action={action} className={styles.field} >
+    <form onSubmit={handleSubmit} className={styles.field} >
         <Select
           name="method"
           defaultSelectedKey="uid"

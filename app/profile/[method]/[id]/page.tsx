@@ -1,4 +1,3 @@
-import { ProfileForm } from "@/app/actions";
 import { getUserData } from "@/utils/getUserData";
 import TripleSelectInput from "@custom/TripleSelectInput";
 import type { RequestProps2 } from "@type/common";
@@ -25,7 +24,7 @@ export default function ProfileContentPage(
 
   return (
     <div className="main-container justify-start relative">
-      <TripleSelectInput action={ProfileForm} />
+      <TripleSelectInput path="/profile" />
       <Suspense fallback={<div>Loading...</div>}>
         <ProfileCards {...userData} />
       </Suspense>

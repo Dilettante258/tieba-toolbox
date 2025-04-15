@@ -1,6 +1,4 @@
-'use server'
-
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 
 export async function UserPostForm(data: FormData) {
   if(data.get('id') === '') redirect('/userpost');
@@ -13,7 +11,6 @@ export async function LikeForumForm(data: FormData) {
 }
 
 export async function ProfileForm(data: FormData) {
-  (data)
   if(data.get('id') === '') redirect('/profile');
   redirect(`/profile/${data.get('method')}/${data.get('id')}`)
 }
