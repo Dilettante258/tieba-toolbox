@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
 
-  "packageManager": "bun@1.2.9",
+  "packageManager": "bun@1.2.11",
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@internationalized/date": "^3.5.6",

@@ -5,7 +5,7 @@ export default function UserPostPage() {
   return (
     <div className="main-container justify-center">
       <h1>用户回复贴查询</h1>
-      <TripleSelectInput path="/userPost" />
+      <TripleSelectInput path="/userpost" />
       <Tutorial />
     </div>
   );

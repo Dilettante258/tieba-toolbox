@@ -23,6 +23,9 @@ export default function TripleSelectInput({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
+    if (path === "/userpost") {
+      router.push(`${path}/${formData.get('method')}/${formData.get('id')}/1`);
+    }
     router.push(`${path}/${formData.get('method')}/${formData.get('id')}`);
   }
 
